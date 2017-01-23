@@ -3,3 +3,6 @@ A system for a fictionary resaturant that uses phones to take orders and display
 
 
 Testing testing
+
+Nu lägger jag till lite text.
+/AE
