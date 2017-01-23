@@ -1,0 +1,20 @@
+main
+include isPrime
+include hashtable
+include sieve
+	skapar tabellen X
+		Calcualte size for hashtable with isPrime
+		Lägg in N första element i en hashtabell
+	söker med int isPrime(Vector.b, vector.e, int)
+
+isPrime
+include search algorithms
+	int isPrime(Vector.b, vector.e, int) returns -1 or prime
+
+class hashtable
+	contructor with vector
+	insert
+	find
+	hash
+
+	node system
