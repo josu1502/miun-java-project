@@ -1,4 +1,4 @@
-# miun-java-project
+﻿# miun-java-project
 A system for a fictionary resaturant that uses phones to take orders and display them at a screen for the chef.
 It also includes a simple work scheduling app.
 
@@ -33,3 +33,5 @@ Se detta youtubeklipp för mer info: https://www.youtube.com/watch?v=0fKg7e37bQE
 Test av "aned1602 Testar på projektmöte 170125" 
 --------------------------------------------------------------------------------
 Test av ”mavn1500”
+--------------------------------------------------------------------------------
+Test av "thas1500"
