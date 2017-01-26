@@ -7,8 +7,7 @@ All text below is used for testing the git system and has nothing to do with the
 
 --------------------------------------------------------------------------------
 # Hur man använder git
-
-# Första gången:
+Första gången:
 
 1. Ladda hem "Git bash".
 
@@ -22,7 +21,7 @@ All text below is used for testing the git system and has nothing to do with the
 
 6. Använd git-komandot "git clone https://github.com/josu1502/miun-java-project.git" för att hämta hem projektet.
 
-# Framtida användande:
+Framtida användande:
 
 1. Använd kommandot "cd" för att lokalisera till den mappen som projektet ligger i. T.ex. "cd Dokument/GitHub/miun-java-project".
 
@@ -43,8 +42,13 @@ All text below is used for testing the git system and has nothing to do with the
 Se detta youtubeklipp för mer info: https://www.youtube.com/watch?v=0fKg7e37bQE
 
 --------------------------------------------------------------------------------
-# Gör en underskrift nedan för att bocka av att du kan hantera git:
+# Checklista
+Gör en underskrift nedan för att bocka av att du kan hantera git:
+
 Test av josu1502
+
 Test av aned1602
+
 Test av mavn1500
+
 Test av thas1500
