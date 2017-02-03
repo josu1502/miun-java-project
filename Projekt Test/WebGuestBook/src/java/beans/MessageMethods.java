@@ -33,12 +33,19 @@ public class MessageMethods implements Serializable {
     private String name = "";
     private String message = "";
 
+    
+    private String name;
+    private String message;
     /**
      * Creates a new instance of MessageMethods
      */
     public MessageMethods() {
     }
     
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 046a51201cf6ad0cb3a65484573073fa63b18261
     public void sendMessage() {
         MessageLog msglog = new MessageLog();
         msglog.setName(name);
@@ -46,8 +53,13 @@ public class MessageMethods implements Serializable {
         
         persist(msglog);
         
+<<<<<<< HEAD
+        name = "";
+        message = "";
+=======
         setName("");
         setMessage("");
+>>>>>>> 046a51201cf6ad0cb3a65484573073fa63b18261
     }
     
     public String getMessages() {
@@ -80,18 +92,42 @@ public class MessageMethods implements Serializable {
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * @return the name
+     */
+=======
+>>>>>>> 046a51201cf6ad0cb3a65484573073fa63b18261
     public String getName() {
         return name;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param name the name to set
+     */
+=======
+>>>>>>> 046a51201cf6ad0cb3a65484573073fa63b18261
     public void setName(String name) {
         this.name = name;
     }
 
+<<<<<<< HEAD
+    /**
+     * @return the message
+     */
+=======
+>>>>>>> 046a51201cf6ad0cb3a65484573073fa63b18261
     public String getMessage() {
         return message;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param message the message to set
+     */
+=======
+>>>>>>> 046a51201cf6ad0cb3a65484573073fa63b18261
     public void setMessage(String message) {
         this.message = message;
     }
