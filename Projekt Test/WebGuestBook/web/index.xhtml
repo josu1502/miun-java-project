@@ -9,6 +9,16 @@
     <h:body>
         <h1>Guest Book</h1>
         <h:form>
+<<<<<<< HEAD
+            Namn:<br/>
+            <h:inputText value="#{messageMethods.name}" required="true"/><br/>
+            Meddelande:<br/>
+            <h:inputText value="#{messageMethods.message}" required="true" /><br/>
+            <h:commandButton value="Submit" action="#{messageMethods.sendMessage}" /><br/><br/>
+        </h:form>
+        
+        
+=======
             Namn<br/>
             <h:inputText value="#{messageMethods.name}" required="true" /><br/>
             Message<br/>
@@ -17,6 +27,7 @@
             <h:commandButton value="submit" action="#{messageMethods.sendMessage}" /><br/><br/>
         </h:form>
         
+>>>>>>> 046a51201cf6ad0cb3a65484573073fa63b18261
         <h:outputText value="#{fn:replace(messageMethods.messages,'\\n','&lt;br/&gt;')}" escape="false" />
     </h:body>
 </html>
