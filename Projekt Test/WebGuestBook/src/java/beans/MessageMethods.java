@@ -30,18 +30,25 @@ public class MessageMethods implements Serializable {
     @Resource
     private javax.transaction.UserTransaction utx;
 
+    
+    private String name;
+    private String message;
     /**
      * Creates a new instance of MessageMethods
      */
     public MessageMethods() {
     }
     
-    public void sendMessage(String name, String message) {
+    
+    public void sendMessage() {
         MessageLog msglog = new MessageLog();
         msglog.setName(name);
         msglog.setMessage(message);
         
         persist(msglog);
+        
+        name = "";
+        message = "";
     }
     
     public String getMessages() {
@@ -72,6 +79,34 @@ public class MessageMethods implements Serializable {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the message
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * @param message the message to set
+     */
+    public void setMessage(String message) {
+        this.message = message;
     }
     
 }

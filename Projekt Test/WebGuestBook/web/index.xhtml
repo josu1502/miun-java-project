@@ -10,11 +10,14 @@
         <h1>Guest Book</h1>
 
         <h:form>
-            <h:inputText value="Hej" />
-            <h:commandButton value="Submit" action="user" />
+            Namn:<br/>
+            <h:inputText value="#{messageMethods.name}" required="true"/><br/>
+            Meddelande:<br/>
+            <h:inputText value="#{messageMethods.message}" required="true" /><br/>
+            <h:commandButton value="Submit" action="#{messageMethods.sendMessage}" /><br/><br/>
         </h:form>
         
-        #{messageMethods.sendMessage("Matte", "This is the best restaurant!")}
+        
         <h:outputText value="#{fn:replace(messageMethods.messages,'\\n','&lt;br/&gt;')}" escape="false" />
     </h:body>
 </html>
