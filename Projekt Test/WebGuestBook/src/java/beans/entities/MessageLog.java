@@ -1,4 +1,3 @@
-
 package beans.entities;
 
 import java.io.Serializable;
@@ -10,8 +9,10 @@ import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * En entitetsböna lägger grunden till hur man vill att en tabell ska vara
+ * utformad i en databas.
  *
- * @author Joakim
+ * @author Joakim Sundqvist
  */
 @NamedQuery(name = "getAll", query = "SELECT Object(o) FROM MessageLog o")
 @Entity
@@ -25,6 +26,7 @@ public class MessageLog implements Serializable {
     private String name;
     private String message;
 
+    /*Alla getters och setter för medlemmarna i tabellen måste finnas med*/
     public Long getId() {
         return id;
     }
@@ -33,6 +35,23 @@ public class MessageLog implements Serializable {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    /*Gratis kod som förljer med entitetsbönan och måste finnas med*/
     @Override
     public int hashCode() {
         int hash = 0;
@@ -57,21 +76,4 @@ public class MessageLog implements Serializable {
     public String toString() {
         return "beans.entities.MessageLog[ id=" + id + " ]";
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
 }

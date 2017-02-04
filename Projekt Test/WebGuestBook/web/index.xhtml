@@ -2,20 +2,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"> <!-- Biblotek för replace -->
     <h:head>
-        <title>Web Guest Book</title>
+        <title>Web Guest Book</title> <!-- Titel längst upp i webbläsaren -->
     </h:head>
+    
     <h:body>
-        <h1>Guest Book</h1>
+        <h1>Guest Book</h1> <!-- Titel längst upp på sidan -->
         <h:form>
+            <!--
+              Ett textfält som använder sig av både "messageMethods.getName" och
+              "messageMethods.setName" automatiskt. Därför skrivs endast "name"
+              ut.
+            -->
             Namn<br/>
             <h:inputText value="#{messageMethods.name}" required="true" /><br/>
+            
+            <!--
+              Ett textfält som använder sig av både "messageMethods.getMessage" 
+              och "messageMethods.setMessage" automatiskt. Därför skrivs endast 
+              "message" ut.
+            -->
             Message<br/>
             <h:inputText value="#{messageMethods.message}" required="true" /><br/>
+            
+            <!--
+              En knapp som skickar iväg meddelandet till databsen med funktionen
+              "messageMethods.sendMessage". Den funktionen nollställer även
+              "name" och "message" så att båda textfälten ovan nollställer sina
+              texter med sina automatiska getters.
+            -->
             <h:commandButton value="submit" action="#{messageMethods.sendMessage}" /><br/><br/>
         </h:form>
-
+        
+        <!--
+          Använder funktionen "messageMethods.messages" för att hämta alla
+          meddelanden. Med hjälp av h:outputtext och fn:replace byts alla
+          java-radbyten "\n" ut till xhtml-radbyten <br/>.
+        -->
         <h:outputText value="#{fn:replace(messageMethods.messages,'\\n','&lt;br/&gt;')}" escape="false" />
     </h:body>
 </html>
