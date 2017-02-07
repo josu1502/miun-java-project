@@ -1,0 +1,3 @@
+RESTful-adresser
+----------------
+Jockes dator: http://192.168.43.80:8080/WebGuestBook/webresources/beans.entities.messagelog/
