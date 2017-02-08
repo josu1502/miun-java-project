@@ -11,4 +11,5 @@
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/AntonsSkafferiDB" object-type="user" pool-name="derby_net_AntonsSkafferiDB_antonPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/AntonsSkafferiDB" object-type="user" pool-name="derby_net_AntonsSkafferiDB_antonPool"/>
 </resources>
