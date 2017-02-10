@@ -48,17 +48,22 @@ public class LunchSessionBean implements Serializable {
     public String getlunch() {
          TypedQuery<LunchEntity> q = em.createNamedQuery("getAll", LunchEntity.class);
         List<LunchEntity> resultList = q.getResultList();
-        String allMessages = "";
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < resultList.size(); i++) {
             LunchEntity nameAndMessage = resultList.get(i);
-            allMessages += nameAndMessage.getName();
-            allMessages += "     ";
-            allMessages += nameAndMessage.getPrice();
-            allMessages += ":-\n";
-            allMessages += nameAndMessage.getDescription();
-            allMessages += "\n";
+            sb.append("<h3>");
+            sb.append(nameAndMessage.getName());
+            sb.append(" "); 
+            sb.append(nameAndMessage.getPrice());
+            sb.append(":-");
+            sb.append("</h3>");
+            //sb.append("</ br>");
+            sb.append("<p>");
+            sb.append(nameAndMessage.getDescription());
+            sb.append("</p>");
+            
         }
-        return allMessages;
+        return sb.toString();
     }
     
     /*Hämta lunchmeny*/
