@@ -5,14 +5,17 @@
  */
 package beans;
 
+import beans.entities.LunchEntity;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -26,11 +29,36 @@ public class LunchSessionBean implements Serializable {
     private EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;
-
+    
     /**
      * Creates a new instance of LunchSessionBean
      */
     public LunchSessionBean() {
+    }
+    
+    public void setlunch() {
+        String name = "Pannkakor";
+        LunchEntity lunchname = new LunchEntity();
+        lunchname.setName(name);
+        lunchname.setDescription("Med grädde och sylt");
+        lunchname.setPrice(79);
+        persist(lunchname);
+        
+    }
+    public String getlunch() {
+         TypedQuery<LunchEntity> q = em.createNamedQuery("getAll", LunchEntity.class);
+        List<LunchEntity> resultList = q.getResultList();
+        String allMessages = "";
+        for (int i = 0; i < resultList.size(); i++) {
+            LunchEntity nameAndMessage = resultList.get(i);
+            allMessages += nameAndMessage.getName();
+            allMessages += "     ";
+            allMessages += nameAndMessage.getPrice();
+            allMessages += ":-\n";
+            allMessages += nameAndMessage.getDescription();
+            allMessages += "\n";
+        }
+        return allMessages;
     }
     
     /*Hämta lunchmeny*/
@@ -47,5 +75,7 @@ public class LunchSessionBean implements Serializable {
             throw new RuntimeException(e);
         }
     }
+    
+    
     
 }
