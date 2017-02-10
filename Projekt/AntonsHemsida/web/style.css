@@ -128,12 +128,7 @@ p {
 }
 
 a {
-    background:#F44336;
-    font-family: 'Fjalla One', sans-serif;
-    padding:17px;
-    font-size: 30px;
-    color: white;
-    text-decoration: none;
-    line-height: 70px;
+    padding: 0;
+    margin: 0;
 }
 
