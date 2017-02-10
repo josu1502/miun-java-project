@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +21,32 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ListView sList = (ListView) findViewById(R.id.sList);
+
+        String[] names = new String[] { "17-02-10\tLunch\nJoakim",
+                "17-02-10\tLunch\nMatiias",
+                "17-02-10\tMiddag\nThomas",
+                "17-02-11\tLunch\nGabriel",
+                "17-02-11\tLunch\nAlex",
+                "17-02-11\tMiddag\nAndreas",
+                "17-02-11\tMiddag\nAdam",
+                "17-02-10\tLunch\nMatiias",
+                "17-02-10\tMiddag\nThomas",
+                "17-02-11\tLunch\nGabriel",
+                "17-02-11\tLunch\nAlex",
+                "17-02-11\tMiddag\nAndreas",
+                "17-02-11\tMiddag\nAdam"};
+
+        final ArrayList<String> nameList = new ArrayList<String>();
+        for (int i = 0; i < names.length; ++i) {
+            nameList.add(names[i]);
+        }
+
+        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nameList);
+        sList.setAdapter(adapter);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.plus);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
     }
 
     @Override
