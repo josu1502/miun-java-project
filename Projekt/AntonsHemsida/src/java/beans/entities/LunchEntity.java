@@ -10,12 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Joakim
  */
+@NamedQuery(name = "getAll", query = "SELECT Object(o) FROM LunchEntity o")
 @Entity
 @XmlRootElement
 public class LunchEntity implements Serializable {
