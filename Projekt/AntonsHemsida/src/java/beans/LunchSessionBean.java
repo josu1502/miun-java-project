@@ -37,27 +37,40 @@ public class LunchSessionBean implements Serializable {
     }
     
     public void setlunch() {
-        String name = "Pannkakor";
-        LunchEntity lunchname = new LunchEntity();
-        lunchname.setName(name);
-        lunchname.setDescription("Med grädde och sylt");
-        lunchname.setPrice(79);
-        persist(lunchname);
+        /*TypedQuery<LunchEntity> q = em.createNamedQuery("getAll", LunchEntity.class);
+        List<LunchEntity> resultList = q.getResultList();
         
+        LunchEntity newLunch = resultList.get(0);
+        newLunch.setName("Pannkakor 2");
+        newLunch.setDescription("Med grädde och sylt 2");
+        newLunch.setPrice(82);
+        
+        resultList.set(0, newLunch);
+        
+        em.merge(resultList);*/
+
+        LunchEntity lunchname = new LunchEntity();
+        lunchname.setLunchday("Måndag");
+        lunchname.setName("Pannkakor");
+        lunchname.setDescription("Med grädde och sylt");
+        lunchname.setPrice(82);
+        persist(lunchname);       
     }
     public String getlunch() {
-         TypedQuery<LunchEntity> q = em.createNamedQuery("getAll", LunchEntity.class);
+        TypedQuery<LunchEntity> q = em.createNamedQuery("getAll", LunchEntity.class);
         List<LunchEntity> resultList = q.getResultList();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < resultList.size(); i++) {
             LunchEntity nameAndMessage = resultList.get(i);
+            sb.append("<h2>");
+            sb.append(nameAndMessage.getLunchday());
+            sb.append("</h2>");
             sb.append("<h3>");
             sb.append(nameAndMessage.getName());
             sb.append(" "); 
             sb.append(nameAndMessage.getPrice());
             sb.append(":-");
             sb.append("</h3>");
-            //sb.append("</ br>");
             sb.append("<p>");
             sb.append(nameAndMessage.getDescription());
             sb.append("</p>");

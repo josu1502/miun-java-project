@@ -26,7 +26,7 @@ public class LunchEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String lunch_day; //Inte "day" då det krockar med SQL
+    private String lunchday; //Inte "day" då det krockar med SQL
     private String name;
     private String description;
     private Integer price;
@@ -38,6 +38,14 @@ public class LunchEntity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public String getLunchday() {
+        return lunchday;
+    }
+
+    public void setLunchday(String lunch_day) {
+        this.lunchday = lunch_day;
+    }
 
     public String getName() {
         return name;
@@ -45,14 +53,6 @@ public class LunchEntity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-    
-    public String getLunch_day() {
-        return lunch_day;
-    }
-
-    public void setLunch_day(String lunch_day) {
-        this.lunch_day = lunch_day;
     }
 
     public String getDescription() {
