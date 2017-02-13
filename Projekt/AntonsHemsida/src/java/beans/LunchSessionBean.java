@@ -29,7 +29,7 @@ public class LunchSessionBean implements Serializable {
     private EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;
-    
+    //Ex på ändra i en databas: https://www.mkyong.com/jsf2/how-to-update-row-in-jsf-datatable/
     /**
      * Creates a new instance of LunchSessionBean
      */
@@ -48,7 +48,7 @@ public class LunchSessionBean implements Serializable {
         resultList.set(0, newLunch);
         
         em.merge(resultList);*/
-
+        
         LunchEntity lunchname = new LunchEntity();
         lunchname.setLunchday("Måndag");
         lunchname.setName("Pannkakor");
