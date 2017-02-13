@@ -1,8 +1,8 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Detta är css:en för index.xhtml samt alla underliggande xhtml-sidor
+som hör ihop med den
 */
+
 /* 
     Created on : Feb 10, 2017, 9:25:20 AM
     Author     : Joakim
@@ -95,7 +95,7 @@ p {
     -webkit-align-items: center;
     align-items: center;
     justify-content: center;
-    background: url("background_antons.jpg");
+    background: url("images/background_antons.jpg");
 }
 
 .menu {
@@ -117,14 +117,13 @@ p {
     background:#F44336;
 }
 
-
-
 .flex-item3 {
     width: 50%;
     height: 80%;
     /* margin: 30px; */
     background-color: #FFFFFF;
 }
+
 .active {
     background: #B32727;
 }
@@ -132,5 +131,6 @@ p {
 a {
     padding: 0;
     margin: 0;
+    display:block;
 }
 

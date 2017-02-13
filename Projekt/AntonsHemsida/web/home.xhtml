@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <meta charset="utf-8"></meta>
+        <link href="style.css" type="text/css" rel="stylesheet"></link>
+        <title>Antons skafferi</title>
+
+    </head>
+    <body>
+        <div id="container">
+            <div class="display" id="mainpage">
+                <h2>Dagens Lunch</h2>
+                <h:outputText value="#{lunchSessionBean.getlunch()}" escape ="false" />
+                <h3>Hemgjorda köttbullar med potatismos <i>79:-</i></h3> 
+                <p>Serveras med gräddsås och lingonsylt</p>
+            </div>
+        </div>
+    </body>
+</html>
