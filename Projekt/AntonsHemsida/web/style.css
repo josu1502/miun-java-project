@@ -42,6 +42,7 @@ h3 {
     text-align: justify;
     font-family: 'Average', serif;
     font-size: 24px;
+    line-height: 0;
     color:#212121;
 }
 
@@ -49,6 +50,7 @@ p {
     text-align: justify;
     font-family: 'Average', serif;
     font-size: 14px;
+    line-height: 0;
     color:#212121;
 }
 
@@ -118,8 +120,8 @@ p {
 
 
 .flex-item3 {
-    width: 80%;
-    height: 85%;
+    width: 50%;
+    height: 80%;
     /* margin: 30px; */
     background-color: #FFFFFF;
 }
