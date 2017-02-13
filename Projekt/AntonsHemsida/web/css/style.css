@@ -66,7 +66,7 @@ p {
     display: flex;
     -webkit-justify-content: center;
     justify-content: center;
-    background: url("images/background_antons.jpg");
+    background: url("../images/background_antons.jpg");
 }
 
 .flex-container2 {
