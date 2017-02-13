@@ -1,8 +1,8 @@
 package com.miun.schemaapplikation.josu1502.schemaapplikation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,8 +11,14 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static List<String> nameList;
+    public static ArrayAdapter adapter;
+    public static ListView sList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,28 +27,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ListView sList = (ListView) findViewById(R.id.sList);
+        sList = (ListView) findViewById(R.id.sList);
+        nameList = new ArrayList<>();
 
-        String[] names = new String[] { "17-02-10\tLunch\nJoakim",
-                "17-02-10\tLunch\nMatiias",
-                "17-02-10\tMiddag\nThomas",
-                "17-02-11\tLunch\nGabriel",
-                "17-02-11\tLunch\nAlex",
-                "17-02-11\tMiddag\nAndreas",
-                "17-02-11\tMiddag\nAdam",
-                "17-02-10\tLunch\nMatiias",
-                "17-02-10\tMiddag\nThomas",
-                "17-02-11\tLunch\nGabriel",
-                "17-02-11\tLunch\nAlex",
-                "17-02-11\tMiddag\nAndreas",
-                "17-02-11\tMiddag\nAdam"};
+        nameList.add("17/02/13\tLunch\nJoakim");
+        nameList.add("17/02/13\tLunch\nMattias");
+        nameList.add("17/02/13\tMiddag\nThomas");
+        nameList.add("17/02/13\tMiddag\nAnders");
+        nameList.add("17/02/14\tLunch\nThomas");
+        nameList.add("17/02/14\tLunch\nThomas");
+        Collections.sort(nameList);
 
-        final ArrayList<String> nameList = new ArrayList<String>();
-        for (int i = 0; i < names.length; ++i) {
-            nameList.add(names[i]);
-        }
-
-        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nameList);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nameList);
         sList.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -50,11 +46,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(getApplicationContext(),AddNewDate.class));
             }
         });
-
     }
 
     @Override
@@ -77,5 +71,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void addNewSchedule (String date, String pass, String name) {
+        nameList.add(date + "\t" + pass + "\n" + name);
+        Collections.sort(nameList);
+        sList.setAdapter(adapter);
     }
 }
