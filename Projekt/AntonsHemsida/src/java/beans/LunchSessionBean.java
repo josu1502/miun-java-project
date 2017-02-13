@@ -14,7 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
+import javax.persistence.FlushModeType;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -51,11 +53,22 @@ public class LunchSessionBean implements Serializable {
         
         LunchEntity lunchname = new LunchEntity();
         lunchname.setLunchday("Måndag");
-        lunchname.setName("Pannkakor");
+        lunchname.setName("Paj");
         lunchname.setDescription("Med grädde och sylt");
         lunchname.setPrice(82);
-        persist(lunchname);       
+        persist(lunchname);    
     }
+    public int updateLunchPrice(Integer price, String name) {
+    Query update_query = em.createQuery("UPDATE LunchEntity p SET p.price= ?1 WHERE p.name= ?2 ");
+    update_query.setParameter(1, price);
+    update_query.setParameter(2, name);
+    //update_query.executeUpdate();
+    //em.setFlushMode(FlushModeType.COMMIT);
+    //em.close();
+    persist(update_query);
+    return 1;
+  }
+    
     public String getlunch() {
         TypedQuery<LunchEntity> q = em.createNamedQuery("getAll", LunchEntity.class);
         List<LunchEntity> resultList = q.getResultList();
