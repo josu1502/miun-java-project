@@ -37,7 +37,8 @@ public class LunchSessionBean implements Serializable {
     private EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;
-
+    
+    private Integer index;
     private class LunchStruct {
 
         public String day;
@@ -182,8 +183,7 @@ public class LunchSessionBean implements Serializable {
     }
 
     /*display... bygger html kod*/
-    public String
-            displayLunchMenu() {
+    public String displayLunchMenu() {
         TypedQuery<LunchEntity> q = em.createNamedQuery("getAll", LunchEntity.class
         );
         List<LunchEntity> resultList = q.getResultList();
@@ -221,36 +221,44 @@ public class LunchSessionBean implements Serializable {
     }
 
     /*Getter and setter for this object, not the entity. Used in textfields.*/
-    public String getDay(Integer index) {
+    public String getDay() {
         return lunchList.get(index).day;
     }
 
-    public void setDay(String day, Integer index) {
+    public void setDay(String day) {
         this.lunchList.get(index).day = day;
     }
 
-    public String getName(Integer index) {
+    public String getName() {
         return lunchList.get(index).name;
     }
 
-    public void setName(String name, Integer index) {
+    public void setName(String name) {
         this.lunchList.get(index).name = name;
     }
 
-    public String getDesc(Integer index) {
+    public String getDesc() {
         return lunchList.get(index).desc;
     }
 
-    public void setDesc(String desc, Integer index) {
+    public void setDesc(String desc) {
         this.lunchList.get(index).desc = desc;
     }
 
-    public Integer getPrice(Integer index) {
+    public Integer getPrice() {
         return lunchList.get(index).price;
     }
 
-    public void setPrice(Integer price, Integer index) {
+    public void setPrice(Integer price) {
         this.lunchList.get(index).price = price;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
     }
 
 }

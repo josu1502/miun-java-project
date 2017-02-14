@@ -12,33 +12,38 @@
         <div id="admin_form">
            #{lunchSessionBean.init()}
          <h:form class="lunchday" id="d1">
-             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(0)}" />
-             Lunch: <h:inputText value="#{lunchSessionBean.getName(0)}" />
-             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(0)}" />
-             Pris: <h:inputText value="#{lunchSessionBean.getPrice(0)}" />
+             #{lunchSessionBean.setIndex(0)}
+             Veckodag: <h:inputText value="#{lunchSessionBean.day}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.name}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.desc}" />
+             Pris: <h:inputText value="#{lunchSessionBean.price}" />
              <br/>
-             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(1)}" />
-             Lunch: <h:inputText value="#{lunchSessionBean.getName(1)}" />
-             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(1)}" />
-             Pris: <h:inputText value="#{lunchSessionBean.getPrice(1)}" />
+             #{lunchSessionBean.setIndex(1)}
+             Veckodag: <h:inputText value="#{lunchSessionBean.day}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.name}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.desc}" />
+             Pris: <h:inputText value="#{lunchSessionBean.price}" />
              <br/>
-             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(2)}" />
-             Lunch: <h:inputText value="#{lunchSessionBean.getName(2)}" />
-             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(2)}" />
-             Pris: <h:inputText value="#{lunchSessionBean.getPrice(2)}" />
+             #{lunchSessionBean.setIndex(2)}
+             Veckodag: <h:inputText value="#{lunchSessionBean.day}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.name}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.desc}" />
+             Pris: <h:inputText value="#{lunchSessionBean.price}" />
              <br/>
-             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(3)}" />
-             Lunch: <h:inputText value="#{lunchSessionBean.getName(3)}" />
-             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(3)}" />
-             Pris: <h:inputText value="#{lunchSessionBean.getPrice(3)}" />
+             #{lunchSessionBean.setIndex(3)}
+             Veckodag: <h:inputText value="#{lunchSessionBean.day}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.name}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.desc}" />
+             Pris: <h:inputText value="#{lunchSessionBean.price}" />
              <br/>
-             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(4)}" />
-             Lunch: <h:inputText value="#{lunchSessionBean.getName(4)}" />
-             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(4)}" />
-             Pris: <h:inputText value="#{lunchSessionBean.getPrice(4)}" />
+             #{lunchSessionBean.setIndex(4)}
+             Veckodag: <h:inputText value="#{lunchSessionBean.day}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.name}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.desc}" />
+             Pris: <h:inputText value="#{lunchSessionBean.price}" />
              <br/>
              <br/>
-             <h:commandButton value="Spara allt" action="#{System.out.println("Sparat!")}"></h:commandButton> 
+             <h:commandButton value="Spara allt" action="#{lunchSessionBean.updateAll()}"></h:commandButton> 
          </h:form>
         </div>
     </h:body>
