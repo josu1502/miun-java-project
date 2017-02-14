@@ -1,17 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Antons Skafferi Admin</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>Change lunch menu</div>
-        #{lunchSessionBean.setlunch()}       
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta charset="utf-8"></meta>
+        <link href="../css/style.css" type="text/css" rel="stylesheet"/>
+        <title>Antons skafferi admin</title>
+    </h:head>
+    <h:body>
+        <h2>Change lunch menu</h2><br/>
+        <div id="admin_form">
+           #{lunchSessionBean.init()}
+         <h:form class="lunchday" id="d1">
+             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(0)}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.getName(0)}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(0)}" />
+             Pris: <h:inputText value="#{lunchSessionBean.getPrice(0)}" />
+             <br/>
+             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(1)}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.getName(1)}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(1)}" />
+             Pris: <h:inputText value="#{lunchSessionBean.getPrice(1)}" />
+             <br/>
+             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(2)}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.getName(2)}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(2)}" />
+             Pris: <h:inputText value="#{lunchSessionBean.getPrice(2)}" />
+             <br/>
+             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(3)}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.getName(3)}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(3)}" />
+             Pris: <h:inputText value="#{lunchSessionBean.getPrice(3)}" />
+             <br/>
+             Veckodag: <h:inputText value="#{lunchSessionBean.getDay(4)}" />
+             Lunch: <h:inputText value="#{lunchSessionBean.getName(4)}" />
+             Beskrivning: <h:inputText value="#{lunchSessionBean.getDesc(4)}" />
+             Pris: <h:inputText value="#{lunchSessionBean.getPrice(4)}" />
+             <br/>
+             <br/>
+             <h:commandButton value="Spara allt" action="#{System.out.println("Sparat!")}"></h:commandButton> 
+         </h:form>
+        </div>
+    </h:body>
 </html>

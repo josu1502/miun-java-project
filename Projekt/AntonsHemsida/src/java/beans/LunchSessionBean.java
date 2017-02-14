@@ -51,16 +51,19 @@ public class LunchSessionBean implements Serializable {
      * Creates a new instance of LunchSessionBean
      */
     public LunchSessionBean() {
+    }
+    
+    public void init() {
         TypedQuery<LunchEntity> q = em.createNamedQuery("getAll", LunchEntity.class);
         List<LunchEntity> resultList = q.getResultList();
 
-        LunchStruct ls = new LunchStruct();
         for (int i = 0; i < resultList.size(); i++) {
+            LunchStruct ls = new LunchStruct();
             ls.day = resultList.get(i).getLunchday();
             ls.name = resultList.get(i).getName();
             ls.desc = resultList.get(i).getDescription();
             ls.price = resultList.get(i).getPrice();
-            lunchList.set(i, ls);
+            lunchList.add(ls);
         }
     }
 
