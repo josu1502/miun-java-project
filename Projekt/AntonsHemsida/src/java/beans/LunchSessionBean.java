@@ -15,16 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
-import javax.persistence.FlushModeType;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 
 /**
  *
@@ -479,10 +471,7 @@ public class LunchSessionBean implements Serializable {
             sb.append(nameAndMessage.getPrice());
             sb.append(":-");
             sb.append("</h2>");
-            sb.append("<p>");
             sb.append(nameAndMessage.getDescription());
-            sb.append("</p>");
-
         }
         return sb.toString();
     }
@@ -500,10 +489,7 @@ public class LunchSessionBean implements Serializable {
             sb.append(nameAndMessage.getPrice());
             sb.append(":-");
             sb.append("</h3>");
-            sb.append("<p>");
             sb.append(nameAndMessage.getDescription());
-            sb.append("</p>");
-
         }
         return sb.toString();
     }

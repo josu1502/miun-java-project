@@ -1,11 +1,4 @@
-
-#top {
-    position: relative;
-    background-color: #036fab;
-    color: white;
-    padding: 5px;
-    margin: 0px 0px 10px 0px;
-}
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One|Average);
 
 #bottom {
     position: relative;
@@ -29,16 +22,16 @@
 }
 
 .center_content {
-    position: relative;
     background-color: #FFFFFF;
-    padding: 5px;
+    padding: 20px 20px 50px 20px;
+    margin: 75px 20% 0 20%;
+    min-height: 70vh; /*Procentual of browser height to fill blank spaces*/
 }
 
 .left_content {
     background-color: #FFFFFF;
     padding: 5px;
     margin-left: 170px;
-    margin-right: 170px;
 }
 
 .right_content {
@@ -48,14 +41,41 @@
     
 }
 
-#top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
+#top ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F44336;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-#top a:link:hover, #top a:visited:hover  {
-  color: white;
+#top li{
+    float: left;
 }
 
+#top li img{
+    float: left;
+}
 
+#top a{
+    display: block;
+    padding: 16px 20px;
+    color: #FFFFFF;
+    font-family: "Fjalla One" ,sans-serif;
+    font-size: 24px;
+    text-align: center;
+}
+
+#top li a:hover:not(.active){
+    background-color: #B32727;
+    text-decoration: none;
+}
+
+#top .active{
+    background-color: #B32727;
+}
