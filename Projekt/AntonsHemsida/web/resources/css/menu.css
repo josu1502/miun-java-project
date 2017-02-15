@@ -44,3 +44,7 @@ li img{
 .active{
     background-color: #B32727;
 }
+
+#logo{
+    margin: 2px;
+}
