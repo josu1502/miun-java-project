@@ -191,15 +191,15 @@ public class LunchSessionBean implements Serializable {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < resultList.size(); i++) {
             LunchEntity nameAndMessage = resultList.get(i);
-            sb.append("<h2>");
+            sb.append("<h1>");
             sb.append(nameAndMessage.getLunchday());
-            sb.append("</h2>");
-            sb.append("<h3>");
+            sb.append("</h1>");
+            sb.append("<h2>");
             sb.append(nameAndMessage.getName());
             sb.append(" ");
             sb.append(nameAndMessage.getPrice());
             sb.append(":-");
-            sb.append("</h3>");
+            sb.append("</h2>");
             sb.append("<p>");
             sb.append(nameAndMessage.getDescription());
             sb.append("</p>");
@@ -208,8 +208,8 @@ public class LunchSessionBean implements Serializable {
         return sb.toString();
     }
     
-    public String displayLunchByDay(String weekday){
-        TypedQuery<LunchEntity> tq = em.createNamedQuery("getDay", LunchEntity.class);
+    public String displayLunchByDay(String day){
+        TypedQuery<LunchEntity> tq = em.createNamedQuery("getDay", LunchEntity.class).setParameter("weekday", day);
         List<LunchEntity> resultlist = tq.getResultList();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < resultlist.size(); i++) {
