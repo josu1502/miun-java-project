@@ -30,20 +30,22 @@
 
 .center_content {
     position: relative;
-    background-color: #dddddd;
+    background-color: #FFFFFF;
     padding: 5px;
 }
 
 .left_content {
-    background-color: #dddddd;
+    background-color: #FFFFFF;
     padding: 5px;
     margin-left: 170px;
+    margin-right: 170px;
 }
 
 .right_content {
-    background-color: #dddddd;
+    background-color: #FFFFFF;
     padding: 5px;
     margin: 0px 170px 0px 170px;
+    
 }
 
 #top a:link, #top a:visited {
