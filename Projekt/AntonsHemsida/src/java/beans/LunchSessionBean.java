@@ -40,6 +40,233 @@ public class LunchSessionBean implements Serializable {
     private javax.transaction.UserTransaction utx;
     
     private Integer index;
+
+    /**
+     * @return the day
+     */
+    public String getDay() {
+        return day;
+    }
+
+    /**
+     * @param day the day to set
+     */
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    /**
+     * @return the måndag_name
+     */
+    public String getMåndag_name() {
+        return måndag_name;
+    }
+
+    /**
+     * @param måndag_name the måndag_name to set
+     */
+    public void setMåndag_name(String måndag_name) {
+        this.måndag_name = måndag_name;
+    }
+
+    /**
+     * @return the måndag_desc
+     */
+    public String getMåndag_desc() {
+        return måndag_desc;
+    }
+
+    /**
+     * @param måndag_desc the måndag_desc to set
+     */
+    public void setMåndag_desc(String måndag_desc) {
+        this.måndag_desc = måndag_desc;
+    }
+
+    /**
+     * @return the måpndag_price
+     */
+    public Integer getMåndag_price() {
+        return måndag_price;
+    }
+
+    /**
+     * @param måpndag_price the måpndag_price to set
+     */
+    public void setMåndag_price(Integer måpndag_price) {
+        this.måndag_price = måndag_price;
+    }
+
+    /**
+     * @return the tisdag_name
+     */
+    public String getTisdag_name() {
+        return tisdag_name;
+    }
+
+    /**
+     * @param tisdag_name the tisdag_name to set
+     */
+    public void setTisdag_name(String tisdag_name) {
+        this.tisdag_name = tisdag_name;
+    }
+
+    /**
+     * @return the tisdag_desc
+     */
+    public String getTisdag_desc() {
+        return tisdag_desc;
+    }
+
+    /**
+     * @param tisdag_desc the tisdag_desc to set
+     */
+    public void setTisdag_desc(String tisdag_desc) {
+        this.tisdag_desc = tisdag_desc;
+    }
+
+    /**
+     * @return the tisdag_price
+     */
+    public Integer getTisdag_price() {
+        return tisdag_price;
+    }
+
+    /**
+     * @param tisdag_price the tisdag_price to set
+     */
+    public void setTisdag_price(Integer tisdag_price) {
+        this.tisdag_price = tisdag_price;
+    }
+
+    /**
+     * @return the onsdag_name
+     */
+    public String getOnsdag_name() {
+        return onsdag_name;
+    }
+
+    /**
+     * @param onsdag_name the onsdag_name to set
+     */
+    public void setOnsdag_name(String onsdag_name) {
+        this.onsdag_name = onsdag_name;
+    }
+
+    /**
+     * @return the onsdag_desc
+     */
+    public String getOnsdag_desc() {
+        return onsdag_desc;
+    }
+
+    /**
+     * @param onsdag_desc the onsdag_desc to set
+     */
+    public void setOnsdag_desc(String onsdag_desc) {
+        this.onsdag_desc = onsdag_desc;
+    }
+
+    /**
+     * @return the onsdag_price
+     */
+    public Integer getOnsdag_price() {
+        return onsdag_price;
+    }
+
+    /**
+     * @param onsdag_price the onsdag_price to set
+     */
+    public void setOnsdag_price(Integer onsdag_price) {
+        this.onsdag_price = onsdag_price;
+    }
+
+    /**
+     * @return the torsdag_name
+     */
+    public String getTorsdag_name() {
+        return torsdag_name;
+    }
+
+    /**
+     * @param torsdag_name the torsdag_name to set
+     */
+    public void setTorsdag_name(String torsdag_name) {
+        this.torsdag_name = torsdag_name;
+    }
+
+    /**
+     * @return the torsdag_desc
+     */
+    public String getTorsdag_desc() {
+        return torsdag_desc;
+    }
+
+    /**
+     * @param torsdag_desc the torsdag_desc to set
+     */
+    public void setTorsdag_desc(String torsdag_desc) {
+        this.torsdag_desc = torsdag_desc;
+    }
+
+    /**
+     * @return the torsdag_price
+     */
+    public Integer getTorsdag_price() {
+        return torsdag_price;
+    }
+
+    /**
+     * @param torsdag_price the torsdag_price to set
+     */
+    public void setTorsdag_price(Integer torsdag_price) {
+        this.torsdag_price = torsdag_price;
+    }
+
+    /**
+     * @return the fredag_name
+     */
+    public String getFredag_name() {
+        return fredag_name;
+    }
+
+    /**
+     * @param fredag_name the fredag_name to set
+     */
+    public void setFredag_name(String fredag_name) {
+        this.fredag_name = fredag_name;
+    }
+
+    /**
+     * @return the fredag_desc
+     */
+    public String getFredag_desc() {
+        return fredag_desc;
+    }
+
+    /**
+     * @param fredag_desc the fredag_desc to set
+     */
+    public void setFredag_desc(String fredag_desc) {
+        this.fredag_desc = fredag_desc;
+    }
+
+    /**
+     * @return the fredag_price
+     */
+    public Integer getFredag_price() {
+        return fredag_price;
+    }
+
+    /**
+     * @param fredag_price the fredag_price to set
+     */
+    public void setFredag_price(Integer fredag_price) {
+        this.fredag_price = fredag_price;
+    }
+
+    
+    
     private class LunchStruct {
 
         public String day;
@@ -47,6 +274,27 @@ public class LunchSessionBean implements Serializable {
         public String desc;
         public Integer price;
     }
+        private String day;
+        private String måndag_name;
+        private String måndag_desc;
+        private Integer måndag_price;
+        
+        private String tisdag_name;
+        private String tisdag_desc;
+        private Integer tisdag_price;
+        
+        private String onsdag_name;
+        private String onsdag_desc;
+        private Integer onsdag_price;
+        
+        private String torsdag_name;
+        private String torsdag_desc;
+        private Integer torsdag_price;
+        
+        private String fredag_name;
+        private String fredag_desc;
+        private Integer fredag_price;
+    
     private List<LunchStruct> lunchList = new ArrayList<>();
 
     /**
@@ -75,6 +323,37 @@ public class LunchSessionBean implements Serializable {
         lunchname.setName(name);
         lunchname.setDescription(desc);
         lunchname.setPrice(price);
+        persist(lunchname);
+    }
+    
+    public void createLunchByDay(String day) {
+        LunchEntity lunchname = new LunchEntity();
+        lunchname.setLunchday(day);
+        if(day == "Måndag") {
+            lunchname.setName(getMåndag_name());
+            lunchname.setDescription(getMåndag_desc());
+            lunchname.setPrice(getMåndag_price());
+        }
+        else if(day == "Tisdag") {
+            lunchname.setName(getTisdag_name());
+            lunchname.setDescription(getTisdag_desc());
+            lunchname.setPrice(getTisdag_price());
+        }
+        else if(day == "Onsdag"){
+            lunchname.setName(getOnsdag_name());
+            lunchname.setDescription(getOnsdag_desc());
+            lunchname.setPrice(getOnsdag_price());
+        }
+        else if(day == "Torsdag"){
+            lunchname.setName(getTorsdag_name());
+            lunchname.setDescription(getTorsdag_desc());
+            lunchname.setPrice(getTorsdag_price());
+        }
+        else if(day == "Fredag"){
+            lunchname.setName(getFredag_name());
+            lunchname.setDescription(getFredag_desc());
+            lunchname.setPrice(getFredag_price());
+        }
         persist(lunchname);
     }
 
@@ -214,9 +493,7 @@ public class LunchSessionBean implements Serializable {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < resultlist.size(); i++) {
             LunchEntity nameAndMessage = resultlist.get(i);
-            sb.append("<h2>");
-            sb.append(nameAndMessage.getLunchday());
-            sb.append("</h2>");
+            
             sb.append("<h3>");
             sb.append(nameAndMessage.getName());
             sb.append(" ");
@@ -230,6 +507,8 @@ public class LunchSessionBean implements Serializable {
         }
         return sb.toString();
     }
+    
+    
 
     /*Hämta lunchmeny*/
  /*Hämta lunch på index*/
@@ -245,44 +524,6 @@ public class LunchSessionBean implements Serializable {
     }
 
     /*Getter and setter for this object, not the entity. Used in textfields.*/
-    public String getDay() {
-        return lunchList.get(index).day;
-    }
-
-    public void setDay(String day) {
-        this.lunchList.get(index).day = day;
-    }
-
-    public String getName() {
-        return lunchList.get(index).name;
-    }
-
-    public void setName(String name) {
-        this.lunchList.get(index).name = name;
-    }
-
-    public String getDesc() {
-        return lunchList.get(index).desc;
-    }
-
-    public void setDesc(String desc) {
-        this.lunchList.get(index).desc = desc;
-    }
-
-    public Integer getPrice() {
-        return lunchList.get(index).price;
-    }
-
-    public void setPrice(Integer price) {
-        this.lunchList.get(index).price = price;
-    }
-
-    public Integer getIndex() {
-        return index;
-    }
-
-    public void setIndex(Integer index) {
-        this.index = index;
-    }
+    
 
 }

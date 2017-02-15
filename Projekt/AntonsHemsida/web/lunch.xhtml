@@ -15,7 +15,20 @@
                 <img id="maträtt1" src="../images/mat1.png" alt="logo is missing"></img>
                 <img id="maträtt2" src="../images/mat2.png" alt="logo is missing"></img>
                 <img id="maträtt3" src="../images/mat3.png" alt="logo is missing"></img>
-                <h:outputText value="#{lunchSessionBean.displayLunchMenu()}" escape ="false" />
+                <h2>Måndag</h2>
+                <h:outputText value="#{lunchSessionBean.displayLunchByDay('Måndag')}" escape ="false" />
+                
+                <h2>Tisdag</h2>
+                <h:outputText value="#{lunchSessionBean.displayLunchByDay('Tisdag')}" escape ="false" />
+                
+                <h2>Onsdag</h2>
+                <h:outputText value="#{lunchSessionBean.displayLunchByDay('Onsdag')}" escape ="false" />
+                
+                <h2>Torsdag</h2>
+                <h:outputText value="#{lunchSessionBean.displayLunchByDay('Torsdag')}" escape ="false" />
+                
+                <h2>Fredag</h2>
+                <h:outputText value="#{lunchSessionBean.displayLunchByDay('Fredag')}" escape ="false" />
             </ui:define>
 
         </ui:composition>
