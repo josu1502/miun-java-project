@@ -31,7 +31,7 @@ a{
 
 li a:hover:not(.active){
     background-color: #B32727;
-    color: #FFFFFF;
+    
 
 }
 li img{
