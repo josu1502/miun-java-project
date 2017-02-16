@@ -6,6 +6,7 @@ body {
     font-family: "Average", sans-serif;
     color: #000000;
     background: url("../images/background_antons.jpg");
+   
 }
 
 h1 {
@@ -13,11 +14,23 @@ h1 {
     border-bottom: 1px solid #AFAFAF; 
     font-size:  24px;
     font-weight: bold;
-    margin: 0px;
+    margin: 0 0 5px 0;
     padding: 0px;
-    color: #D2000;
+    
+    
 }
 
+h2 {
+    margin: 0 0 5px 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
 a:link, a:visited {
   color: #045491;
   font-weight : bold;

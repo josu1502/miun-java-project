@@ -49,8 +49,11 @@ public class DisplayLunch implements Serializable {
             sb.append(nameAndMessage.getPrice());
             sb.append(":-");
             sb.append("</h3>");
+            sb.append("<p>");
             sb.append(nameAndMessage.getDescription());
+            sb.append("</p>");
         }
+        sb.append("<br/>");
         return sb.toString();
     }
     
@@ -84,6 +87,9 @@ public class DisplayLunch implements Serializable {
         TypedQuery<LunchEntity> tq = em.createNamedQuery("getDay", LunchEntity.class).setParameter("weekday", currentDay);
         List<LunchEntity> resultlist = tq.getResultList();
         StringBuilder sb = new StringBuilder();
+        sb.append("<h1>");
+        sb.append("Dagens Lunch ("+currentDay+")");
+        sb.append("</h1>");
         for (int i = 0; i < resultlist.size(); i++) {
             LunchEntity nameAndMessage = resultlist.get(i);
 
@@ -93,8 +99,11 @@ public class DisplayLunch implements Serializable {
             sb.append(nameAndMessage.getPrice());
             sb.append(":-");
             sb.append("</h3>");
+            sb.append("<p>");
             sb.append(nameAndMessage.getDescription());
+            sb.append("</p>");
         }
+        sb.append("<br/>");
         return sb.toString();
 
     }
