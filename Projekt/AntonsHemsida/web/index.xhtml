@@ -7,10 +7,10 @@
         <ui:composition template="./WEB-INF/mainTemplate.xhtml">
             <ui:define name="content">
                 <h1>Hej och Välkommen till Antons Skafferi</h1>
+                <h1>Dagens Lunch</h1>
+                <h:outputText value="#{displayLunch.displayLunchToday()}" escape ="false" />
             </ui:define>
-        </ui:composition>
-        
-        
+        </ui:composition>        
     </body>
 
 </html>
