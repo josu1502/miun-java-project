@@ -42,11 +42,11 @@ public class MessageBuilder {
 
     public Message getMessage() {
         Message message = new Message("", "");
-        NodeList messages = doc.getElementsByTagName("message");
+        NodeList messages = doc.getElementsByTagName("name");
         Node item = messages.item(0);
         message.setMessage(item.getTextContent());
 
-        messages = doc.getElementsByTagName("name");
+        messages = doc.getElementsByTagName("price");
         item = messages.item(0);
         message.setName(item.getTextContent());
 
@@ -55,8 +55,10 @@ public class MessageBuilder {
 
     public List<Message> getMessages() {
         List<Message> messageList = new ArrayList<>();
-        NodeList messages = doc.getElementsByTagName("message");
-        NodeList names = doc.getElementsByTagName("name");
+        NodeList day = doc.getElementsByTagName("lunchday");
+        NodeList messages = doc.getElementsByTagName("name");
+        NodeList desc = doc.getElementsByTagName("description");
+        NodeList names = doc.getElementsByTagName("price");
 
         for (int i = 0; i < messages.getLength(); i++) {
             Node messageItem = messages.item(i);
