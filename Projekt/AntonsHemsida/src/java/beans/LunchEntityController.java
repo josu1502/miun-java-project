@@ -55,6 +55,22 @@ public class LunchEntityController implements Serializable {
     }
 
     public void create() {
+        String currDay = selected.getLunchday();
+        if (currDay.equals("Måndag")) {
+            selected.setDayNo(0);
+        } else if (currDay.equals("Tisdag")) {
+            selected.setDayNo(1);
+        } else if (currDay.equals("Onsdag")) {
+            selected.setDayNo(2);
+        } else if (currDay.equals("Torsdag")) {
+            selected.setDayNo(3);
+        } else if (currDay.equals("Fredag")){
+            selected.setDayNo(4);
+        } else if (currDay.equals("Lördag")) {
+            selected.setDayNo(5);
+        } else {
+            selected.setDayNo(6);
+        }
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("LunchEntityCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -75,8 +91,9 @@ public class LunchEntityController implements Serializable {
 
     public List<LunchEntity> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = getFacade().findAllbyDay();
         }
+        
         return items;
     }
 
