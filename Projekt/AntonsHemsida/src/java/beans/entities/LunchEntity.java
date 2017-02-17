@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -17,7 +18,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Joakim
  */
-@NamedQuery(name = "getAll", query = "SELECT Object(o) FROM LunchEntity o")
+@NamedQueries ({
+    @NamedQuery(name = "getAll", query = "SELECT Object(o) FROM LunchEntity o"),
+    @NamedQuery(name = "getDay", query = "SELECT e FROM LunchEntity e WHERE e.lunchday = :weekday")
+ })
 @Entity
 @XmlRootElement
 public class LunchEntity implements Serializable {
@@ -30,6 +34,7 @@ public class LunchEntity implements Serializable {
     private String name;
     private String description;
     private Integer price;
+    private Integer dayNo;
 
     public Long getId() {
         return id;
@@ -70,6 +75,17 @@ public class LunchEntity implements Serializable {
     public void setPrice(Integer price) {
         this.price = price;
     }
+    public Integer getDayNo() {
+        return dayNo;
+    }
+
+    public void setDayNo(Integer dayNo) {
+        
+            this.dayNo = dayNo;
+        
+    }
+    
+    
 
     @Override
     public int hashCode() {

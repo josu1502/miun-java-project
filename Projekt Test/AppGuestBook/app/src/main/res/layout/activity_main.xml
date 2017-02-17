@@ -18,30 +18,11 @@
         android:id="@+id/textViewer" />
 
     <Button
-        android:text="Submit"
+        android:text="Add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/buttonSend" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Message"
-        android:ems="10"
-        android:layout_above="@+id/buttonSend"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editText" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:layout_above="@+id/editText"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editText2" />
 </RelativeLayout>

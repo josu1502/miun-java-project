@@ -3,20 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-
     <body>
-
         <ui:composition template="./WEB-INF/mainTemplate.xhtml">
-
             <ui:define name="content">
-                <h2>Veckans lunch</h2>
-                <img id="maträtt1" src="../images/mat1.png" alt="logo is missing"></img>
-                <img id="maträtt2" src="../images/mat2.png" alt="logo is missing"></img>
-                <img id="maträtt3" src="../images/mat3.png" alt="logo is missing"></img>
-                <h:outputText value="#{lunchSessionBean.displayLunchMenu()}" escape ="false" />
+                <h1>Veckans lunch</h1>
+                
+                <img id="maträtt1" src="./resources/images/mat1.png" alt="logo is missing"></img>
+                <img id="maträtt2" src="./resources/images/mat2.png" alt="logo is missing"></img>
+                <img id="maträtt3" src="./resources/images/mat3.png" alt="logo is missing"></img>
+                
+                <h2>Måndag</h2>
+                <h:outputText value="#{displayLunch.displayLunchByDay('Måndag')}" escape ="false" />
+                
+                <h2>Tisdag</h2>
+                <h:outputText value="#{displayLunch.displayLunchByDay('Tisdag')}" escape ="false" />
+                
+                <h2>Onsdag</h2>
+                <h:outputText value="#{displayLunch.displayLunchByDay('Onsdag')}" escape ="false" />
+                
+                <h2>Torsdag</h2>
+                <h:outputText value="#{displayLunch.displayLunchByDay('Torsdag')}" escape ="false" />
+                
+                <h2>Fredag</h2>
+                <h:outputText value="#{displayLunch.displayLunchByDay('Fredag')}" escape ="false" />
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>
