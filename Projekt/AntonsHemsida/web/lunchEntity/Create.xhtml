@@ -12,8 +12,6 @@
             <h:form id="LunchEntityCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{lunchEntityController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateLunchEntityLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{lunchEntityController.selected.id}" title="#{bundle.CreateLunchEntityTitle_id}" />
                         <p:outputLabel value="#{bundle.CreateLunchEntityLabel_lunchday}" for="lunchday" />
                         <p:inputText id="lunchday" value="#{lunchEntityController.selected.lunchday}" title="#{bundle.CreateLunchEntityTitle_lunchday}" />
                         <p:outputLabel value="#{bundle.CreateLunchEntityLabel_name}" for="name" />
