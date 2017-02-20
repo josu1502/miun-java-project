@@ -39,12 +39,14 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<T> findAll() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        /*javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        return getEntityManager().createQuery(cq).getResultList();
+        return getEntityManager().createQuery(cq).getResultList();*/
+        
+        return getEntityManager().createQuery("SELECT Object(o) FROM LunchEntity o ORDER BY o.dayNo").getResultList();
     }
+    
     public List<T> findAllbyDay() {
-       
         return getEntityManager().createQuery("SELECT Object(o) FROM LunchEntity o ORDER BY o.dayNo").getResultList();
     }
 
