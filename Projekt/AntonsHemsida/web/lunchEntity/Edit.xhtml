@@ -12,8 +12,15 @@
             <h:form id="LunchEntityEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{lunchEntityController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditLunchEntityLabel_lunchday}" for="lunchday" />
-                        <p:inputText id="lunchday" value="#{lunchEntityController.selected.lunchday}" title="#{bundle.EditLunchEntityTitle_lunchday}" />
+                        <h:selectOneMenu id="lunchday" value="#{lunchEntityController.selected.lunchday}">
+                            <f:selectItem itemValue="Måndag" itemLabel="Måndag" />
+                            <f:selectItem itemValue="Tisdag" itemLabel="Tisdag" />
+                            <f:selectItem itemValue="Onsdag" itemLabel="Onsdag" />
+                            <f:selectItem itemValue="Torsdag" itemLabel="Torsdag" />
+                            <f:selectItem itemValue="Fredag" itemLabel="Fredag" />
+                            <f:selectItem itemValue="Lördag" itemLabel="Lördag" />
+                            <f:selectItem itemValue="Söndag" itemLabel="Söndag" />
+                        </h:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditLunchEntityLabel_name}" for="name" />
                         <p:inputText id="name" value="#{lunchEntityController.selected.name}" title="#{bundle.EditLunchEntityTitle_name}" />
                         <p:outputLabel value="#{bundle.EditLunchEntityLabel_description}" for="description" />
