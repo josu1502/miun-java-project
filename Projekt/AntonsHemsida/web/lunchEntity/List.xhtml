@@ -6,7 +6,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="../WEB-INF/adminTemplate.xhtml">
+    <ui:composition template="/template.xhtml">
+
+
         <ui:define name="title">
             <h:outputText value="#{bundle.ListLunchEntityTitle}"></h:outputText>
         </ui:define>
@@ -25,6 +27,12 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLunchEntityTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListLunchEntityTitle_lunchday}"/>
@@ -48,6 +56,12 @@
                                 <h:outputText value="#{bundle.ListLunchEntityTitle_price}"/>
                             </f:facet>
                             <h:outputText value="#{item.price}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLunchEntityTitle_dayNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dayNo}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{lunchEntityController.prepareCreate}" update=":LunchEntityCreateForm" oncomplete="PF('LunchEntityCreateDialog').show()"/>

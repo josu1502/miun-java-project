@@ -12,21 +12,18 @@
             <h:form id="LunchEntityEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{lunchEntityController.selected != null}">
-                        <h:selectOneMenu id="lunchday" value="#{lunchEntityController.selected.lunchday}">
-                            <f:selectItem itemValue="Måndag" itemLabel="Måndag" />
-                            <f:selectItem itemValue="Tisdag" itemLabel="Tisdag" />
-                            <f:selectItem itemValue="Onsdag" itemLabel="Onsdag" />
-                            <f:selectItem itemValue="Torsdag" itemLabel="Torsdag" />
-                            <f:selectItem itemValue="Fredag" itemLabel="Fredag" />
-                            <f:selectItem itemValue="Lördag" itemLabel="Lördag" />
-                            <f:selectItem itemValue="Söndag" itemLabel="Söndag" />
-                        </h:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLunchEntityLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{lunchEntityController.selected.id}" title="#{bundle.EditLunchEntityTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditLunchEntityLabel_lunchday}" for="lunchday" />
+                        <p:inputText id="lunchday" value="#{lunchEntityController.selected.lunchday}" title="#{bundle.EditLunchEntityTitle_lunchday}" />
                         <p:outputLabel value="#{bundle.EditLunchEntityLabel_name}" for="name" />
                         <p:inputText id="name" value="#{lunchEntityController.selected.name}" title="#{bundle.EditLunchEntityTitle_name}" />
                         <p:outputLabel value="#{bundle.EditLunchEntityLabel_description}" for="description" />
                         <p:inputText id="description" value="#{lunchEntityController.selected.description}" title="#{bundle.EditLunchEntityTitle_description}" />
                         <p:outputLabel value="#{bundle.EditLunchEntityLabel_price}" for="price" />
                         <p:inputText id="price" value="#{lunchEntityController.selected.price}" title="#{bundle.EditLunchEntityTitle_price}" />
+                        <p:outputLabel value="#{bundle.EditLunchEntityLabel_dayNo}" for="dayNo" />
+                        <p:inputText id="dayNo" value="#{lunchEntityController.selected.dayNo}" title="#{bundle.EditLunchEntityTitle_dayNo}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{lunchEntityController.update}" value="#{bundle.Save}" update="display,:LunchEntityListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LunchEntityEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="LunchEntityEditDialog.hide()"/>

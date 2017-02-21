@@ -1,6 +1,6 @@
 package beans;
 
-import beans.entities.LunchEntity;
+import beans.entities.EntertainmentEntity;
 import beans.util.JsfUtil;
 import beans.util.JsfUtil.PersistAction;
 
@@ -18,23 +18,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("lunchEntityController")
+@Named("entertainmentEntityController")
 @SessionScoped
-public class LunchEntityController implements Serializable {
+public class EntertainmentEntityController implements Serializable {
 
     @EJB
-    private beans.LunchEntityFacade ejbFacade;
-    private List<LunchEntity> items = null;
-    private LunchEntity selected;
+    private beans.EntertainmentEntityFacade ejbFacade;
+    private List<EntertainmentEntity> items = null;
+    private EntertainmentEntity selected;
 
-    public LunchEntityController() {
+    public EntertainmentEntityController() {
     }
 
-    public LunchEntity getSelected() {
+    public EntertainmentEntity getSelected() {
         return selected;
     }
 
-    public void setSelected(LunchEntity selected) {
+    public void setSelected(EntertainmentEntity selected) {
         this.selected = selected;
     }
 
@@ -44,36 +44,36 @@ public class LunchEntityController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private LunchEntityFacade getFacade() {
+    private EntertainmentEntityFacade getFacade() {
         return ejbFacade;
     }
 
-    public LunchEntity prepareCreate() {
-        selected = new LunchEntity();
+    public EntertainmentEntity prepareCreate() {
+        selected = new EntertainmentEntity();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("LunchEntityCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("EntertainmentEntityCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("LunchEntityUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("EntertainmentEntityUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("LunchEntityDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("EntertainmentEntityDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<LunchEntity> getItems() {
+    public List<EntertainmentEntity> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -108,29 +108,29 @@ public class LunchEntityController implements Serializable {
         }
     }
 
-    public LunchEntity getLunchEntity(java.lang.Long id) {
+    public EntertainmentEntity getEntertainmentEntity(java.lang.Long id) {
         return getFacade().find(id);
     }
 
-    public List<LunchEntity> getItemsAvailableSelectMany() {
+    public List<EntertainmentEntity> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<LunchEntity> getItemsAvailableSelectOne() {
+    public List<EntertainmentEntity> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = LunchEntity.class)
-    public static class LunchEntityControllerConverter implements Converter {
+    @FacesConverter(forClass = EntertainmentEntity.class)
+    public static class EntertainmentEntityControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            LunchEntityController controller = (LunchEntityController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "lunchEntityController");
-            return controller.getLunchEntity(getKey(value));
+            EntertainmentEntityController controller = (EntertainmentEntityController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "entertainmentEntityController");
+            return controller.getEntertainmentEntity(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -150,11 +150,11 @@ public class LunchEntityController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof LunchEntity) {
-                LunchEntity o = (LunchEntity) object;
+            if (object instanceof EntertainmentEntity) {
+                EntertainmentEntity o = (EntertainmentEntity) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), LunchEntity.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), EntertainmentEntity.class.getName()});
                 return null;
             }
         }

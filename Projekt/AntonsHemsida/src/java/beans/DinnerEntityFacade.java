@@ -5,7 +5,7 @@
  */
 package beans;
 
-import beans.entities.LunchEntity;
+import beans.entities.DinnerEntity;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Joakim
  */
 @Stateless
-public class LunchEntityFacade extends AbstractFacade<LunchEntity> {
+public class DinnerEntityFacade extends AbstractFacade<DinnerEntity> {
 
     @PersistenceContext(unitName = "AntonsHemsidaPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class LunchEntityFacade extends AbstractFacade<LunchEntity> {
         return em;
     }
 
-    public LunchEntityFacade() {
-        super(LunchEntity.class);
+    public DinnerEntityFacade() {
+        super(DinnerEntity.class);
     }
     
 }
