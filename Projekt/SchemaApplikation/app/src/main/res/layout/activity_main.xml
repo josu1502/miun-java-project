@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -21,43 +22,51 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="56dp">
 
-                <Button
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/weekMinus"
                     android:layout_weight="1"
-                    android:width="64px"
-                    android:layout_width="wrap_content"
-                    android:text="" />
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    app:srcCompat="@mipmap/aslarrow" />
 
                 <TextView
-                    android:text="Vecka5"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:text="Vecka 5, 2017"
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
                     android:id="@+id/weekText"
                     android:layout_weight="1"
-                    tools:text="Vecka 5"
-                    android:textAlignment="center" />
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp"
+                    android:gravity="center" />
 
-                <Button
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@mipmap/asrarrow"
                     android:id="@+id/weekPlus"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content" />
+                    android:background="@android:color/transparent"
+                    android:gravity="center"/>
+
             </LinearLayout>
 
             <TextView
-                android:text="LUNCH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/textView14"
                 android:background="@color/colorPrimary"
                 android:textColor="@android:color/background_light"
-                android:fontFamily="casual"
-                android:paddingTop="3dp"
-                android:paddingBottom="2dp" />
+                android:fontFamily="sans-serif"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:text="Lunch" />
 
             <RelativeLayout
                 android:id="@+id/relativeLayout1"
@@ -89,8 +98,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="1"
-                            android:layout_height="190dp"
-                            android:id="@+id/monLView"/>
+                            android:id="@+id/monLView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -113,8 +122,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp"
-                            android:id="@+id/tuesLView" />
+                            android:id="@+id/tuesLView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -135,8 +144,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp"
-                            android:id="@+id/wedsLView" />
+                            android:id="@+id/wedsLView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -159,8 +168,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp"
-                            android:id="@+id/thursLView" />
+                            android:id="@+id/thursLView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -181,8 +190,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp"
-                            android:id="@+id/friLView" />
+                            android:id="@+id/friLView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -205,8 +214,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp"
-                            android:id="@+id/satLView" />
+                            android:id="@+id/satLView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -227,8 +236,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp"
-                            android:id="@+id/sunLView" />
+                            android:id="@+id/sunLView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -236,16 +245,18 @@
             </RelativeLayout>
 
             <TextView
-                android:text="MIDDAG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView16"
                 android:gravity="center"
                 android:background="@color/colorPrimary"
                 android:textColor="@android:color/background_light"
-                android:fontFamily="casual"
-                android:paddingBottom="2dp"
-                android:paddingTop="3dp" />
+                android:fontFamily="sans-serif"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:text="Middag" />
 
             <RelativeLayout
                 android:id="@+id/relativeLayout18"
@@ -277,8 +288,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp"
-                            android:id="@+id/monMView" />
+                            android:id="@+id/monMView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -301,8 +312,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp"
-                            android:id="@+id/tuesMView" />
+                            android:id="@+id/tuesMView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -323,8 +334,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp"
-                            android:id="@+id/wedsMView" />
+                            android:id="@+id/wedsMView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -347,8 +358,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp"
-                            android:id="@+id/thursMView" />
+                            android:id="@+id/thursMView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -369,8 +380,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp"
-                            android:id="@+id/friMView" />
+                            android:id="@+id/friMView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -393,8 +404,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp"
-                            android:id="@+id/satMView" />
+                            android:id="@+id/satMView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 
@@ -415,8 +426,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp"
-                            android:id="@+id/sunMView" />
+                            android:id="@+id/sunMView"
+                            android:layout_height="165dp" />
 
                     </LinearLayout>
 

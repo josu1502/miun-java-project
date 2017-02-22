@@ -1,11 +1,13 @@
 package com.example.matti.schemaapplikation;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -13,15 +15,19 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String day, pass;
     public static Integer weekNumber, yearNumber;
     public static Calendar cal;
-    public static TextView weekText, monL, monM, tueL, tueM, wedL, wedM, thuL, thuM, friL, friM, satL, satM, sunL, sunM;
+    public static TextView weekText, monL, monM, tueL, tueM, wedL, wedM, thuL, thuM, friL, friM,
+            satL, satM, sunL, sunM;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         /*Import textview to display current week*/
         weekText = (TextView)findViewById(R.id.weekText);
@@ -69,28 +75,137 @@ public class MainActivity extends AppCompatActivity {
         ud.run();
 
         /*Buttons to change week*/
-        Button weekMinus = (Button) findViewById(R.id.weekMinus);
-        Button weekPlus = (Button) findViewById(R.id.weekPlus);
+        ImageButton weekMinus = (ImageButton) findViewById(R.id.weekMinus);
+        ImageButton weekPlus = (ImageButton) findViewById(R.id.weekPlus);
         weekMinus.setOnClickListener(new DecreaseWeek());
         weekPlus.setOnClickListener(new IncreaseWeek());
 
         /*Set on click listeners for views*/
-        monLView.setOnClickListener(new AddWork("monday", "lunch"));
-        monMView.setOnClickListener(new AddWork("monday", "middag"));
-        tueLView.setOnClickListener(new AddWork("thuesday", "lunch"));
-        tueMView.setOnClickListener(new AddWork("thuesday", "middag"));
-        wedLView.setOnClickListener(new AddWork("wednesday", "lunch"));
-        wedMView.setOnClickListener(new AddWork("wednesday", "middag"));
-        thuLView.setOnClickListener(new AddWork("thursday", "lunch"));
-        thuMView.setOnClickListener(new AddWork("thursday", "middag"));
-        friLView.setOnClickListener(new AddWork("friday", "lunch"));
-        friMView.setOnClickListener(new AddWork("friday", "middag"));
-        satLView.setOnClickListener(new AddWork("saturday", "lunch"));
-        satMView.setOnClickListener(new AddWork("saturday", "middag"));
-        sunLView.setOnClickListener(new AddWork("sunday", "lunch"));
-        sunMView.setOnClickListener(new AddWork("sunday", "middag"));
-
-
+        monLView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Måndag";
+                pass = "Lunch";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        monMView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Måndag";
+                pass = "Middag";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        tueLView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Tisdag";
+                pass = "Lunch";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        tueMView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Tisdag";
+                pass = "Middag";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        wedLView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Onsdag";
+                pass = "Lunch";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        wedMView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Onsdag";
+                pass = "Middag";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        thuLView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Torsdag";
+                pass = "Lunch";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        thuMView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Torsdag";
+                pass = "Middag";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        friLView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Fredag";
+                pass = "Lunch";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        friMView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Fredag";
+                pass = "Middag";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        satLView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Lördag";
+                pass = "Lunch";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        satMView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Lördag";
+                pass = "Middag";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        sunLView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Söndag";
+                pass = "Lunch";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
+        sunMView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                day = "Söndag";
+                pass = "Middag";
+                System.out.println("Dag: " + day + " Pass: " + pass + " Vecka: " + weekNumber + " År: " + yearNumber);
+                startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
+            }
+        });
     }
-
 }

@@ -16,14 +16,12 @@ public class DecreaseWeek implements View.OnClickListener {
         if (weekNumber <= 1) {
             yearNumber--;
             cal.set(Calendar.YEAR, yearNumber);
-            Calendar lastWeek = Calendar.getInstance(Locale.GERMAN);
-            lastWeek.set(yearNumber, Calendar.DECEMBER, 31);
 
-            weekNumber=lastWeek.get(Calendar.WEEK_OF_YEAR);
+            weekNumber=cal.getActualMaximum(Calendar.WEEK_OF_YEAR);
         } else {
             weekNumber--;
         }
-        final UpdateDateByWeek ud = new UpdateDateByWeek();
+        UpdateDateByWeek ud = new UpdateDateByWeek();
         ud.run();
     }
 }
