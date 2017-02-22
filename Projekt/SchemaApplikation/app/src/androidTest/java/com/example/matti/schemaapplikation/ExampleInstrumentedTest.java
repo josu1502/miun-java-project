@@ -1,4 +1,4 @@
-package com.miun.schemaapplikation.josu1502.schemaapplikation;
+package com.example.matti.schemaapplikation;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.miun.schemaapplikation.josu1502.schemaapplikation", appContext.getPackageName());
+        assertEquals("com.example.matti.schemaapplikation", appContext.getPackageName());
     }
 }

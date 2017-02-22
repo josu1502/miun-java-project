@@ -1,4 +1,4 @@
-package com.miun.schemaapplikation.josu1502.schemaapplikation;
+package com.example.matti.schemaapplikation;
 
 import org.junit.Test;
 
