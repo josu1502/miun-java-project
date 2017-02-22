@@ -25,7 +25,7 @@
 
                 <Button
                     android:layout_height="wrap_content"
-                    android:id="@+id/button3"
+                    android:id="@+id/weekMinus"
                     android:layout_weight="1"
                     android:width="64px"
                     android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
 
                 <Button
                     android:layout_height="wrap_content"
-                    android:id="@+id/button4"
+                    android:id="@+id/weekPlus"
                     android:layout_weight="1"
                     android:layout_width="wrap_content" />
             </LinearLayout>
@@ -79,7 +79,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/lunchMon"
+                            android:id="@+id/monL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -90,7 +90,7 @@
                             android:layout_width="match_parent"
                             android:layout_weight="1"
                             android:layout_height="190dp"
-                            android:id="@+id/monday"/>
+                            android:id="@+id/monLView"/>
 
                     </LinearLayout>
 
@@ -101,7 +101,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/tisFm"
+                            android:id="@+id/tuesL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -113,7 +113,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/tuesLView" />
 
                     </LinearLayout>
 
@@ -124,7 +125,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/onsFM"
+                            android:id="@+id/wedsL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -134,7 +135,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/wedsLView" />
 
                     </LinearLayout>
 
@@ -145,7 +147,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/torsFM"
+                            android:id="@+id/thursL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -157,7 +159,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/thursLView" />
 
                     </LinearLayout>
 
@@ -168,7 +171,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/freFM"
+                            android:id="@+id/friL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -178,7 +181,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/friLView" />
 
                     </LinearLayout>
 
@@ -189,7 +193,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/lörFM"
+                            android:id="@+id/satL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -201,7 +205,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/satLView" />
 
                     </LinearLayout>
 
@@ -212,7 +217,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/sönFM"
+                            android:id="@+id/sunL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -222,7 +227,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/sunLView" />
 
                     </LinearLayout>
 
@@ -261,7 +267,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/middagMon"
+                            android:id="@+id/monM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -271,7 +277,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/monMView" />
 
                     </LinearLayout>
 
@@ -282,7 +289,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/tisEM"
+                            android:id="@+id/tuesM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -294,7 +301,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/tuesMView" />
 
                     </LinearLayout>
 
@@ -305,7 +313,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/onsEM"
+                            android:id="@+id/wedsM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -315,7 +323,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/wedsMView" />
 
                     </LinearLayout>
 
@@ -326,7 +335,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/torsEM"
+                            android:id="@+id/thursM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -338,7 +347,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/thursMView" />
 
                     </LinearLayout>
 
@@ -349,7 +359,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/freEM"
+                            android:id="@+id/friM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -359,7 +369,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/friMView" />
 
                     </LinearLayout>
 
@@ -370,7 +381,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/lörEM"
+                            android:id="@+id/satM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -382,7 +393,8 @@
                             android:layout_width="match_parent"
                             android:layout_weight="2"
                             android:background="#efefef"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/satMView" />
 
                     </LinearLayout>
 
@@ -393,7 +405,7 @@
                         android:layout_weight="2">
 
                         <TextView
-                            android:id="@+id/sönEM"
+                            android:id="@+id/sunM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -403,7 +415,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_weight="2"
-                            android:layout_height="190dp" />
+                            android:layout_height="190dp"
+                            android:id="@+id/sunMView" />
 
                     </LinearLayout>
 

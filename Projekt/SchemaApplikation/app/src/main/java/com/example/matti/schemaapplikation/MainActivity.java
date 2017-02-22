@@ -1,9 +1,7 @@
 package com.example.matti.schemaapplikation;
 
-import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,126 +9,87 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button3;
-    Button button4;
-    Integer weekNumber;
-    TextView weekText;
-    View mondayview;
+    public static Integer weekNumber, yearNumber;
+    public static Calendar cal;
+    public static TextView weekText, monL, monM, tueL, tueM, wedL, wedM, thuL, thuM, friL, friM, satL, satM, sunL, sunM;
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*Import textview to display current week*/
+        weekText = (TextView)findViewById(R.id.weekText);
 
-            /*Sätter in nuvarande vecka*/
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
+        /*Import textviews to add dates to*/
+        monL = (TextView) findViewById(R.id.monL);
+        monM = (TextView) findViewById(R.id.monM);
+        tueL = (TextView) findViewById(R.id.tuesL);
+        tueM = (TextView) findViewById(R.id.tuesM);
+        wedL = (TextView) findViewById(R.id.wedsL);
+        wedM = (TextView) findViewById(R.id.wedsM);
+        thuL = (TextView) findViewById(R.id.thursL);
+        thuM = (TextView) findViewById(R.id.thursM);
+        friL = (TextView) findViewById(R.id.friL);
+        friM = (TextView) findViewById(R.id.friM);
+        satL = (TextView) findViewById(R.id.satL);
+        satM = (TextView) findViewById(R.id.satM);
+        sunL = (TextView) findViewById(R.id.sunL);
+        sunM = (TextView) findViewById(R.id.sunM);
+
+        /*Import views to add onclick listeners to*/
+        View monLView = (View) findViewById(R.id.monLView);
+        View monMView = (View) findViewById(R.id.monMView);
+        View tueLView = (View) findViewById(R.id.tuesLView);
+        View tueMView = (View) findViewById(R.id.tuesMView);
+        View wedLView = (View) findViewById(R.id.wedsLView);
+        View wedMView = (View) findViewById(R.id.wedsMView);
+        View thuLView = (View) findViewById(R.id.thursLView);
+        View thuMView = (View) findViewById(R.id.thursMView);
+        View friLView = (View) findViewById(R.id.friLView);
+        View friMView = (View) findViewById(R.id.friMView);
+        View satLView = (View) findViewById(R.id.satLView);
+        View satMView = (View) findViewById(R.id.satMView);
+        View sunLView = (View) findViewById(R.id.sunLView);
+        View sunMView = (View) findViewById(R.id.sunMView);
+
+        /*Set current week and year*/
         weekText = (TextView) findViewById(R.id.weekText);
-        Calendar cal = Calendar.getInstance();
+        cal = Calendar.getInstance(Locale.GERMAN);
         weekNumber = cal.get(Calendar.WEEK_OF_YEAR);
-        String week = "Vecka " + weekNumber.toString();
-        weekText.setText(week);
+        yearNumber = cal.get(Calendar.YEAR);
 
+        /*Update view dates first time*/
+        final UpdateDateByWeek ud = new UpdateDateByWeek();
+        ud.run();
 
-        button3 = (Button) findViewById(R.id.button3);
-        button3.setText("<");
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(weekNumber != 1) {
-                    weekNumber = weekNumber - 1;
-                    weekText.setText("Vecka " + weekNumber);
-                }
-                else {
-                    weekNumber = 52;
-                    weekText.setText("Vecka " + weekNumber);
-                }
-            }
-        });
+        /*Buttons to change week*/
+        Button weekMinus = (Button) findViewById(R.id.weekMinus);
+        Button weekPlus = (Button) findViewById(R.id.weekPlus);
+        weekMinus.setOnClickListener(new DecreaseWeek());
+        weekPlus.setOnClickListener(new IncreaseWeek());
 
-        button4 = (Button) findViewById(R.id.button4);
-        button4.setText(">");
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(weekNumber != 52) {
-                    weekNumber = weekNumber + 1;
-                    weekText.setText("Vecka " + weekNumber);
-                }
-                else {
-                    weekNumber = 1;
-                    weekText.setText("Vecka " + weekNumber);
-                }
-            }
-        });
+        /*Set on click listeners for views*/
+        monLView.setOnClickListener(new AddWork("monday", "lunch"));
+        monMView.setOnClickListener(new AddWork("monday", "middag"));
+        tueLView.setOnClickListener(new AddWork("thuesday", "lunch"));
+        tueMView.setOnClickListener(new AddWork("thuesday", "middag"));
+        wedLView.setOnClickListener(new AddWork("wednesday", "lunch"));
+        wedMView.setOnClickListener(new AddWork("wednesday", "middag"));
+        thuLView.setOnClickListener(new AddWork("thursday", "lunch"));
+        thuMView.setOnClickListener(new AddWork("thursday", "middag"));
+        friLView.setOnClickListener(new AddWork("friday", "lunch"));
+        friMView.setOnClickListener(new AddWork("friday", "middag"));
+        satLView.setOnClickListener(new AddWork("saturday", "lunch"));
+        satMView.setOnClickListener(new AddWork("saturday", "middag"));
+        sunLView.setOnClickListener(new AddWork("sunday", "lunch"));
+        sunMView.setOnClickListener(new AddWork("sunday", "middag"));
 
-        mondayview = (View) findViewById(R.id.monday);
-        mondayview.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });
-
-        /*Bestämma Måndag*/
-        cal.set(Calendar.WEEK_OF_YEAR, weekNumber);
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        String monDate = "Mån\n"+ (sdf.format(cal.getTime()));
-        TextView monLunch = (TextView) findViewById(R.id.lunchMon);
-        TextView monMiddag = (TextView) findViewById(R.id.middagMon);
-        monLunch.setText(monDate);
-        monMiddag.setText(monDate);
-
-        /*Bestämma Tisdag*/
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-        String tueDate = "Tis\n"+ (sdf.format(cal.getTime()));
-        TextView tisLunch = (TextView) findViewById(R.id.tisFm);
-        TextView tisMiddag = (TextView) findViewById(R.id.tisEM);
-        tisLunch.setText(tueDate);
-        tisMiddag.setText(tueDate);
-
-        /*Bestämma onsdag*/
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-        String wedDate = "Ons\n"+ (sdf.format(cal.getTime()));
-        TextView wedLunch = (TextView) findViewById(R.id.onsFM);
-        TextView wedMiddag = (TextView) findViewById(R.id.onsEM);
-        wedLunch.setText(wedDate);
-        wedMiddag.setText(wedDate);
-
-        /*Bestämma Torsdag*/
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
-        String thuDate = "Tor\n"+ (sdf.format(cal.getTime()));
-        TextView thuLunch = (TextView) findViewById(R.id.torsFM);
-        TextView thuMiddag = (TextView) findViewById(R.id.torsEM);
-        thuLunch.setText(thuDate);
-        thuMiddag.setText(thuDate);
-
-        /*Bestämma Fredag*/
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
-        String friDate = "Fre\n"+ (sdf.format(cal.getTime()));
-        TextView friLunch = (TextView) findViewById(R.id.freFM);
-        TextView friMiddag = (TextView) findViewById(R.id.freEM);
-        friLunch.setText(friDate);
-        friMiddag.setText(friDate);
-
-        /*Bestämma Lördag*/
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-        String SatDate = "Lör\n"+ (sdf.format(cal.getTime()));
-        TextView SatLunch = (TextView) findViewById(R.id.lörFM);
-        TextView SatMiddag = (TextView) findViewById(R.id.lörEM);
-        SatLunch.setText(SatDate);
-        SatMiddag.setText(SatDate);
-
-        /*Bestämma Söndag*/
-        cal.set(Calendar.WEEK_OF_YEAR, weekNumber+1);
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-        String SunDate = "Sön\n"+ (sdf.format(cal.getTime()));
-        TextView sunLunch = (TextView) findViewById(R.id.sönFM);
-        TextView sunMiddag = (TextView) findViewById(R.id.sönEM);
-        sunLunch.setText(SunDate);
-        sunMiddag.setText(SunDate);
 
     }
 
