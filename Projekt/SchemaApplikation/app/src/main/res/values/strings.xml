@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">SchemaApplikation</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Schema Antons Skafferi</string>
+    <string name="title_activity_add_work">AddWorkActivity</string>
 </resources>

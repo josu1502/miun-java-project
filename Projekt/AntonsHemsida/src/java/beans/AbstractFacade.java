@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author maski
+ * @author Joakim
  */
 public abstract class AbstractFacade<T> {
 
@@ -42,10 +42,6 @@ public abstract class AbstractFacade<T> {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
-    }
-    public List<T> findAllbyDay() {
-       
-        return getEntityManager().createQuery("SELECT Object(o) FROM LunchEntity o ORDER BY o.dayNo").getResultList();
     }
 
     public List<T> findRange(int[] range) {

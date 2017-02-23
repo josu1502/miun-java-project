@@ -12,6 +12,8 @@
             <h:form id="LunchEntityViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{lunchEntityController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLunchEntityLabel_id}"/>
+                        <h:outputText value="#{lunchEntityController.selected.id}" title="#{bundle.ViewLunchEntityTitle_id}"/>
                         <h:outputText value="#{bundle.ViewLunchEntityLabel_lunchday}"/>
                         <h:outputText value="#{lunchEntityController.selected.lunchday}" title="#{bundle.ViewLunchEntityTitle_lunchday}"/>
                         <h:outputText value="#{bundle.ViewLunchEntityLabel_name}"/>
@@ -20,6 +22,8 @@
                         <h:outputText value="#{lunchEntityController.selected.description}" title="#{bundle.ViewLunchEntityTitle_description}"/>
                         <h:outputText value="#{bundle.ViewLunchEntityLabel_price}"/>
                         <h:outputText value="#{lunchEntityController.selected.price}" title="#{bundle.ViewLunchEntityTitle_price}"/>
+                        <h:outputText value="#{bundle.ViewLunchEntityLabel_dayNo}"/>
+                        <h:outputText value="#{lunchEntityController.selected.dayNo}" title="#{bundle.ViewLunchEntityTitle_dayNo}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="LunchEntityViewDialog.hide()"/>
                 </h:panelGroup>
