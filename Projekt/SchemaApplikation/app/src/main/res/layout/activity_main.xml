@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.matti.schemaapplikation.MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="64dp">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@mipmap/leftarrow"
+                    android:id="@+id/weekMinus"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    android:text="Vecka 8 , 2017"
+                    android:layout_height="match_parent"
+                    android:id="@+id/weekText"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:layout_width="485dp" />
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@mipmap/rightarrow"
+                    android:id="@+id/weekPlus"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Mån"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/monDate"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+                <TextView
+                    android:text="Tis"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tuesDate"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="#efefef"/>
+                <TextView
+                    android:text="Ons"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/wedsDate"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+                <TextView
+                    android:text="Tor"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/thursDate"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="#efefef"/>
+                <TextView
+                    android:text="Fre"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/friDate"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+                <TextView
+                    android:text="Lör"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/satDate"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="#efefef"/>
+                <TextView
+                    android:text="Sön"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/sunDate"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <TextView
+                android:text="Lunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView16"
+                android:gravity="center"
+                android:background="#b53f45"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:padding="2dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/lunchView">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/monLunchView">
+
+                    <TextView
+                        android:text="Joakim Anders Mattias add +"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/monLunchText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/tuesLunchView"
+                    android:background="#efefef">
+
+                    <TextView
+                        android:text="Exempel add +"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/tuesLunchText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/wedsLunchView">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/wedsLunchText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="add +" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/thursLunchView"
+                    android:background="#efefef">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/thursLunchText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="add +" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/friLunchView">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/friLunchText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="add +" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/satLunchView"
+                    android:background="#efefef">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/satLunchText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="Alex Gabriel add +" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/sunLunchView">
+
+                    <TextView
+                        android:text="Stängt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sunLunchText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:text="Middag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView17"
+                android:gravity="center"
+                android:background="#b53f45"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:padding="2dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/dinnerView">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/monDinnerView">
+
+                    <TextView
+                        android:text="Stängt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/monDinnerText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/tuesDinnerView"
+                    android:background="#efefef">
+
+                    <TextView
+                        android:text="Exempel add +"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/tuesDinnerText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/wedsDinnerView">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/wedsDinnerText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="add +" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/thursDinnerView"
+                    android:background="#efefef">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/thursDinnerText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="Thomas Andreas" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/friDinnerView">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/friDinnerText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="add +" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#efefef"
+                    android:id="@+id/satDinnerView">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/satDinnerText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="Alex Gabriel Anders Joakim add +" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/sunDinnerView">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sunDinnerText"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:textSize="12sp"
+                        android:text="Stängt" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
