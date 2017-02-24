@@ -10,13 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.miun.appguestbook.josu1502.appguestbook.MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Not found!"
-        android:layout_above="@+id/editText2"
-        android:id="@+id/textViewer" />
-
     <Button
         android:text="Add"
         android:layout_width="match_parent"
@@ -24,5 +17,13 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/buttonSend" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/buttonSend"
+        android:id="@+id/listView" />
 
 </RelativeLayout>

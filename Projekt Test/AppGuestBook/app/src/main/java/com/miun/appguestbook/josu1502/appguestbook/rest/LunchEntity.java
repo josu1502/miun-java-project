@@ -7,11 +7,12 @@ import org.simpleframework.xml.Root;
  */
 
 public class LunchEntity {
-    Long id;
-    String lunchday;
-    String name;
-    String description;
-    Integer price;
+    private Long id;
+    private String lunchday;
+    private String name;
+    private String description;
+    private Integer price;
+    private Integer dayNo;
 
     public Long getId() {
         return id;
@@ -51,5 +52,13 @@ public class LunchEntity {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Integer getDayNo() {
+        return dayNo;
+    }
+
+    public void setDayNo(Integer dayNo) {
+        this.dayNo = dayNo;
     }
 }
