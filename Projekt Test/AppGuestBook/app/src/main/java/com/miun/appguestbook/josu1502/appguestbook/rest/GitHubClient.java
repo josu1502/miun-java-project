@@ -11,5 +11,5 @@ import retrofit2.http.GET;
 
 public interface GitHubClient {
     @GET("beans.entities.lunchentity")
-    Call<List<LunchEntity>> getLunches();
+    Call<LunchEntities> getLunches();
 }

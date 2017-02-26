@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.miun.appguestbook.josu1502.appguestbook.rest.LunchEntities;
 import com.miun.appguestbook.josu1502.appguestbook.rest.LunchEntity;
 import com.miun.appguestbook.josu1502.appguestbook.rest.GitHubClient;
 
@@ -39,19 +40,19 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = builder.build();
 
         GitHubClient client = retrofit.create(GitHubClient.class);
-        Call<List<LunchEntity>> call = client.getLunches();
+        Call<LunchEntities> call = client.getLunches();
 
-        call.enqueue(new Callback<List<LunchEntity>>() {
+        call.enqueue(new Callback<LunchEntities>() {
             @Override
-            public void onResponse(Call<List<LunchEntity>> call, Response<List<LunchEntity>> response) {
-                //Toast.makeText(MainActivity.this, "Connected to database", Toast.LENGTH_SHORT).show();
-                List<LunchEntity> lunches = response.body();
+            public void onResponse(Call<LunchEntities> call, Response<LunchEntities> response) {
+                Toast.makeText(MainActivity.this, "Connected to database", Toast.LENGTH_SHORT).show();
+                LunchEntities lunches = response.body();
 
 
             }
 
             @Override
-            public void onFailure(Call<List<LunchEntity>> call, Throwable t) {
+            public void onFailure(Call<LunchEntities> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Could not connect to database", Toast.LENGTH_SHORT).show();
             }
         });
