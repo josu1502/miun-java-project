@@ -2,15 +2,13 @@ package com.miun.appguestbook.josu1502.appguestbook;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.miun.appguestbook.josu1502.appguestbook.rest.LunchEntities;
 import com.miun.appguestbook.josu1502.appguestbook.rest.LunchEntity;
-import com.miun.appguestbook.josu1502.appguestbook.rest.GitHubClient;
+import com.miun.appguestbook.josu1502.appguestbook.rest.LunchRest;
 
 import java.util.List;
 
@@ -22,7 +20,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    ListView testList;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         /*Jockes IP-adress: "http://192.168.43.80:8080/AntonsHemsida/webresources/beans.entities.lunchentity"*/
 
-        testList = (ListView) findViewById(R.id.listView);
+        textView = (TextView) findViewById(R.id.textView);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = new Retrofit.Builder()
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         Retrofit retrofit = builder.build();
 
-        GitHubClient client = retrofit.create(GitHubClient.class);
+        LunchRest client = retrofit.create(LunchRest.class);
         Call<LunchEntities> call = client.getLunches();
 
         call.enqueue(new Callback<LunchEntities>() {
@@ -48,7 +46,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Connected to database", Toast.LENGTH_SHORT).show();
                 LunchEntities lunches = response.body();
 
+                String testMsg = "";
 
+                for (int i = 0; i < lunches.lunchEntity.size(); i++) {
+                    testMsg += lunches.lunchEntity.get(i).getName();
+                    testMsg += "\n";
+                    testMsg += lunches.lunchEntity.get(i).getDescription();
+                    testMsg += "\n";
+                    testMsg += "\n";
+                }
+
+                textView.setText(testMsg);
             }
 
             @Override

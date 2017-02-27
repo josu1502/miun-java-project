@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Joakim on 17-02-16.
  */
-@Root
+@Root (name = "lunchEntities")
 public class LunchEntities {
     @ElementList(entry="lunchEntity", inline=true)
     public List<LunchEntity> lunchEntity;

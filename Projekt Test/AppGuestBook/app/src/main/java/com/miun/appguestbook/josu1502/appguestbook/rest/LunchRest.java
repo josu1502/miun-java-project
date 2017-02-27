@@ -9,7 +9,7 @@ import retrofit2.http.GET;
  * Created by Joakim on 17-02-16.
  */
 
-public interface GitHubClient {
+public interface LunchRest {
     @GET("beans.entities.lunchentity")
     Call<LunchEntities> getLunches();
 }
