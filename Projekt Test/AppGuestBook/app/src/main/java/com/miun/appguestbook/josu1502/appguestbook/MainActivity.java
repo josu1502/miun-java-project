@@ -2,13 +2,17 @@ package com.miun.appguestbook.josu1502.appguestbook;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.miun.appguestbook.josu1502.appguestbook.rest.LunchClient;
 import com.miun.appguestbook.josu1502.appguestbook.rest.LunchEntities;
 import com.miun.appguestbook.josu1502.appguestbook.rest.LunchEntity;
 import com.miun.appguestbook.josu1502.appguestbook.rest.LunchRest;
+import com.miun.appguestbook.josu1502.appguestbook.rest.LunchStatusListener;
 
 import java.util.List;
 
@@ -19,8 +23,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LunchStatusListener {
     TextView textView;
+    LunchClient lunchClient;
+    private LunchEntity lunch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,42 +35,44 @@ public class MainActivity extends AppCompatActivity {
         /*Jockes IP-adress: "http://192.168.43.80:8080/AntonsHemsida/webresources/beans.entities.lunchentity"*/
 
         textView = (TextView) findViewById(R.id.textView);
+        lunchClient = new LunchClient("http://192.168.43.80:8080/AntonsHemsida/webresources/");
+        lunchClient.setStatusListener(this);
+        lunchClient.fetchLunchList();
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.80:8080/AntonsHemsida/webresources/")
-                .client(httpClient.build()).addConverterFactory(SimpleXmlConverterFactory.create());
-
-        Retrofit retrofit = builder.build();
-
-        LunchRest client = retrofit.create(LunchRest.class);
-        Call<LunchEntities> call = client.getLunches();
-
-        call.enqueue(new Callback<LunchEntities>() {
+        Button button = (Button) findViewById(R.id.buttonSend);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<LunchEntities> call, Response<LunchEntities> response) {
-                Toast.makeText(MainActivity.this, "Connected to database", Toast.LENGTH_SHORT).show();
-                LunchEntities lunches = response.body();
+            public void onClick(View v) {
 
-                String testMsg = "";
+                /*Create entity example*/
+                /* LunchEntity le = new LunchEntity();
+                le.setDayNo(1);
+                le.setDescription("Big Mac");
+                le.setId(0l);
+                le.setLunchday("Måndag");
+                le.setName("McDonalds");
+                le.setPrice(185);
 
-                for (int i = 0; i < lunches.lunchEntity.size(); i++) {
-                    testMsg += lunches.lunchEntity.get(i).getName();
-                    testMsg += "\n";
-                    testMsg += lunches.lunchEntity.get(i).getDescription();
-                    testMsg += "\n";
-                    testMsg += "\n";
-                }
+                lunchClient.postLunch(le);
+                */
 
-                textView.setText(testMsg);
-            }
+                /*Tar bort angiven lunch från listan*/
+                lunchClient.deleteLunch(lunch);
 
-            @Override
-            public void onFailure(Call<LunchEntities> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Could not connect to database", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void lunchListRecived(LunchEntities le) {
+        textView.setText("Lyckat! " + le.lunchEntity.size());
+        lunch = le.lunchEntity.get(0);
+        lunch.setName("Körv me mos");
 
     }
 
+    @Override
+    public void lunchUpdated() {
+
+    }
 }
