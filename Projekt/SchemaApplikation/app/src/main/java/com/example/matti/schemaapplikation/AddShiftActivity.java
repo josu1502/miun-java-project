@@ -33,18 +33,22 @@ public class AddShiftActivity extends AppCompatActivity implements SchemaStatusL
         schemaClient.setStatusListener(this);
         schemaClient.fetchSchemaList();
 
+        /*Textfältet där vi hämtar namnet ifrån*/
+        final TextView nameTextView = (TextView) findViewById(R.id.editText);
+
+        /*En knapp som använder retrofit för att lägga till i databasen*/
         Button button = (Button) findViewById(R.id.postButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String employee = nameTextView.getText().toString();
 
                 /*Create entity example*/
                 SchemaEntity se = new SchemaEntity();
-                se.setId(1l);
                 se.setWeekDay(day);
                 se.setWeekNumber(weekNumber);
                 se.setYearNumber(yearNumber);
-                se.setEmployee("Andreas");
+                se.setEmployee(employee);
                 se.setPass(pass);
                 se.setBooked(true);
 
