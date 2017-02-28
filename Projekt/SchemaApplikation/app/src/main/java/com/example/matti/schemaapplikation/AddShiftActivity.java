@@ -12,12 +12,11 @@ import com.example.matti.schemaapplikation.rest.SchemaEntities;
 import com.example.matti.schemaapplikation.rest.SchemaEntity;
 import com.example.matti.schemaapplikation.rest.SchemaStatusListener;
 
-import java.sql.SQLOutput;
-
 import static com.example.matti.schemaapplikation.MainActivity.*;
 
 public class AddShiftActivity extends AppCompatActivity implements SchemaStatusListener {
     SchemaClient schemaClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,26 +27,30 @@ public class AddShiftActivity extends AppCompatActivity implements SchemaStatusL
         SimpleDateFormat sdf = new SimpleDateFormat("d MMM");
         String date = day + ", " + sdf.format(cal.getTime()) + "\n" + pass;
         dateTextView.setText(date);
-        schemaClient = new SchemaClient("http://10.250.119.143:8080/AntonsHemsida/webresources/"); /* Andreas IP: */
-        // schemaClient = new LunchClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jockes IP: */
+
+        //schemaClient = new SchemaClient("http://10.250.119.143:8080/AntonsHemsida/webresources/"); /* Andreas IP: */
+        schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jockes IP: */
         schemaClient.setStatusListener(this);
         schemaClient.fetchSchemaList();
 
-        Button button = (Button) findViewById(R.id.button);
+        Button button = (Button) findViewById(R.id.postButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 /*Create entity example*/
-                 SchemaEntity se = new SchemaEntity();
-                se.setWeek_day(day);
-                se.setWeek_number(weekNumber);
-                se.setYear_number(yearNumber);
-                se.setEmployee_name("Andreas");
+                SchemaEntity se = new SchemaEntity();
+                se.setId(1l);
+                se.setWeekDay(day);
+                se.setWeekNumber(weekNumber);
+                se.setYearNumber(yearNumber);
+                se.setEmployee("Andreas");
                 se.setPass(pass);
                 se.setBooked(true);
 
                 schemaClient.postSchema(se);
+
+                System.out.println("Försöker skicka");
 
 
                 /*Tar bort angiven lunch från listan*/

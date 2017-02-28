@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/button" />
+        android:id="@+id/postButton" />
 
     <TextView
         android:text="Datum"

@@ -38,11 +38,12 @@ public class SchemaClient {
             public void onResponse(Call<SchemaEntities> call, Response<SchemaEntities> response) {
                 SchemaEntities scheman = response.body();
                 ssl.schemaListRecived(scheman);
+                System.out.println("onResponse Lyckat!");
             }
 
             @Override
             public void onFailure(Call<SchemaEntities> call, Throwable t) {
-
+                System.out.println("onResponse Misslyckat!");
             }
         });
     }

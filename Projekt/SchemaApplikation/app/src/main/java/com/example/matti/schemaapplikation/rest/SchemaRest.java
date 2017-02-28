@@ -15,16 +15,16 @@ import retrofit2.http.Path;
  */
 
 public interface SchemaRest {
-    @GET("service.scheduleentity")
+    @GET("beans.entities.schemaentity")
     Call<SchemaEntities> selectScheman();
 
-    @POST("service.scheduleentity")
+    @POST("beans.entities.schemaentity")
     Call<SchemaEntity> createSchema(@Body SchemaEntity schemaEntity);
 
-    @PUT("service.scheduleentity/{id}")
+    @PUT("beans.entities.schemaentity/{id}")
     Call<SchemaEntity> updateSchema(@Body SchemaEntity schemaEntity, @Path("id") Long id);
 
-    @DELETE("service.scheduleentity/{id}")
-    Call<SchemaEntity> deleteSchema( @Path("id") Long id);
+    @DELETE("beans.entities.schemaentity/{id}")
+    Call<SchemaEntity> deleteSchema(@Path("id") Long id);
 
 }

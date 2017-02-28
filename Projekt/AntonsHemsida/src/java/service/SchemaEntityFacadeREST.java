@@ -5,6 +5,7 @@
  */
 package service;
 
+import beans.entities.SchemaEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,30 +22,30 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author and12edi
+ * @author Joakim
  */
 @Stateless
-@Path("service.scheduleentity")
-public class ScheduleentityFacadeREST extends AbstractFacade<Scheduleentity> {
+@Path("beans.entities.schemaentity")
+public class SchemaEntityFacadeREST extends AbstractFacade<SchemaEntity> {
 
     @PersistenceContext(unitName = "AntonsHemsidaPU")
     private EntityManager em;
 
-    public ScheduleentityFacadeREST() {
-        super(Scheduleentity.class);
+    public SchemaEntityFacadeREST() {
+        super(SchemaEntity.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Scheduleentity entity) {
+    public void create(SchemaEntity entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, Scheduleentity entity) {
+    public void edit(@PathParam("id") Long id, SchemaEntity entity) {
         super.edit(entity);
     }
 
@@ -57,21 +58,21 @@ public class ScheduleentityFacadeREST extends AbstractFacade<Scheduleentity> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Scheduleentity find(@PathParam("id") Long id) {
+    public SchemaEntity find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Scheduleentity> findAll() {
+    public List<SchemaEntity> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Scheduleentity> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<SchemaEntity> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

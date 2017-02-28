@@ -1,17 +1,15 @@
 package com.example.matti.schemaapplikation.rest;
 
-import org.simpleframework.xml.Root;
-
 /**
  * Created by Joakim on 17-02-16.
  */
 
 public class SchemaEntity {
     private Long id;
-    private String week_day;
-    private Integer week_number;
-    private Integer year_number;
-    private String employee_name;
+    private String weekDay;
+    private Integer weekNumber;
+    private Integer yearNumber;
+    private String employee;
     private String pass;
     private Boolean booked;
 
@@ -24,36 +22,36 @@ public class SchemaEntity {
         this.id = id;
     }
 
-    public String getWeek_day() {
-        return week_day;
+    public String getWeekDay() {
+        return weekDay;
     }
 
-    public void setWeek_day(String week_day) {
-        this.week_day = week_day;
+    public void setWeekDay(String weekDay) {
+        this.weekDay = weekDay;
     }
 
-    public Integer getWeek_number() {
-        return week_number;
+    public Integer getWeekNumber() {
+        return weekNumber;
     }
 
-    public void setWeek_number(Integer week_number) {
-        this.week_number = week_number;
+    public void setWeekNumber(Integer weekNumber) {
+        this.weekNumber = weekNumber;
     }
 
-    public Integer getYear_number() {
-        return year_number;
+    public Integer getYearNumber() {
+        return yearNumber;
     }
 
-    public void setYear_number(Integer year_number) {
-        this.year_number = year_number;
+    public void setYearNumber(Integer yearNumber) {
+        this.yearNumber = yearNumber;
     }
 
-    public String getEmployee_name() {
-        return employee_name;
+    public String getEmployee() {
+        return employee;
     }
 
-    public void setEmployee_name(String employee_name) {
-        this.employee_name = employee_name;
+    public void setEmployee(String employee) {
+        this.employee = employee;
     }
 
     public String getPass() {

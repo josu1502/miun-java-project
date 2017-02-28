@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * Created by Joakim on 17-02-16.
  */
-@Root (name = "scheduleentities")
+@Root (name = "schemaEntities")
 public class SchemaEntities {
-    @ElementList(entry="scheduleentity", inline=true)
+    @ElementList(entry="schemaEntity", inline=true)
     public List<SchemaEntity> schemaEntity;
 }

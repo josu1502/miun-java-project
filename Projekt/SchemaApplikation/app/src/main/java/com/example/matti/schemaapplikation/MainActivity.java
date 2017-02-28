@@ -89,18 +89,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class AddLunchShift implements View.OnClickListener {
-        private String shiftDay, shiftPsss;
+        private String shiftDay, shiftPass;
 
 
         public AddLunchShift(String d, String p) {
-            shiftDay = d;
-            shiftPsss = p;
+            this.shiftDay = d;
+            this.shiftPass = p;
         }
 
         @Override
         public void onClick(View v) {
-            day = shiftDay;
-            pass = shiftPsss;
+            day = this.shiftDay;
+            pass = this.shiftPass;
             startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
         }
     }
