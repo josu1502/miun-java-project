@@ -8,5 +8,5 @@ import java.util.List;
 @Root(name = "orderEntities")
 public class OrderEntities {
     @ElementList(entry="orderEntity", inline=true)
-    public List<OrderEntity> orderEntity;
+    public List<OrderEntity> orderEntities;
 }
