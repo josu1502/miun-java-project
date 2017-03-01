@@ -1,6 +1,8 @@
 package r.orderapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -18,12 +20,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
+    Button button;
     //Fragments fragment = new Fragments();
 
 
@@ -40,14 +43,19 @@ public class MainActivity extends AppCompatActivity  {
         viewPagerAdapter.addFragments(new Appetizer(), "Förrätt");
         viewPagerAdapter.addFragments(new Main_course(), "Huvudrätt");
         viewPagerAdapter.addFragments(new Dessert(), "Efterrätt");
+        viewPagerAdapter.addFragments(new Order(), "Ordrar");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
         //appetizer.setText("heeeeeej");
         //fragment.setSettings();
-
-
-
+        button = (Button)findViewById(R.id.btn1);
+        button.setOnClickListener(new View.OnClickListener() {
+     @Override
+     public void onClick(View v) {
+         startActivity(new Intent(MainActivity.this, ShowOrderActivity.class));
+     }
+ });
     }
-
 
 }
