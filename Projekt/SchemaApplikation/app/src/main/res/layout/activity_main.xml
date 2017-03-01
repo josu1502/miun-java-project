@@ -136,7 +136,6 @@
                     android:id="@+id/monLunchView">
 
                     <TextView
-                        android:text="Joakim Anders Mattias add +"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/monLunchText"
@@ -153,7 +152,6 @@
                     android:background="#efefef">
 
                     <TextView
-                        android:text="Exempel add +"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/tuesLunchText"
@@ -174,8 +172,7 @@
                         android:id="@+id/wedsLunchText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="add +" />
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -191,8 +188,7 @@
                         android:id="@+id/thursLunchText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="add +" />
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -207,8 +203,7 @@
                         android:id="@+id/friLunchText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="add +" />
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -224,8 +219,7 @@
                         android:id="@+id/satLunchText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="Alex Gabriel add +" />
+                        android:textSize="12sp"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -235,13 +229,13 @@
                     android:id="@+id/sunLunchView">
 
                     <TextView
-                        android:text="Stängt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/sunLunchText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:text="Stängt" />
                 </RelativeLayout>
 
 
@@ -272,13 +266,13 @@
                     android:id="@+id/monDinnerView">
 
                     <TextView
-                        android:text="Stängt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/monDinnerText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:text="Stängt" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -289,7 +283,6 @@
                     android:background="#efefef">
 
                     <TextView
-                        android:text="Exempel add +"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/tuesDinnerText"
@@ -310,8 +303,7 @@
                         android:id="@+id/wedsDinnerText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="add +" />
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -327,8 +319,7 @@
                         android:id="@+id/thursDinnerText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="Thomas Andreas" />
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -343,8 +334,7 @@
                         android:id="@+id/friDinnerText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="add +" />
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -360,8 +350,7 @@
                         android:id="@+id/satDinnerText"
                         android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="Alex Gabriel Anders Joakim add +" />
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout

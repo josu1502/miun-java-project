@@ -24,5 +24,7 @@ public class IncreaseWeek implements View.OnClickListener {
         }
         UpdateDateByWeek ud = new UpdateDateByWeek();
         ud.run();
+
+        schemaClient.fetchSchemaList();
     }
 }
