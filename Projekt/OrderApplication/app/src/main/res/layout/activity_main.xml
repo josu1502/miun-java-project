@@ -25,6 +25,7 @@
       android:id="@+id/tabLayout"
       app:tabMode="fixed"
       app:tabGravity="fill"
+      app:tabTextAppearance="@style/tabTextSize"
       >
 
   </android.support.design.widget.TabLayout>
@@ -40,5 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="Lägg beställning"
-        android:layout_gravity="bottom|center"/>
+        android:layout_gravity="bottom|center"
+        android:id="@+id/btn1"/>
 </FrameLayout>
