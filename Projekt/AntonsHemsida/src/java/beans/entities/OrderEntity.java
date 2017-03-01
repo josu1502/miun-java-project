@@ -29,6 +29,7 @@ public class OrderEntity implements Serializable {
     private String courseType;
     private Integer amount;
     private Boolean finished;
+    private String orderTime;
 
     @Override
     public int hashCode() {
@@ -131,6 +132,20 @@ public class OrderEntity implements Serializable {
      */
     public void setFinished(Boolean finished) {
         this.finished = finished;
+    }
+
+    /**
+     * @return the orderTime
+     */
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    /**
+     * @param orderTime the orderTime to set
+     */
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
     }
 
 }
