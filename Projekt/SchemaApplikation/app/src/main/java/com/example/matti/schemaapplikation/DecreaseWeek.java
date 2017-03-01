@@ -23,5 +23,7 @@ public class DecreaseWeek implements View.OnClickListener {
         }
         UpdateDateByWeek ud = new UpdateDateByWeek();
         ud.run();
+
+        schemaClient.fetchSchemaList();
     }
 }

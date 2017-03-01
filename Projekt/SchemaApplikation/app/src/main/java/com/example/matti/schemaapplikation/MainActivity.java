@@ -9,21 +9,33 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.matti.schemaapplikation.rest.SchemaClient;
+import com.example.matti.schemaapplikation.rest.SchemaEntities;
+import com.example.matti.schemaapplikation.rest.SchemaStatusListener;
+
 import java.util.Calendar;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements SchemaStatusListener {
 
+    public static SchemaClient schemaClient;
     public static String day, pass;
     public static Integer weekNumber, yearNumber;
     public static Calendar cal;
-    public static TextView weekText, monDate, tuesDate, wedsDate, thursDate, friDate, satDate, sunDate;
+    public static TextView weekText, monDate, tuesDate, wedsDate, thursDate, friDate, satDate, sunDate; /*Date text*/
+    public static TextView monLunch, tuesLunch, wedsLunch, thursLunch, friLunch, satLunch, sunLunch; /*Lunch text*/
+    public static TextView monDinner, tuesDinner, wedsDinner, thursDinner, friDinner, satDinner, sunDinner; /*Dinner text*/
+    public static SchemaList schemaList;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        schemaClient = new SchemaClient("http://10.250.115.21:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
+        schemaClient.setStatusListener(this);
+        schemaClient.fetchSchemaList();
 
         /*Import textview to display current week*/
         weekText = (TextView)findViewById(R.id.weekText);
@@ -36,6 +48,24 @@ public class MainActivity extends AppCompatActivity {
         friDate = (TextView) findViewById(R.id.friDate);
         satDate = (TextView) findViewById(R.id.satDate);
         sunDate = (TextView) findViewById(R.id.sunDate);
+
+        /*Import textviews to add lunch pass to*/
+        monLunch = (TextView) findViewById(R.id.monLunchText);
+        tuesLunch = (TextView) findViewById(R.id.tuesLunchText);
+        wedsLunch = (TextView) findViewById(R.id.wedsLunchText);
+        thursLunch = (TextView) findViewById(R.id.thursLunchText);
+        friLunch = (TextView) findViewById(R.id.friLunchText);
+        satLunch = (TextView) findViewById(R.id.satLunchText);
+        sunLunch = (TextView) findViewById(R.id.sunLunchText);
+
+        /*Import textviews to add dinner pass to*/
+        monDinner = (TextView) findViewById(R.id.monDinnerText);
+        tuesDinner = (TextView) findViewById(R.id.tuesDinnerText);
+        wedsDinner = (TextView) findViewById(R.id.wedsDinnerText);
+        thursDinner = (TextView) findViewById(R.id.thursDinnerText);
+        friDinner = (TextView) findViewById(R.id.friDinnerText);
+        satDinner = (TextView) findViewById(R.id.satDinnerText);
+        sunDinner = (TextView) findViewById(R.id.sunDinnerText);
 
         /*Import views to add onclick listeners to*/
         View monAddLunch = (View) findViewById(R.id.monLunchView);
@@ -52,24 +82,24 @@ public class MainActivity extends AppCompatActivity {
         View thursAddDinner = (View) findViewById(R.id.thursDinnerView);
         View friAddDinner = (View) findViewById(R.id.friDinnerView);
         View satAddDinner = (View) findViewById(R.id.satDinnerView);
-        View sunAddDinner = (View) findViewById(R.id.satDinnerView);
+        View sunAddDinner = (View) findViewById(R.id.sunDinnerView);
 
         /*Set on click listeners for views*/
-        monAddLunch.setOnClickListener(new AddLunchShift("Måndag", "Lunch"));
-        tuesAddLunch.setOnClickListener(new AddLunchShift("Tisdag", "Lunch"));
-        wedsAddLunch.setOnClickListener(new AddLunchShift("Onsdag", "Lunch"));
-        thursAddLunch.setOnClickListener(new AddLunchShift("Torsdag", "Lunch"));
-        friAddLunch.setOnClickListener(new AddLunchShift("Fredag", "Lunch"));
-        satAddLunch.setOnClickListener(new AddLunchShift("Lördag", "Lunch"));
-        sunAddLunch.setOnClickListener(new AddLunchShift("Söndag", "Lunch"));
+        monAddLunch.setOnClickListener(new AddShift("Måndag", "Lunch"));
+        tuesAddLunch.setOnClickListener(new AddShift("Tisdag", "Lunch"));
+        wedsAddLunch.setOnClickListener(new AddShift("Onsdag", "Lunch"));
+        thursAddLunch.setOnClickListener(new AddShift("Torsdag", "Lunch"));
+        friAddLunch.setOnClickListener(new AddShift("Fredag", "Lunch"));
+        satAddLunch.setOnClickListener(new AddShift("Lördag", "Lunch"));
+        sunAddLunch.setOnClickListener(new AddShift("Söndag", "Lunch"));
 
-        monAddDinner.setOnClickListener(new AddLunchShift("Måndag", "Middag"));
-        tuesAddDinner.setOnClickListener(new AddLunchShift("Tisdag", "Middag"));
-        wedsAddDinner.setOnClickListener(new AddLunchShift("Onsdag", "Middag"));
-        thursAddDinner.setOnClickListener(new AddLunchShift("Torsdag", "Middag"));
-        friAddDinner.setOnClickListener(new AddLunchShift("Fredag", "Middag"));
-        satAddDinner.setOnClickListener(new AddLunchShift("Lördag", "Middag"));
-        sunAddDinner.setOnClickListener(new AddLunchShift("Söndag", "Middag"));
+        monAddDinner.setOnClickListener(new AddShift("Måndag", "Middag"));
+        tuesAddDinner.setOnClickListener(new AddShift("Tisdag", "Middag"));
+        wedsAddDinner.setOnClickListener(new AddShift("Onsdag", "Middag"));
+        thursAddDinner.setOnClickListener(new AddShift("Torsdag", "Middag"));
+        friAddDinner.setOnClickListener(new AddShift("Fredag", "Middag"));
+        satAddDinner.setOnClickListener(new AddShift("Lördag", "Middag"));
+        sunAddDinner.setOnClickListener(new AddShift("Söndag", "Middag"));
 
         /*Set current week and year*/
         weekText = (TextView) findViewById(R.id.weekText);
@@ -88,11 +118,40 @@ public class MainActivity extends AppCompatActivity {
         weekPlus.setOnClickListener(new IncreaseWeek());
     }
 
-    private class AddLunchShift implements View.OnClickListener {
+    @Override
+    public void schemaListRecived(SchemaEntities se)  {
+        System.out.println("Uppkoppling/Updatering till databasen lyckad.");
+
+        schemaList = new SchemaList(se.schemaEntity);
+
+        /*Fyller lista med allt från databasen*/
+        monLunch.setText(schemaList.getDay("Måndag", "Lunch", weekNumber, yearNumber));
+        tuesLunch.setText(schemaList.getDay("Tisdag", "Lunch", weekNumber, yearNumber));
+        wedsLunch.setText(schemaList.getDay("Onsdag", "Lunch", weekNumber, yearNumber));
+        thursLunch.setText(schemaList.getDay("Torsdag", "Lunch", weekNumber, yearNumber));
+        friLunch.setText(schemaList.getDay("Fredag", "Lunch", weekNumber, yearNumber));
+        satLunch.setText(schemaList.getDay("Lördag", "Lunch", weekNumber, yearNumber));
+        sunLunch.setText(schemaList.getDay("Söndag", "Lunch", weekNumber, yearNumber));
+
+        monDinner.setText(schemaList.getDay("Måndag", "Middag", weekNumber, yearNumber));
+        tuesDinner.setText(schemaList.getDay("Tisdag", "Middag", weekNumber, yearNumber));
+        wedsDinner.setText(schemaList.getDay("Onsdag", "Middag", weekNumber, yearNumber));
+        thursDinner.setText(schemaList.getDay("Torsdag", "Middag", weekNumber, yearNumber));
+        friDinner.setText(schemaList.getDay("Fredag", "Middag", weekNumber, yearNumber));
+        satDinner.setText(schemaList.getDay("Lördag", "Middag", weekNumber, yearNumber));
+        sunDinner.setText(schemaList.getDay("Söndag", "Middag", weekNumber, yearNumber));
+
+    }
+
+    @Override
+    public void schemaUpdated() {
+
+    }
+
+    private class AddShift implements View.OnClickListener {
         private String shiftDay, shiftPass;
 
-
-        public AddLunchShift(String d, String p) {
+        public AddShift(String d, String p) {
             this.shiftDay = d;
             this.shiftPass = p;
         }
@@ -101,6 +160,32 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             day = this.shiftDay;
             pass = this.shiftPass;
+
+            /*Updaterar dagen som skall visas i nästa activity*/
+            switch(day) {
+                case "Måndag":
+                    cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                    break;
+                case "Tisdag":
+                    cal.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                    break;
+                case "Onsdag":
+                    cal.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                    break;
+                case "Torsdag":
+                    cal.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                    break;
+                case "Fredag":
+                    cal.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                    break;
+                case "Lördag":
+                    cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+                    break;
+                case "Söndag":
+                    cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+                    break;
+            }
+
             startActivity(new Intent(MainActivity.this, AddShiftActivity.class));
         }
     }
