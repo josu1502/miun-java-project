@@ -4,10 +4,7 @@
     android:id="@+id/activity_add_shift"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.example.matti.schemaapplikation.AddShiftActivity">
 
     <EditText
@@ -19,8 +16,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/editText"
-        android:layout_toStartOf="@+id/button"
-        android:layout_alignTop="@+id/button" />
+        android:layout_toStartOf="@+id/postButton"
+        android:layout_alignTop="@+id/postButton" />
 
     <Button
         android:text="Lägg till"
@@ -30,26 +27,46 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/postButton" />
 
-    <TextView
-        android:text="Datum"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/dateTextView"
-        android:textAlignment="center" />
+        android:orientation="vertical"
+        android:layout_above="@+id/postButton"
+        android:layout_alignParentTop="true">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/dateTextView"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/editText">
-
-        <LinearLayout
+        <TextView
+            android:text="Vecka 8, 2017"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/weekTextView"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:text="Mån\n24/2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateTextView"
+            android:gravity="center" />
+
+        <TextView
+            android:text="Lunchpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/passTextView"
+            android:gravity="center"
+            android:background="#b53f45"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:padding="2dp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/workList" />
+
+    </LinearLayout>
 
 </RelativeLayout>

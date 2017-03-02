@@ -4,18 +4,23 @@ import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.matti.schemaapplikation.rest.SchemaClient;
-import com.example.matti.schemaapplikation.rest.SchemaEntities;
 import com.example.matti.schemaapplikation.rest.SchemaEntity;
-import com.example.matti.schemaapplikation.rest.SchemaStatusListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.matti.schemaapplikation.MainActivity.*;
 
-public class AddShiftActivity extends AppCompatActivity implements SchemaStatusListener {
-    SchemaClient schemaClient;
+public class AddShiftActivity extends AppCompatActivity {
+    //SchemaClient schemaClient;
+    public EditText namnEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +28,51 @@ public class AddShiftActivity extends AppCompatActivity implements SchemaStatusL
         setContentView(R.layout.activity_add_shift);
 
         /*Set date text on top of activity*/
+        TextView weekTextView = (TextView) findViewById(R.id.weekTextView);
         TextView dateTextView = (TextView) findViewById(R.id.dateTextView);
-        SimpleDateFormat sdf = new SimpleDateFormat("d MMM");
-        String date = day + ", " + sdf.format(cal.getTime()) + "\n" + pass;
-        dateTextView.setText(date);
+        TextView passTextView = (TextView) findViewById(R.id.passTextView);
 
-        //schemaClient = new SchemaClient("http://10.250.119.143:8080/AntonsHemsida/webresources/"); /* Andreas IP: */
-        schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jockes IP: */
-        schemaClient.setStatusListener(this);
-        schemaClient.fetchSchemaList();
+        weekTextView.setText("Vecka " + weekNumber + ", " + yearNumber);
+        SimpleDateFormat sdf = new SimpleDateFormat("E" + "\n" + "d MMM");
+        dateTextView.setText(sdf.format(cal.getTime()));
+        passTextView.setText(pass + "pass");
+
+        /*Bygg en ny lista utifrån datum*/
+        List<String> dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
+        ListView displayDayWorkList = (ListView) findViewById(R.id.workList);
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayWorkList);
+        displayDayWorkList.setAdapter(adapter);
+
+        /*List Item click listener*/
+        displayDayWorkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*Ta index från ListView Item. Jämför med index i dayWorkIDList. Ta int från detta
+                index. Denna int representerar databaens index som skall ändras. Ändra detta objekt
+                till false/true på "Booked" */
+
+                /*Bygg en lista med index so m speglar index i ListView*/
+                List<Integer> dayWorkIDList = schemaList.getListByDayID(day, pass, weekNumber, yearNumber);
+
+                Integer changeThisPos = dayWorkIDList.get(position);
+
+                SchemaEntity se = schemaList.getSchemaList().get(changeThisPos);
+                se.setBooked(!se.getBooked());
+
+                schemaClient.updateSchema(se);
+
+                schemaClient.fetchSchemaList();
+
+                List<String> dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
+                ListView displayDayWorkList = (ListView) findViewById(R.id.workList);
+
+                ArrayAdapter adapter = new ArrayAdapter<String>(AddShiftActivity.this, android.R.layout.simple_list_item_1, dayWorkList);
+                displayDayWorkList.setAdapter(adapter);
+
+            }
+        });
+
 
         /*Textfältet där vi hämtar namnet ifrån*/
         final TextView nameTextView = (TextView) findViewById(R.id.editText);
@@ -43,35 +84,41 @@ public class AddShiftActivity extends AppCompatActivity implements SchemaStatusL
             public void onClick(View v) {
                 String employee = nameTextView.getText().toString();
 
+                if (!employee.equals("") && !employee.equals("Namn")) {
                 /*Create entity example*/
-                SchemaEntity se = new SchemaEntity();
-                se.setWeekDay(day);
-                se.setWeekNumber(weekNumber);
-                se.setYearNumber(yearNumber);
-                se.setEmployee(employee);
-                se.setPass(pass);
-                se.setBooked(true);
+                    SchemaEntity se = new SchemaEntity();
+                    se.setWeekDay(day);
+                    se.setWeekNumber(weekNumber);
+                    se.setYearNumber(yearNumber);
+                    se.setEmployee(employee);
+                    se.setPass(pass);
+                    se.setBooked(true);
 
-                schemaClient.postSchema(se);
+                    schemaClient.postSchema(se);
 
-                System.out.println("Försöker skicka");
+                    System.out.println("Försöker skicka");
 
+                    finish();
+                }
 
-                /*Tar bort angiven lunch från listan*/
-               // schemaClient.deleteSchema(schema);
+            }
+        });
 
+        /*Rensa text i textfältet när man trycker*/
+        namnEditText = (EditText) findViewById(R.id.editText);
+        namnEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                namnEditText.setText("");
             }
         });
 
     }
 
     @Override
-    public void schemaListRecived(SchemaEntities se) {
-        System.out.println("Det funkar!");
-    }
-
-    @Override
-    public void schemaUpdated() {
-
+    protected void onStop() {
+        super.onStop();
+        //Save Values Here
+        schemaClient.fetchSchemaList(); //To update when posting
     }
 }

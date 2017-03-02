@@ -12,10 +12,10 @@
     android:id="@+id/showorder">
 
     <Button
-        android:text="Button"
+        android:text="Lägg beställning"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:id="@+id/btn2"
+        android:id="@+id/PutOrder"
        android:layout_gravity="bottom|center"
          />
 </FrameLayout>
