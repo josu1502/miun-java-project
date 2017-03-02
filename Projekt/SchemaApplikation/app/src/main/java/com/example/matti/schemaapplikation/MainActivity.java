@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        schemaClient = new SchemaClient("http://10.250.112.35:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
+        schemaClient = new SchemaClient("http://10.250.115.39:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
         //schemaClient = new SchemaClient("http://192.168.0.106:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
         schemaClient.setStatusListener(this);
         schemaClient.fetchSchemaList();
