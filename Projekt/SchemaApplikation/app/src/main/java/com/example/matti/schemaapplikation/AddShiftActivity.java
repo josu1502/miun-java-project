@@ -4,6 +4,7 @@ import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +43,35 @@ public class AddShiftActivity extends AppCompatActivity {
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayWorkList);
         displayDayWorkList.setAdapter(adapter);
+
+        /*List Item click listener*/
+        displayDayWorkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*Ta index från ListView Item. Jämför med index i dayWorkIDList. Ta int från detta
+                index. Denna int representerar databaens index som skall ändras. Ändra detta objekt
+                till false/true på "Booked" */
+
+                /*Bygg en lista med index so m speglar index i ListView*/
+                List<Integer> dayWorkIDList = schemaList.getListByDayID(day, pass, weekNumber, yearNumber);
+
+                Integer changeThisPos = dayWorkIDList.get(position);
+
+                SchemaEntity se = schemaList.getSchemaList().get(changeThisPos);
+                se.setBooked(!se.getBooked());
+
+                schemaClient.updateSchema(se);
+
+                schemaClient.fetchSchemaList();
+
+                List<String> dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
+                ListView displayDayWorkList = (ListView) findViewById(R.id.workList);
+
+                ArrayAdapter adapter = new ArrayAdapter<String>(AddShiftActivity.this, android.R.layout.simple_list_item_1, dayWorkList);
+                displayDayWorkList.setAdapter(adapter);
+
+            }
+        });
 
 
         /*Textfältet där vi hämtar namnet ifrån*/
