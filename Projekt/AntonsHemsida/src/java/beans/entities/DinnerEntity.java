@@ -10,12 +10,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Joakim
  */
+@NamedQueries ({
+    @NamedQuery(name = "getAllDinners", query = "SELECT Object(o) FROM DinnerEntity o"),
+    @NamedQuery(name = "getType", query = "SELECT e FROM DinnerEntity e WHERE e.type = :type_arg")
+ })
 @Entity
 @XmlRootElement
 public class DinnerEntity implements Serializable {
