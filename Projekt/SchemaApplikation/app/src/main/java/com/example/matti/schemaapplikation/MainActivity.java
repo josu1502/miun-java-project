@@ -16,7 +16,7 @@ import com.example.matti.schemaapplikation.rest.SchemaStatusListener;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity  implements SchemaStatusListener {
+public class MainActivity extends AppCompatActivity  implements SchemaStatusListener, Runnable {
 
     public static SchemaClient schemaClient;
     public static String day, pass;
@@ -33,10 +33,11 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        schemaClient = new SchemaClient("http://10.250.115.39:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
+        schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke mobil IP: */
+        //schemaClient = new SchemaClient("http://10.250.115.39:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
         //schemaClient = new SchemaClient("http://192.168.0.106:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
         schemaClient.setStatusListener(this);
-        schemaClient.fetchSchemaList();
+        (new Thread(new MainActivity())).start();
 
         /*Import textview to display current week*/
         weekText = (TextView)findViewById(R.id.weekText);
@@ -147,6 +148,19 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
     @Override
     public void schemaUpdated() {
 
+    }
+
+    @Override
+    public void run() {
+        while(true) {
+            //android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+            schemaClient.fetchSchemaList();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private class AddShift implements View.OnClickListener {

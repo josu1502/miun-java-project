@@ -18,9 +18,12 @@ import java.util.List;
 
 import static com.example.matti.schemaapplikation.MainActivity.*;
 
-public class AddShiftActivity extends AppCompatActivity {
+public class AddShiftActivity extends AppCompatActivity implements Runnable{
     //SchemaClient schemaClient;
     public EditText namnEditText;
+    public ListView displayDayWorkList;
+    public List<String> dayWorkList;
+    public ArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,13 @@ public class AddShiftActivity extends AppCompatActivity {
         passTextView.setText(pass + "pass");
 
         /*Bygg en ny lista utifrån datum*/
-        List<String> dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
-        ListView displayDayWorkList = (ListView) findViewById(R.id.workList);
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayWorkList);
+        displayDayWorkList = (ListView) findViewById(R.id.workList);
+        dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayWorkList);
         displayDayWorkList.setAdapter(adapter);
+
+        (new Thread(new AddShiftActivity())).start();
+
 
         /*List Item click listener*/
         displayDayWorkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -61,14 +66,6 @@ public class AddShiftActivity extends AppCompatActivity {
                 se.setBooked(!se.getBooked());
 
                 schemaClient.updateSchema(se);
-
-                schemaClient.fetchSchemaList();
-
-                List<String> dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
-                ListView displayDayWorkList = (ListView) findViewById(R.id.workList);
-
-                ArrayAdapter adapter = new ArrayAdapter<String>(AddShiftActivity.this, android.R.layout.simple_list_item_1, dayWorkList);
-                displayDayWorkList.setAdapter(adapter);
 
             }
         });
@@ -120,5 +117,21 @@ public class AddShiftActivity extends AppCompatActivity {
         super.onStop();
         //Save Values Here
         schemaClient.fetchSchemaList(); //To update when posting
+    }
+
+    @Override
+    public void run() {
+        while(true) {
+        /*Bygg en ny lista utifrån datum*/
+            //displayDayWorkList = (ListView) findViewById(R.id.workList);
+            dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
+            //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayWorkList);
+            //displayDayWorkList.setAdapter(adapter);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
