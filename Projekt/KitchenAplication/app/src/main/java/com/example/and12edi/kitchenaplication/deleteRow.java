@@ -4,8 +4,9 @@ import android.view.View;
 
 import com.example.and12edi.kitchenaplication.rest.OrderEntity;
 
-import static com.example.and12edi.kitchenaplication.MainActivity.orderClient;
-import static com.example.and12edi.kitchenaplication.MainActivity.tl;
+import static layout.recived.Read_Orders.orderClient;
+import static layout.recived.Read_Orders.tl;
+
 
 /**
  * Created by Mvangman on 2017-03-02.
