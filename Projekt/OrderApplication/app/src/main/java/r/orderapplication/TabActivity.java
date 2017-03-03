@@ -8,14 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 
-import r.orderapplication.dinnerRest.DinnerEntities;
-import r.orderapplication.dinnerRest.DinnerStatusListener;
 import r.orderapplication.orderRest.OrderClient;
-import r.orderapplication.orderRest.OrderEntities;
-import r.orderapplication.orderRest.OrderStatusListener;
+
 
 public class TabActivity extends AppCompatActivity {
 
@@ -45,7 +42,7 @@ public class TabActivity extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
-
+        tabLayout.setSelectedTabIndicatorHeight(10);
 
         //appetizer.setText("heeeeeej");
         //fragment.setSettings();
