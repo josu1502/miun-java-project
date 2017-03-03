@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import r.orderapplication.dinnerRest.DinnerEntities;
+import r.orderapplication.dinnerRest.DinnerStatusListener;
 import r.orderapplication.orderRest.OrderClient;
 import r.orderapplication.orderRest.OrderEntities;
 import r.orderapplication.orderRest.OrderStatusListener;
@@ -22,6 +25,8 @@ public class TabActivity extends AppCompatActivity {
     ViewPagerAdapter viewPagerAdapter;
     Button button;
     OrderClient orderClient;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class TabActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
 
+
         //appetizer.setText("heeeeeej");
         //fragment.setSettings();
         button = (Button)findViewById(R.id.showOrder);
@@ -51,4 +57,5 @@ public class TabActivity extends AppCompatActivity {
             }
         });
     }
+
 }

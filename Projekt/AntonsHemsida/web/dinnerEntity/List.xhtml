@@ -51,6 +51,7 @@
                             </f:facet>
                             <h:outputText value="#{item.price}"/>
                         </p:column>
+
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{dinnerEntityController.prepareCreate}" update=":DinnerEntityCreateForm" oncomplete="PF('DinnerEntityCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":DinnerEntityViewForm" oncomplete="PF('DinnerEntityViewDialog').show()" disabled="#{empty dinnerEntityController.selected}"/>
