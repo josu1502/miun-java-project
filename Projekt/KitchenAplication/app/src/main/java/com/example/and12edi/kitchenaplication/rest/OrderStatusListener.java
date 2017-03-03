@@ -5,6 +5,6 @@ package com.example.and12edi.kitchenaplication.rest;
  */
 
 public interface OrderStatusListener {
-    void orderListRecived(OrderEntities le);
+    void orderListRecived(OrderEntities oe);
     void orderUpdated();
 }

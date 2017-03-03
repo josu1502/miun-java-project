@@ -21,83 +21,9 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:stretchColumns="0,1,2,3"
-            android:layout_height="wrap_content">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:text="Bord"
-                    android:textSize="24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tablenr" />
-
-                <TextView
-                    android:text="Förrätt/Varmrätt"
-                    android:textSize="24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/coursetype" />
-
-                <TextView
-                    android:text="Antal"
-                    android:textSize="24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/amount" />
-
-                <TextView
-                    android:text="Tid"
-                    android:textSize="24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/ordertime" />
-
-                <TextView
-                    android:text="Status"
-                    android:textSize="24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/status" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:text="8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView15" />
-
-                <TextView
-                    android:text="Toast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView14" />
-
-                <TextView
-                    android:text="4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView13" />
-
-                <TextView
-                    android:text="17:20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView12" />
-
-                <Button
-                    android:text="Klar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button" />
-            </TableRow>
+            android:stretchColumns="0,1,2,3,4"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout">
 
         </TableLayout>
     </ScrollView>

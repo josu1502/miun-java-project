@@ -23,6 +23,10 @@ public class SchemaList {
         this.schemaList = schemaList;
     }
 
+    public List<SchemaEntity> getSchemaList() {
+        return this.schemaList;
+    }
+
     public SpannableStringBuilder getDay(String day, String pass, Integer week, Integer year) {
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
         for (int i = 0; i < schemaList.size(); i++) {
@@ -60,6 +64,23 @@ public class SchemaList {
                             } else {
                                 entityList.add(schemaList.get(i).getEmployee() + " - Borttaget pass");
                             }
+                        }
+                    }
+                }
+            }
+        }
+        return entityList;
+    }
+
+    public List<Integer> getListByDayID(String day, String pass, Integer week, Integer year) {
+        List<Integer> entityList = new ArrayList<>();
+        for (int i = 0; i < schemaList.size(); i++) {
+
+            if (year.equals(schemaList.get(i).getYearNumber())) {
+                if (week.equals(schemaList.get(i).getWeekNumber())) {
+                    if (pass.equals(schemaList.get(i).getPass())) {
+                        if (day.equals(schemaList.get(i).getWeekDay())) {
+                                entityList.add(i);
                         }
                     }
                 }
