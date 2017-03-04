@@ -10,5 +10,4 @@
     android:id="@+id/toolBar"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
 </android.support.v7.widget.Toolbar>

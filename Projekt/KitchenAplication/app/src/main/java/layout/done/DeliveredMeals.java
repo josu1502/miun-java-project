@@ -12,10 +12,10 @@ import com.example.and12edi.kitchenaplication.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Delivered_Meals extends Fragment {
+public class DeliveredMeals extends Fragment {
+    public static View deliveredView;
 
-
-    public Delivered_Meals() {
+    public DeliveredMeals() {
         // Required empty public constructor
     }
 
@@ -23,8 +23,9 @@ public class Delivered_Meals extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragments
-        return inflater.inflate(R.layout.fragment_delivered__meals, container, false);
+        LayoutInflater lf = getActivity().getLayoutInflater();
+        deliveredView = lf.inflate(R.layout.fragment_delivered__meals, container, false);
+        return deliveredView;
     }
 
 }

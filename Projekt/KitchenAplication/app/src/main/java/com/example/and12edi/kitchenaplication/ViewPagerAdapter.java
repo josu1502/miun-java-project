@@ -16,6 +16,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     ArrayList<String> tabTitles = new ArrayList();
 
     public ViewPagerAdapter(FragmentManager fm) {
+
         super(fm);
     }
 
