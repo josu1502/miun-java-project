@@ -14,30 +14,42 @@ import static r.orderapplication.MainActivity.tableNumber;
 
 public class DataBaseConverter {
     private List<DinnerEntity> originalList;
-    private List<OrderEntity> orderList;
+    private List<OrderEntity> orderAppetList;
     private List<DinnerEntity> appetizerList;
     private List<DinnerEntity> mainCourseList;
+    private List<OrderEntity> orderMainList;
 
     DataBaseConverter(List<DinnerEntity> de){
 
         this.originalList = de;
 
-        orderList = new ArrayList<>();
+        orderAppetList = new ArrayList<>();
         appetizerList = new ArrayList<>();
         mainCourseList= new ArrayList<>();
+        orderMainList = new ArrayList<>();
         for(int i =0; i < de.size(); i++) {
             if (de.get(i).getType().equals("Förätt")) {
                 appetizerList.add(de.get(i));
+                OrderEntity oe = new OrderEntity();
+                oe.setTableNr(tableNumber);
+                oe.setAmount(0);
+                oe.setFinished(false);
+                oe.setCourseName(de.get(i).getName());
+                oe.setCourseType(de.get(i).getType());
+                orderAppetList.add(oe);
             }
             if (de.get(i).getType().equals("Huvudrätt")) {
                 mainCourseList.add(de.get(i));
+                OrderEntity oe = new OrderEntity();
+                oe.setTableNr(tableNumber);
+                oe.setAmount(0);
+                oe.setFinished(false);
+                oe.setCourseName(de.get(i).getName());
+                oe.setCourseType(de.get(i).getType());
+                getOrderMainList().add(oe);
+
             }
-            OrderEntity oe = new OrderEntity();
-            oe.setTableNr(tableNumber);
-            oe.setAmount(0);
-            oe.setFinished(false);
-            oe.setCourseName(de.get(i).getName());
-            oe.setCourseType(de.get(i).getType());
+
 
         }
     }
@@ -46,8 +58,8 @@ public class DataBaseConverter {
         return originalList;
     }
 
-    public List<OrderEntity> getOrderList() {
-        return orderList;
+    public List<OrderEntity> getOrderAppetList() {
+        return orderAppetList;
     }
 
     public List<DinnerEntity> getAppetizerList() {
@@ -56,5 +68,9 @@ public class DataBaseConverter {
 
     public List<DinnerEntity> getMainCourseList() {
         return mainCourseList;
+    }
+
+    public List<OrderEntity> getOrderMainList() {
+        return orderMainList;
     }
 }

@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import r.orderapplication.dinnerRest.DinnerEntities;
 import r.orderapplication.dinnerRest.DinnerEntity;
 import r.orderapplication.dinnerRest.DinnerStatusListener;
 import r.orderapplication.orderRest.OrderClient;
+import r.orderapplication.orderRest.OrderEntity;
 
 import static r.orderapplication.Appetizer.fragView;
 import static r.orderapplication.Main_course.fragView_MainCourse;
@@ -41,14 +43,14 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
     ViewPagerAdapter viewPagerAdapter;
     Button button;
     OrderClient orderClient;
-
+    public static DinnerClient dc;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
-        DinnerClient dc = new DinnerClient("http://10.250.110.133:8080/AntonsHemsida/webresources/");
+        dc = new DinnerClient("http://10.250.110.133:8080/AntonsHemsida/webresources/");
         dc.setStatusListener(this);
         dc.fetchDinnerList();
 
@@ -85,6 +87,7 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
 
         /*Hämtar och skapar tabell från Databasen för förrätter*/
         List<DinnerEntity> appetList = dbc.getAppetizerList();
+        List<OrderEntity> appetOrderList = dbc.getOrderAppetList();
         for (int i = 0; i < appetList.size(); i++) {
 
             TableRow tableRow = new TableRow(this);
@@ -94,11 +97,30 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
             TextView appetName = new TextView(this);
             appetName.setText(appetList.get(i).getName().toString());
 
+            appetName.setTextSize(22);
+
             TextView appetPrice = new TextView(this);
-            appetPrice.setText(appetList.get(i).getPrice().toString());
+            appetPrice.setText(appetList.get(i).getPrice().toString() + ":-");
+            appetPrice.setTextSize(22);
 
             tableRow.addView(appetName);
             tableRow.addView(appetPrice);
+
+            Button btnMinus = new Button(this);
+            btnMinus.setText("-");
+            tableRow.addView(btnMinus);
+
+            TextView count = new TextView(this);
+            count.setText(appetOrderList.get(i).getAmount().toString());
+            tableRow.addView(count);
+            count.setTextSize(22);
+
+            DecreaseOrderAmount doa = new DecreaseOrderAmount(appetOrderList.get(i));
+            btnMinus.setOnClickListener(doa);
+
+            Button btnPlus = new Button(this);
+            btnPlus.setText("+");
+            tableRow.addView(btnPlus);
 
             tableLayout.addView(tableRow);
         }
@@ -114,10 +136,23 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
             mainC_Name.setText(mainCourseList.get(i).getName().toString());
 
             TextView mainC_Price = new TextView(this);
-            mainC_Price.setText(mainCourseList.get(i).getPrice().toString());
+            mainC_Price.setText(mainCourseList.get(i).getPrice().toString() + ":-");
+
 
             tableRow.addView(mainC_Name);
             tableRow.addView(mainC_Price);
+
+            Button btnMinus = new Button(this);
+            btnMinus.setText("-");
+            tableRow.addView(btnMinus);
+
+            TextView count = new TextView(this);
+            count.setText(appetOrderList.get(i).getAmount().toString());
+            tableRow.addView(count);
+
+            Button btnPlus = new Button(this);
+            btnPlus.setText("+");
+            tableRow.addView(btnPlus);
 
             tableLayout_mCourse.addView(tableRow);
         }
@@ -126,5 +161,21 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
     @Override
     public void dinnerUpdated() {
 
+    }
+
+    private class DecreaseOrderAmount implements View.OnClickListener {
+        private OrderEntity orderEntity;
+        public DecreaseOrderAmount(OrderEntity oe) {
+            this.orderEntity = oe;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if(orderEntity.getAmount() > 0)
+            {
+                orderEntity.setAmount(orderEntity.getAmount() - 1);
+
+            }
+        }
     }
 }

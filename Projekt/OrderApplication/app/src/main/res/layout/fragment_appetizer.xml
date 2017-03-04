@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:id="@+id/tableLay_appetizer"
         android:stretchColumns="0,1"
-        >
+        android:padding="10dp">
 
     </TableLayout>
     </ScrollView>
