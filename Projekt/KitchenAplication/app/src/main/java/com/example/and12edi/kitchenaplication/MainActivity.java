@@ -42,13 +42,9 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
        setContentView(R.layout.activity_main);
 
 
-<<<<<<< HEAD
         orderClient = new OrderClient("http://10.250.111.2:8080/AntonsHemsida/webresources/");
-=======
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        orderClient = new OrderClient("http://10.250.121.182:8080/AntonsHemsida/webresources/"); //Alex ip
->>>>>>> 621b52844e192efcccaf6d8e60c8380c0c92c28e
         orderClient.setStatusListener(this);
         orderClient.fetchOrderList();
 

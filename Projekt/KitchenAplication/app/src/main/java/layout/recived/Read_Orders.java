@@ -25,7 +25,7 @@ import static layout.recived.Orders.fragView;
 public class Read_Orders extends AppCompatActivity implements OrderStatusListener{
     public static OrderClient orderClient;
     List<OrderEntity> orderList;
-    TabLayout tabLayout;
+    TabLayout tabLayout ;
 
     public static TableLayout tl;
     public void set(){

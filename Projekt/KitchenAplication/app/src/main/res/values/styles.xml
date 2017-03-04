@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="tabTextSize" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize"> 24sp </item>
+        <item name="android:textSize"> 24dp </item>
 
     </style>
 

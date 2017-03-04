@@ -44,7 +44,7 @@ public class Orders extends Fragment{
         LayoutInflater lf = getActivity().getLayoutInflater();
         fragView = lf.inflate(R.layout.fragment_orders, container, false);
 
-       // setContent();
+       // setContent(); strul med denna
 
         return fragView;
     }
