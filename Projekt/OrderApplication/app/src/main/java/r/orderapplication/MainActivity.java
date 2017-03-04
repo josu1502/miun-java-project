@@ -22,8 +22,8 @@ import java.net.URL;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String tableNr;
-    Integer tableNumber;
+    public static String tableNr;
+   public static Integer tableNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
            public void onClick(View view) {
 
                 tableNr = table.getText().toString();
+                tableNumber=Integer.parseInt(tableNr);
                 if (!tableNr.equals("0") && !tableNr.equals("")) {
                     startActivity(new Intent(MainActivity.this, TabActivity.class));
                 }
+
                 }
        });
     }

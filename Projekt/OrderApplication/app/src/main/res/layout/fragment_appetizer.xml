@@ -5,20 +5,22 @@
     tools:context="r.orderapplication.Appetizer">
     
     <!-- TODO: Update blank fragment layout -->
-
-
-    <TextView
-
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textStyle="bold"
-        android:id="@+id/textView"
-        android:gravity="center"
-        android:textSize="26dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-    <ListView
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listViewAppetizer" />
+        android:id="@+id/tableLay_appetizer"
+        android:stretchColumns="0,1"
+        >
+
+    </TableLayout>
+    </ScrollView>
+
 
 </FrameLayout>

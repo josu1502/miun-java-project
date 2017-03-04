@@ -7,11 +7,13 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="r.orderapplication.MainActivity">
+    tools:context="r.orderapplication.MainActivity"
+   >
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:id="@+id/appBarLayout"
 
         >
         <include
@@ -32,19 +34,25 @@
         </android.support.design.widget.TabLayout>
 
     </android.support.design.widget.AppBarLayout>
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/viewPager">
 
-
-    </android.support.v4.view.ViewPager>
     <Button
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="Visa beställning"
         android:layout_gravity="bottom|center"
         android:id="@+id/showOrder"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewPager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginTop="105dp"
+
+        >
+
+
+    </android.support.v4.view.ViewPager>
 </FrameLayout>
 
 

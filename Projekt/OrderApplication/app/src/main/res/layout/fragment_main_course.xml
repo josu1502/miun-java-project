@@ -5,13 +5,20 @@
     tools:context="r.orderapplication.Main_course">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:id="@+id/mainCourse"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tableLay_mainCourse"
+        android:stretchColumns="0,1"
+        >
+    </TableLayout>
+    </ScrollView>
 
 </FrameLayout>

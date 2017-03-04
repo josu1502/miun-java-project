@@ -6,12 +6,12 @@ package r.orderapplication.orderRest;
 
 public class OrderEntity {
     private Long id;
-    private String tableNr;
-    private String orderTime;
-    private String courseType;
+    private Integer tableNr;
     private String courseName;
+    private String courseType;
     private Integer amount;
     private Boolean finished;
+    private String orderTime;
 
     public Long getId() {
         return id;
@@ -21,28 +21,12 @@ public class OrderEntity {
         this.id = id;
     }
 
-    public String getTableNr() {
+    public Integer getTableNr() {
         return tableNr;
     }
 
-    public void setTableNr(String tableNr) {
+    public void setTableNr(Integer tableNr) {
         this.tableNr = tableNr;
-    }
-
-    public String getOrderTime() {
-        return orderTime;
-    }
-
-    public void setOrderTime(String orderTime) {
-        this.orderTime = orderTime;
-    }
-
-    public String getCourseType() {
-        return courseType;
-    }
-
-    public void setCourseType(String courseType) {
-        this.courseType = courseType;
     }
 
     public String getCourseName() {
@@ -51,6 +35,14 @@ public class OrderEntity {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public String getCourseType() {
+        return courseType;
+    }
+
+    public void setCourseType(String courseType) {
+        this.courseType = courseType;
     }
 
     public Integer getAmount() {
@@ -67,5 +59,13 @@ public class OrderEntity {
 
     public void setFinished(Boolean finished) {
         this.finished = finished;
+    }
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
     }
 }

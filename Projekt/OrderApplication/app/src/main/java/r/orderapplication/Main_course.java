@@ -22,30 +22,31 @@ import r.orderapplication.dinnerRest.DinnerStatusListener;
  */
 public class Main_course extends Fragment implements DinnerStatusListener  {
 
+    public static View fragView_MainCourse;
 
     public Main_course() {
 
     }
-    View fragView;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         LayoutInflater lf=getActivity().getLayoutInflater();
-        fragView = lf.inflate(R.layout.fragment_main_course, container, false);
+        fragView_MainCourse = lf.inflate(R.layout.fragment_main_course, container, false);
         setSettings();
-        return fragView;
+        return fragView_MainCourse;
     }
 
     public void setSettings() {
-        if ( fragView == null){
+        if ( fragView_MainCourse == null){
             Log.d(this.getClass().toString(), "Fragment has never been created. fragView is null in setSettings");
             return;
         }
         Log.d(this.getClass().toString(), "Fragment is created. Lets change the text!");
 
-        DinnerClient dc = new DinnerClient("http://10.250.110.164:8080/AntonsHemsida/webresources/");
+        DinnerClient dc = new DinnerClient("http://10.250.110.133:8080/AntonsHemsida/webresources/");
         dc.setStatusListener(this);
         dc.fetchDinnerList();
     }
@@ -61,9 +62,6 @@ public class Main_course extends Fragment implements DinnerStatusListener  {
         måltid+="\n";
         måltid+=list.get(1).getPrice();
         måltid+=":-";
-
-        TextView textView = (TextView)fragView.findViewById(R.id.mainCourse);
-        textView.setText(måltid);
     }
 
     @Override
