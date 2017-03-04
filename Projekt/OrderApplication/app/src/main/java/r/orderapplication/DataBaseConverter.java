@@ -12,7 +12,7 @@ import static r.orderapplication.MainActivity.tableNumber;
  * Created by Alex on 2017-03-04.
  */
 
-public class DataBaseConverter {
+    public class DataBaseConverter {
     private List<DinnerEntity> originalList;
     private List<OrderEntity> orderAppetList;
     private List<DinnerEntity> appetizerList;
@@ -47,10 +47,7 @@ public class DataBaseConverter {
                 oe.setCourseName(de.get(i).getName());
                 oe.setCourseType(de.get(i).getType());
                 getOrderMainList().add(oe);
-
             }
-
-
         }
     }
 

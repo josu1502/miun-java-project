@@ -27,7 +27,7 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_order);
 
-        orderClient = new OrderClient("http://192.168.1.7:8080/AntonsHemsida/webresources/"); /* Alex IP: */
+        orderClient = new OrderClient("http:10.250.110.133:8080/AntonsHemsida/webresources/"); /* Alex IP: */
         orderClient.setStatusListener(this);
         orderClient.fetchOrderList();
 
@@ -44,7 +44,7 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
                 oe.setCourseType("appetizer");
                 oe.setCourseName("Oxbringa");
                 oe.setAmount(2);
-                oe.setFinished(true);
+                oe.setFinished(false);
 
                 orderClient.postOrder(oe);
 

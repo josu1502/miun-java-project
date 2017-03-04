@@ -42,9 +42,7 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
     Button button;
-    OrderClient orderClient;
     public static DinnerClient dc;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +145,7 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
             tableRow.addView(btnMinus);
 
             TextView count = new TextView(this);
-            count.setText(appetOrderList.get(i).getAmount().toString());
+            //count.setText(appetOrderList.get(i).getAmount().toString());
             tableRow.addView(count);
 
             Button btnPlus = new Button(this);
