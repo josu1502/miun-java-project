@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
 
     public static TableLayout unFinishedTable;
     public static TableLayout finishedTable;
+    public static DataBaseConverter dbConverter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
         tableRowTitle.addView(status);
         unFinishedTable.addView(tableRowTitle);
 
-        DataBaseConverter dbConverter = new DataBaseConverter(oe.orderEntities);
+        dbConverter = new DataBaseConverter(oe.orderEntities);
         List<OrderEntity> unfinishedOrders = dbConverter.getUnfinishedOrders();
 
         /*skapar tabell för ej färdiga ordrar*/

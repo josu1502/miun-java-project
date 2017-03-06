@@ -2,9 +2,15 @@ package com.example.and12edi.kitchenaplication;
 
 import com.example.and12edi.kitchenaplication.rest.OrderEntity;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+
+import static com.example.and12edi.kitchenaplication.MainActivity.orderClient;
 
 /**
  * Created by Mvangman on 2017-03-04.
@@ -18,6 +24,7 @@ public class DataBaseConverter {
 
     DataBaseConverter(List<OrderEntity> oe){
         this.orderList = oe;
+
         finishedOrders = new ArrayList<>();
         unfinishedOrders = new ArrayList<>();
 
