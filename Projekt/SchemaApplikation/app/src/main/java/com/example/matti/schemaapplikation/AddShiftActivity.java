@@ -18,17 +18,18 @@ import java.util.List;
 
 import static com.example.matti.schemaapplikation.MainActivity.*;
 
-public class AddShiftActivity extends AppCompatActivity implements Runnable{
+public class AddShiftActivity extends AppCompatActivity{
     //SchemaClient schemaClient;
     public EditText namnEditText;
-    public ListView displayDayWorkList;
-    public List<String> dayWorkList;
-    public ArrayAdapter adapter;
+    public static ArrayAdapter adapter;
+    public boolean mustStop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_shift);
+
+        mustStop=false;
 
         /*Set date text on top of activity*/
         TextView weekTextView = (TextView) findViewById(R.id.weekTextView);
@@ -41,12 +42,10 @@ public class AddShiftActivity extends AppCompatActivity implements Runnable{
         passTextView.setText(pass + "pass");
 
         /*Bygg en ny lista utifrån datum*/
-        displayDayWorkList = (ListView) findViewById(R.id.workList);
-        dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
+        ListView displayDayWorkList = displayDayWorkList = (ListView) findViewById(R.id.workList);
+        List<String> dayWorkList  = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayWorkList);
         displayDayWorkList.setAdapter(adapter);
-
-        (new Thread(new AddShiftActivity())).start();
 
 
         /*List Item click listener*/
@@ -117,21 +116,5 @@ public class AddShiftActivity extends AppCompatActivity implements Runnable{
         super.onStop();
         //Save Values Here
         schemaClient.fetchSchemaList(); //To update when posting
-    }
-
-    @Override
-    public void run() {
-        while(true) {
-        /*Bygg en ny lista utifrån datum*/
-            //displayDayWorkList = (ListView) findViewById(R.id.workList);
-            dayWorkList = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
-            //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayWorkList);
-            //displayDayWorkList.setAdapter(adapter);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }

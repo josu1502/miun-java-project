@@ -1,4 +1,4 @@
-package beans.util;
+package classes.JSFpages.util;
 
 import java.util.List;
 import javax.faces.application.FacesMessage;

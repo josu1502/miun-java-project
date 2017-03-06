@@ -17,6 +17,7 @@ import com.example.and12edi.kitchenaplication.rest.OrderEntities;
 import com.example.and12edi.kitchenaplication.rest.OrderEntity;
 import com.example.and12edi.kitchenaplication.rest.OrderStatusListener;
 
+import java.util.Collections;
 import java.util.List;
 
 import layout.done.DeliveredMeals;
@@ -35,12 +36,13 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
 
     public static TableLayout unFinishedTable;
     public static TableLayout finishedTable;
+    public static DataBaseConverter dbConverter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
-        orderClient = new OrderClient("http://10.250.111.19:8080/AntonsHemsida/webresources/");
+        orderClient = new OrderClient("http://10.250.111.51:8080/AntonsHemsida/webresources/");
         orderClient.setStatusListener(this);
         (new Thread(MainActivity.this)).start();
 
@@ -61,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
     @Override
     public void orderListRecived(OrderEntities oe) {
         orderList = oe.orderEntities;
-        System.out.println(orderList.size());
         unFinishedTable = (TableLayout) fragView.findViewById(R.id.tableLayout2);
         finishedTable = (TableLayout) deliveredView.findViewById(R.id.tableLayout);
         unFinishedTable.removeAllViews();
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
         tableRowTitle.addView(status);
         unFinishedTable.addView(tableRowTitle);
 
-        DataBaseConverter dbConverter = new DataBaseConverter(oe.orderEntities);
+        dbConverter = new DataBaseConverter(oe.orderEntities);
         List<OrderEntity> unfinishedOrders = dbConverter.getUnfinishedOrders();
 
         /*skapar tabell för ej färdiga ordrar*/
@@ -213,8 +214,7 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
     public void run() {
         while(true){
             orderClient.fetchOrderList();
-
-
+            
             try {
                 Thread.sleep(15000);
             } catch (InterruptedException e) {

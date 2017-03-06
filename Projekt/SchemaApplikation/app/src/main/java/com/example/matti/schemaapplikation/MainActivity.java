@@ -16,6 +16,8 @@ import com.example.matti.schemaapplikation.rest.SchemaStatusListener;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static com.example.matti.schemaapplikation.AddShiftActivity.adapter;
+
 public class MainActivity extends AppCompatActivity  implements SchemaStatusListener, Runnable {
 
     public static SchemaClient schemaClient;
@@ -33,9 +35,9 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke mobil IP: */
+        //schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke mobil IP: */
         //schemaClient = new SchemaClient("http://10.250.115.39:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
-        //schemaClient = new SchemaClient("http://192.168.0.106:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
+        schemaClient = new SchemaClient("http://192.168.0.106:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
         schemaClient.setStatusListener(this);
         (new Thread(new MainActivity())).start();
 
@@ -142,7 +144,6 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
         friDinner.setText(schemaList.getDay("Fredag", "Middag", weekNumber, yearNumber));
         satDinner.setText(schemaList.getDay("Lördag", "Middag", weekNumber, yearNumber));
         sunDinner.setText(schemaList.getDay("Söndag", "Middag", weekNumber, yearNumber));
-
     }
 
     @Override
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
         while(true) {
             //android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
             schemaClient.fetchSchemaList();
+
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
