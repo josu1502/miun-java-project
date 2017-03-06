@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beans;
+package beans.JSFpages;
 
-import beans.entities.PosterEntity;
+import beans.entities.LunchEntity;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Joakim
  */
 @Stateless
-public class PosterEntityFacade extends AbstractFacade<PosterEntity> {
+public class LunchEntityFacade extends AbstractFacade<LunchEntity> {
 
     @PersistenceContext(unitName = "AntonsHemsidaPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class PosterEntityFacade extends AbstractFacade<PosterEntity> {
         return em;
     }
 
-    public PosterEntityFacade() {
-        super(PosterEntity.class);
+    public LunchEntityFacade() {
+        super(LunchEntity.class);
     }
     
 }

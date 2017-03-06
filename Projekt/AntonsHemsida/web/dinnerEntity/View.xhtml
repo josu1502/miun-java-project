@@ -12,15 +12,14 @@
             <h:form id="DinnerEntityViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{dinnerEntityController.selected != null}">
-                        <h:outputText value="#{bundle.ViewDinnerEntityLabel_id}"/>
-                        <h:outputText value="#{dinnerEntityController.selected.id}" title="#{bundle.ViewDinnerEntityTitle_id}"/>
                         <h:outputText value="#{bundle.ViewDinnerEntityLabel_name}"/>
                         <h:outputText value="#{dinnerEntityController.selected.name}" title="#{bundle.ViewDinnerEntityTitle_name}"/>
                         <h:outputText value="#{bundle.ViewDinnerEntityLabel_description}"/>
                         <h:outputText value="#{dinnerEntityController.selected.description}" title="#{bundle.ViewDinnerEntityTitle_description}"/>
                         <h:outputText value="#{bundle.ViewDinnerEntityLabel_price}"/>
                         <h:outputText value="#{dinnerEntityController.selected.price}" title="#{bundle.ViewDinnerEntityTitle_price}"/>
-
+                        <h:outputText value="#{bundle.ViewDinnerEntityLabel_type}"/>
+                        <h:outputText value="#{dinnerEntityController.selected.type}" title="#{bundle.ViewDinnerEntityTitle_type}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="DinnerEntityViewDialog.hide()"/>
                 </h:panelGroup>

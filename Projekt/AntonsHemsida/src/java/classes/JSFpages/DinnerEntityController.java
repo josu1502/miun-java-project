@@ -1,8 +1,9 @@
-package beans;
+package classes.JSFpages;
 
 import beans.entities.DinnerEntity;
-import beans.util.JsfUtil;
-import beans.util.JsfUtil.PersistAction;
+import classes.JSFpages.util.JsfUtil;
+import classes.JSFpages.util.JsfUtil.PersistAction;
+import beans.JSFpages.DinnerEntityFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -23,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class DinnerEntityController implements Serializable {
 
     @EJB
-    private beans.DinnerEntityFacade ejbFacade;
+    private beans.JSFpages.DinnerEntityFacade ejbFacade;
     private List<DinnerEntity> items = null;
     private DinnerEntity selected;
 

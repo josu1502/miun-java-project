@@ -12,14 +12,14 @@
             <h:form id="DinnerEntityEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{dinnerEntityController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditDinnerEntityLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{dinnerEntityController.selected.id}" title="#{bundle.EditDinnerEntityTitle_id}" />
                         <p:outputLabel value="#{bundle.EditDinnerEntityLabel_name}" for="name" />
                         <p:inputText id="name" value="#{dinnerEntityController.selected.name}" title="#{bundle.EditDinnerEntityTitle_name}" />
                         <p:outputLabel value="#{bundle.EditDinnerEntityLabel_description}" for="description" />
                         <p:inputText id="description" value="#{dinnerEntityController.selected.description}" title="#{bundle.EditDinnerEntityTitle_description}" />
                         <p:outputLabel value="#{bundle.EditDinnerEntityLabel_price}" for="price" />
                         <p:inputText id="price" value="#{dinnerEntityController.selected.price}" title="#{bundle.EditDinnerEntityTitle_price}" />
+                        <p:outputLabel value="#{bundle.EditDinnerEntityLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{dinnerEntityController.selected.type}" title="#{bundle.EditDinnerEntityTitle_type}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{dinnerEntityController.update}" value="#{bundle.Save}" update="display,:DinnerEntityListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DinnerEntityEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="DinnerEntityEditDialog.hide()"/>

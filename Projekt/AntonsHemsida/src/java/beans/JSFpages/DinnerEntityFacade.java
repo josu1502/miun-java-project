@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beans;
+package beans.JSFpages;
 
 import beans.entities.DinnerEntity;
 import javax.ejb.Stateless;
