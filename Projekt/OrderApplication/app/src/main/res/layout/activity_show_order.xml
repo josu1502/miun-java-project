@@ -18,4 +18,9 @@
         android:id="@+id/PutOrder"
        android:layout_gravity="bottom|center"
          />
+
+    <TextView
+        android:id="@+id/orderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="464dp" />
 </FrameLayout>

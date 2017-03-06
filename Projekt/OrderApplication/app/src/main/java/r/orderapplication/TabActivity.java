@@ -2,7 +2,6 @@ package r.orderapplication;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,18 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import r.orderapplication.dinnerRest.DinnerClient;
 import r.orderapplication.dinnerRest.DinnerEntities;
 import r.orderapplication.dinnerRest.DinnerEntity;
 import r.orderapplication.dinnerRest.DinnerStatusListener;
-import r.orderapplication.orderRest.OrderClient;
 import r.orderapplication.orderRest.OrderEntity;
 
 import static r.orderapplication.Appetizer.fragView;
@@ -31,7 +29,8 @@ import static r.orderapplication.Main_course.fragView_MainCourse;
 
 public class TabActivity extends AppCompatActivity implements DinnerStatusListener{
 
-
+    public static List<TextView> listAppetAmount = new ArrayList<>();
+    public static List<TextView> listMaincAmount = new ArrayList<>();
     TextView textView;
     TableLayout tableLayout;
     public TableRow tableRow;
@@ -43,12 +42,13 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
     ViewPagerAdapter viewPagerAdapter;
     Button button;
     public static DinnerClient dc;
+    public static DataBaseConverter dbc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
-        dc = new DinnerClient("http://10.250.110.133:8080/AntonsHemsida/webresources/");
+        dc = new DinnerClient("http://10.250.112.21:8080/AntonsHemsida/webresources/");
         dc.setStatusListener(this);
         dc.fetchDinnerList();
 
@@ -81,7 +81,7 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
         List<DinnerEntity> dinnerList = de.dinnerEntity;
         System.out.println(dinnerList.size());
         tableLayout = (TableLayout) fragView.findViewById(R.id.tableLay_appetizer);
-        DataBaseConverter dbc = new DataBaseConverter(dinnerList);
+        dbc = new DataBaseConverter(dinnerList);
 
         /*Hämtar och skapar tabell från Databasen för förrätter*/
         List<DinnerEntity> appetList = dbc.getAppetizerList();
@@ -110,19 +110,23 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
 
             TextView count = new TextView(this);
             count.setText(appetOrderList.get(i).getAmount().toString());
+            listAppetAmount.add(count);
             tableRow.addView(count);
             count.setTextSize(22);
 
-            DecreaseOrderAmount doa = new DecreaseOrderAmount(appetOrderList.get(i));
+            DecreaseAppetAmount doa = new DecreaseAppetAmount(appetOrderList.get(i), i);
             btnMinus.setOnClickListener(doa);
 
             Button btnPlus = new Button(this);
             btnPlus.setText("+");
+            IncreaseAppetAmount ioa = new IncreaseAppetAmount(appetOrderList.get(i),i);
+           btnPlus.setOnClickListener(ioa);
             tableRow.addView(btnPlus);
 
             tableLayout.addView(tableRow);
         }
         List<DinnerEntity> mainCourseList = dbc.getMainCourseList();
+        List<OrderEntity> mainC_Orderlist = dbc.getOrderMainList();
         tableLayout_mCourse = (TableLayout) fragView_MainCourse.findViewById(R.id.tableLay_mainCourse);
         for (int i = 0; i < mainCourseList.size(); i++) {
 
@@ -141,14 +145,20 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
             tableRow.addView(mainC_Price);
 
             Button btnMinus = new Button(this);
+            DecreaseMainAmount dma = new DecreaseMainAmount(mainC_Orderlist.get(i), i);
+
+            btnMinus.setOnClickListener(dma);
             btnMinus.setText("-");
             tableRow.addView(btnMinus);
 
             TextView count = new TextView(this);
-            //count.setText(appetOrderList.get(i).getAmount().toString());
+            count.setText(appetOrderList.get(i).getAmount().toString());
+            listMaincAmount.add(count);
             tableRow.addView(count);
 
             Button btnPlus = new Button(this);
+            IncreaseMainAmount ima = new IncreaseMainAmount(mainC_Orderlist.get(i), i);
+            btnPlus.setOnClickListener(ima);
             btnPlus.setText("+");
             tableRow.addView(btnPlus);
 
@@ -161,10 +171,12 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
 
     }
 
-    private class DecreaseOrderAmount implements View.OnClickListener {
+    private class DecreaseAppetAmount implements View.OnClickListener {
         private OrderEntity orderEntity;
-        public DecreaseOrderAmount(OrderEntity oe) {
+        private Integer textViewPosition;
+        public DecreaseAppetAmount(OrderEntity oe, Integer index) {
             this.orderEntity = oe;
+            this.textViewPosition = index;
         }
 
         @Override
@@ -172,6 +184,59 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
             if(orderEntity.getAmount() > 0)
             {
                 orderEntity.setAmount(orderEntity.getAmount() - 1);
+                listAppetAmount.get(textViewPosition).setText(orderEntity.getAmount().toString());
+
+            }
+        }
+    }
+
+    private class IncreaseAppetAmount implements View.OnClickListener{
+
+        private OrderEntity orderEntity;
+        private Integer textViewPosition;
+        public IncreaseAppetAmount(OrderEntity oe, Integer index){this.orderEntity = oe; this.textViewPosition = index;}
+
+        @Override
+        public void onClick(View view) {
+            if(orderEntity.getAmount() >= 0){
+
+                orderEntity.setAmount(orderEntity.getAmount() + 1);
+                listAppetAmount.get(textViewPosition).setText(orderEntity.getAmount().toString());
+            }
+        }
+    }
+
+    private class DecreaseMainAmount implements View.OnClickListener {
+        private OrderEntity orderEntity;
+        private Integer textViewPosition;
+        public DecreaseMainAmount(OrderEntity oe, int index) {
+                this.orderEntity = oe;
+                this.textViewPosition = index;
+            }
+            @Override
+            public void onClick(View view) {
+                if(orderEntity.getAmount() > 0)
+                {
+                    orderEntity.setAmount(orderEntity.getAmount() - 1);
+                    listMaincAmount.get(textViewPosition).setText(orderEntity.getAmount().toString());
+
+                }
+            }
+        }
+
+    private class IncreaseMainAmount implements View.OnClickListener {
+        private OrderEntity orderEntity;
+        private Integer textViewPosition;
+        public IncreaseMainAmount(OrderEntity oe, int index) {
+            this.orderEntity = oe;
+            this.textViewPosition = index;
+        }
+        @Override
+        public void onClick(View view) {
+            if(orderEntity.getAmount() >= 0)
+            {
+                orderEntity.setAmount(orderEntity.getAmount() + 1);
+                listMaincAmount.get(textViewPosition).setText(orderEntity.getAmount().toString());
 
             }
         }

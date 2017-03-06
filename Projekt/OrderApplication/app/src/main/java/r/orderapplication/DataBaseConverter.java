@@ -28,7 +28,7 @@ import static r.orderapplication.MainActivity.tableNumber;
         mainCourseList= new ArrayList<>();
         orderMainList = new ArrayList<>();
         for(int i =0; i < de.size(); i++) {
-            if (de.get(i).getType().equals("Förätt")) {
+            if (de.get(i).getType().equals("Förrätt")) {
                 appetizerList.add(de.get(i));
                 OrderEntity oe = new OrderEntity();
                 oe.setTableNr(tableNumber);
@@ -38,7 +38,7 @@ import static r.orderapplication.MainActivity.tableNumber;
                 oe.setCourseType(de.get(i).getType());
                 orderAppetList.add(oe);
             }
-            if (de.get(i).getType().equals("Huvudrätt")) {
+            if (de.get(i).getType().equals("Varmrätt")) {
                 mainCourseList.add(de.get(i));
                 OrderEntity oe = new OrderEntity();
                 oe.setTableNr(tableNumber);
