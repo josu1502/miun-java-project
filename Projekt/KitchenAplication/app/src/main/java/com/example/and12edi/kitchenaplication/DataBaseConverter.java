@@ -3,6 +3,7 @@ package com.example.and12edi.kitchenaplication;
 import com.example.and12edi.kitchenaplication.rest.OrderEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,8 +28,10 @@ public class DataBaseConverter {
                 unfinishedOrders.add(oe.get(i));
             }
         }
+        Collections.sort(orderList, new TimeComparator());
+        Collections.sort(finishedOrders, new TimeComparator());
+        Collections.sort(unfinishedOrders, new TimeComparator());
     }
-
     public List<OrderEntity> getOrderList() {
         return orderList;
     }
