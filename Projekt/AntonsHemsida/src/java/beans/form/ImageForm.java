@@ -19,7 +19,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.Part;
 import java.nio.file.Path;
-import javax.ws.rs.core.Configuration;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -28,19 +30,19 @@ import javax.ws.rs.core.Configuration;
 @Named(value = "imageForm")
 @RequestScoped
 public class ImageForm {
+
     private Part image;
     private String description;
-    private final String localPath = "C:\\Users\\maski\\OneDrive\\Documents\\";
-    private final String imagePath = localPath + "GitHub\\miun-java-project\\Projekt\\Images\\web"; 
+    private final String localPath = "\\Users\\maski\\OneDrive\\Documents\\";
+    private final String imagePath = localPath + "GitHub\\miun-java-project\\Projekt\\Images\\web\\";
     @PersistenceContext(unitName = "AntonsHemsidaPU")
     private EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;
-    
-    
+
     public ImageForm() {
     }
-    
+
     public Part getImage() {
         return image;
     }
@@ -56,51 +58,60 @@ public class ImageForm {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    private static String getImageFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] items = contentDisp.split(";");
-        for(String s: items) {
-            if(s.trim().startsWith("filename")){
-                return s.substring(s.indexOf("=") + 2, s.length() - 1);
-            }
-        }
-        return "hittar inte filnamnet";
+
+    private String getImagesFileName() {
+        String fileName = "image";
+        Random random = new Random();
+        fileName += String.format("%1$06x", random.nextInt(4000));
+        return fileName;
     }
-    
+
+    public String delete(Long id) {
+        try {
+            utx.begin();
+            TypedQuery<Image> imageListQuery = em.createNamedQuery("Image.removeById", Image.class);
+            imageListQuery.setParameter("IMGID", id);
+            imageListQuery.executeUpdate();
+            System.out.println(imageListQuery.toString());
+            utx.commit();
+            return "imageHandler.xhtml";
+
+        } catch (Exception ex) {
+            Logger.getLogger(ImageForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "error.xhtml";
+    }
+
     public String save() {
-        if(image != null) {
-            try(InputStream input = image.getInputStream()) {
-                Path outPath = FileSystems.getDefault().getPath(imagePath, getImageFileName(image));
-                while(Files.exists(outPath)) {
-                    outPath = FileSystems.getDefault().getPath(imagePath, getImageFileName(image));
+        if (image != null) {
+            try (InputStream input = image.getInputStream()) {
+                Path outPath = FileSystems.getDefault().getPath(imagePath, getImagesFileName());
+                while (Files.exists(outPath)) {
+                    outPath = FileSystems.getDefault().getPath(imagePath, getImagesFileName());
                 }
                 Files.copy(input, outPath);
                 Image img = new Image();
                 img.setDescription(description);
                 img.setUrl(outPath.getFileName().toString());
-                persist(image);
-            } catch (IOException ex) {
+                persist(img);
+            } catch (Exception ex) {
                 return "error.xthml";
             }
         }
-        return "saved.xhtml";
+        
+        return "imageHandler.xhtml";
     }
-    
-    
+
     public void persist(Object object) {
         try {
             utx.begin();
             em.persist(object);
             utx.commit();
         } catch (Exception e) {
+
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
             throw new RuntimeException(e);
         }
     }
 
-    
-    
-    
-    
 }

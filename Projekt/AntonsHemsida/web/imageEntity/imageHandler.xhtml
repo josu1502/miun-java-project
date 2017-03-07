@@ -1,16 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <h:form enctype="multipart/form-data">
-            <h:inputTextarea value="#{imageForm.description}"/>
-            <h:inputFile value="#{imageForm.image}"/>
-            <h:commandButton value="Ladda upp" action="#{imageForm.save()}"/>
-        </h:form>
-    </h:body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:view locale="sv_SE" encoding="UTF-8" contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <title>Facelet Title</title>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            </f:facet>
+            <script type="text/javascript">
+                function updateImage(elementId) {
+                    var imageElement = document.getElementById(elementId);
+                    imageElement.src = imageElement.src + '#';
+                    return true;
+                }
+            </script>           
+        </h:head>
+        <h:body>
+
+            <div id="bildvisning">
+                <p:layout fullPage="true">
+
+                    <p:layoutUnit position="center" size="1000" resizable="true" closable="true" collapsible="true">
+                        <h:form acceptcharset="UTF-8" enctype="multipart/form-data">
+                            Bildtext:<br/>
+                            <h:inputTextarea  value="#{imageForm.description}"/><br/>
+                            Välj bild:<br/>
+                            <h:inputFile value="#{imageForm.image}"/><br/><br/>
+                            <h:commandButton value="Ladda upp" action="#{imageForm.save()}"/><br/><br/> 
+                            <p:carousel circular="true" autoPlayInterval="1000000" value="#{imageList.images}" headerText="Uppladade bilder" var="image" itemStyle="text-align:center">
+                                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" styleClass="ui-panelgrid-blank">
+                                    <f:facet name="header">
+                                        <h:commandLink value="" action="#{imageForm.delete(image.id)}">
+                                            <img id="img#{image.id}" width="200px" height="200px" src="/Images/#{image.url}" 
+                                                 onerror="setTimeout(updateImage, 500, 'img#{image.id}'); return true;"/> 
+                                        </h:commandLink>
+                                    </f:facet>
+
+                                    <h:outputText value="Description:" />
+                                    <h:outputText value="#{image.description}" />
+
+                                </p:panelGrid>
+
+                                <f:facet name="footer">
+                                    Totalt uppladdade bilder: #{imageList.images.size()} .
+                                </f:facet>                        
+                            </p:carousel>
+                        </h:form>
+                    </p:layoutUnit>
+                    <p:layoutUnit size="100" position="north">
+                        <h2>
+                            Redigera innehållet under fliken Underhållning på hemsidan
+                        </h2>
+                    </p:layoutUnit>
+
+                </p:layout>
+            </div>
+        </h:body>
+    </f:view>
 </html>
 

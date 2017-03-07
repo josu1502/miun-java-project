@@ -37,20 +37,20 @@
     </android.support.design.widget.AppBarLayout>
 
     <Button
+        android:id="@+id/showOrder"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Visa beställning"
         android:layout_gravity="bottom|center"
-        android:id="@+id/showOrder"/>
+        android:background="#dfdfdf"
+        android:text="Visa beställning" />
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewPager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_marginTop="105dp"
 
-        >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
     </android.support.v4.view.ViewPager>
