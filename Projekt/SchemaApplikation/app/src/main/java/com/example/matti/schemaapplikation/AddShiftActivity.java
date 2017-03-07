@@ -4,7 +4,10 @@ import android.content.Context;
 import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -58,17 +61,6 @@ public class AddShiftActivity extends AppCompatActivity {
         dateTextView.setText(sdf.format(cal.getTime()));
         passTextView.setText(pass + "pass");
 
-        /*Skapa tabell med de som jobbar just denna dag*/
-
-        //schemaList.getTables(day, pass, weekNumber, yearNumber, this);
-        /*tables = schemaList.getTables(day, pass, weekNumber, yearNumber, this);
-        for (int i = 0; i < tables.size(); i++) {
-            table.addView(tables.get(i));
-        }*/
-
-        //(new Thread(new AddShiftActivity())).start();
-
-
         /*Textfältet där vi hämtar namnet ifrån*/
         final TextView nameTextView = (TextView) findViewById(R.id.editText);
 
@@ -78,6 +70,7 @@ public class AddShiftActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String employee = nameTextView.getText().toString();
+                InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 if (!employee.equals("") && !employee.equals("Namn")) {
                 /*Create entity example*/
@@ -93,8 +86,14 @@ public class AddShiftActivity extends AppCompatActivity {
 
                     System.out.println("Försöker skicka");
 
-                    finish();
+
                 }
+
+                in.hideSoftInputFromWindow(namnEditText
+                                .getApplicationWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+
+                nameTextView.setText("Namn");
 
             }
         });
@@ -105,6 +104,43 @@ public class AddShiftActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 namnEditText.setText("");
+            }
+        });
+        /*Om man klickar på bocken/enter på det virituella tangentborder*/
+        namnEditText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction()!=KeyEvent.ACTION_DOWN)
+                    return false;
+                if(keyCode == KeyEvent.KEYCODE_ENTER ){
+                    InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                    String employee = nameTextView.getText().toString();
+
+                    if (!employee.equals("") && !employee.equals("Namn")) {
+                /*Create entity example*/
+                        SchemaEntity se = new SchemaEntity();
+                        se.setWeekDay(day);
+                        se.setWeekNumber(weekNumber);
+                        se.setYearNumber(yearNumber);
+                        se.setEmployee(employee);
+                        se.setPass(pass);
+                        se.setBooked(true);
+
+                        schemaClient.postSchema(se);
+
+                        System.out.println("Försöker skicka");
+                    }
+
+                    in.hideSoftInputFromWindow(namnEditText
+                                    .getApplicationWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+
+                    nameTextView.setText("Namn");
+
+                    return true;
+                }
+                return false;
             }
         });
 

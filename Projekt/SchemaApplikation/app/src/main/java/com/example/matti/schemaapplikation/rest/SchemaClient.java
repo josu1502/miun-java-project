@@ -61,6 +61,8 @@ public class SchemaClient {
                 if (resp != 2) {
                     throw new RuntimeException(resp_orig + ": Fel kod. Inte 200.");
                 }
+
+                schemaClient.fetchSchemaList();
             }
 
             @Override
