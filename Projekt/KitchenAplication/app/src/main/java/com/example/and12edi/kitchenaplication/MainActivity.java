@@ -149,6 +149,8 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
             Button done = new Button(this);
             done.setText("klar");
             done.setOnClickListener(new EditRow(unfinishedOrders.get(i)));
+            done.setBackgroundColor(Color.parseColor("#31b327"));
+            done.setTextColor(Color.WHITE);
             tableRow.addView(done);
 
             /*Lägger in en tablerow som sedan stoppas in i tablelayouten*/

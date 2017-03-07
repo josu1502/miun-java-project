@@ -17,7 +17,8 @@
             android:id="@+id/tableLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
             android:stretchColumns="0,1,2,3,4">
 
         </TableLayout>
