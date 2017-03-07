@@ -21,6 +21,7 @@
                 android:id="@+id/tabLayout"
                 app:tabMode="fixed"
                 app:tabGravity="fill"
+                app:tabMaxWidth="0dp"
                 app:tabTextAppearance="@style/tabTextSize">
 
                 </android.support.design.widget.TabLayout>

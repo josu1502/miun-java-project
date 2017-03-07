@@ -1,11 +1,20 @@
 package com.example.and12edi.kitchenaplication.rest;
 
+import android.content.Context;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.and12edi.kitchenaplication.MainActivity;
+import com.example.and12edi.kitchenaplication.R;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
+
+
 
 /**
  * Created by Mvangman on 2017-03-01.
@@ -14,6 +23,9 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 public class OrderClient {
     private OrderStatusListener osl;
     private OrderRest client;
+
+
+
 
     public OrderClient(String dataBaseURL) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -37,6 +49,7 @@ public class OrderClient {
             public void onResponse(Call<OrderEntities> call, Response<OrderEntities> response) {
                 OrderEntities orders = response.body();
                 osl.orderListRecived(orders);
+
             }
 
             @Override
@@ -44,8 +57,8 @@ public class OrderClient {
 
             }
         });
-    }
 
+    }
     public void postOrder(OrderEntity orderEntity) {
         Call<OrderEntity> call = client.createOrder(orderEntity);
         call.enqueue(new Callback<OrderEntity>() {
