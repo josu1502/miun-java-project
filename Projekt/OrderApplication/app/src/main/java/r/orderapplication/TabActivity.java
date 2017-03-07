@@ -48,7 +48,7 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
-        dc = new DinnerClient("http://10.250.112.21:8080/AntonsHemsida/webresources/");
+        dc = new DinnerClient("http://10.250.110.144:8080/AntonsHemsida/webresources/");
         dc.setStatusListener(this);
         dc.fetchDinnerList();
 
@@ -58,11 +58,12 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new Appetizer(), "Förrätt");
-        viewPagerAdapter.addFragments(new Main_course(), "Huvudrätt");
+        viewPagerAdapter.addFragments(new Main_course(), "Varmrätt");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
         tabLayout.setSelectedTabIndicatorHeight(10);
+        tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
 
         //appetizer.setText("heeeeeej");
         //fragment.setSettings();

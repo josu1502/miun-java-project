@@ -59,14 +59,15 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
         for(int i = 0; i < mainFinalOrder.size(); i++){
             if(mainFinalOrder.get(i).getAmount() > 0){
                 sb.append(mainFinalOrder.get(i).getAmount().toString());
-                sb.append(" st");
+                sb.append("st ");
                 sb.append(mainFinalOrder.get(i).getCourseName());
                 sb.append("\n");
             }
         }
+        orderTextView.setTextSize(22);
         orderTextView.setText(sb);
 
-        orderClient = new OrderClient("http://10.250.112.21:8080/AntonsHemsida/webresources/"); /* Alex IP: */
+        orderClient = new OrderClient("http://10.250.110.144:8080/AntonsHemsida/webresources/"); /* Alex IP: */
         orderClient.setStatusListener(this);
         orderClient.fetchOrderList();
 
