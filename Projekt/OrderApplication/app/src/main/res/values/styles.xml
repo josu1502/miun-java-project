@@ -3,12 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#B53F45</item>
-        <item name="colorPrimaryDark">#9F3030</item>
+        <item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryDark">#B32727</item>
         <item name="colorAccent">#212121</item>
     </style>
     <style name="tabTextSize" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">15dp</item>
     </style>
 
 </resources>
