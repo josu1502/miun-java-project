@@ -1,10 +1,12 @@
 package com.example.matti.schemaapplikation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -33,6 +35,20 @@ public class AddShiftActivity extends AppCompatActivity {
     private List<TableRow> tables;
     public static AddShiftActivityContext activityContext;
 
+    /*Kod för att gå bakåt om man klickar på tillbakaknappen uppe i "Activity bar"*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     @Override
     public void onStart(){
         super.onStart();
@@ -47,7 +63,8 @@ public class AddShiftActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_shift);
 
-
+        /*Lägger till en tillbakaknapp uppe i "Activity bar"*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mustStop=false;
 

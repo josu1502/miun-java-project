@@ -229,13 +229,12 @@
                     android:id="@+id/sunLunchView">
 
                     <TextView
+                        android:id="@+id/sunLunchText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/sunLunchText"
-                        android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="Stängt" />
+                        android:layout_weight="1"
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
 
@@ -266,13 +265,12 @@
                     android:id="@+id/monDinnerView">
 
                     <TextView
+                        android:id="@+id/monDinnerText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/monDinnerText"
-                        android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="Stängt" />
+                        android:layout_weight="1"
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -360,13 +358,12 @@
                     android:id="@+id/sunDinnerView">
 
                     <TextView
+                        android:id="@+id/sunDinnerText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/sunDinnerText"
-                        android:layout_weight="1"
                         android:layout_margin="2dp"
-                        android:textSize="12sp"
-                        android:text="Stängt" />
+                        android:layout_weight="1"
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
             </LinearLayout>
