@@ -2,14 +2,18 @@ package r.orderapplication;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.CountDownTimer;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -93,36 +97,41 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
             tableRow.setLayoutParams(lp);
 
-            TextView appetName = new TextView(this);
+            final TextView appetName = new TextView(this);
             appetName.setText(appetList.get(i).getName().toString());
-
-            appetName.setTextSize(22);
+            appetName.setTextSize(18);
 
             TextView appetPrice = new TextView(this);
             appetPrice.setText(appetList.get(i).getPrice().toString() + ":-");
-            appetPrice.setTextSize(22);
+            appetPrice.setTextSize(18);
 
             tableRow.addView(appetName);
             tableRow.addView(appetPrice);
 
-            Button btnMinus = new Button(this);
-            btnMinus.setText("-");
+            ImageButton btnMinus = new ImageButton(this);
+            btnMinus.setImageResource(R.mipmap.asremove);
             tableRow.addView(btnMinus);
+            btnMinus.getBackground().setAlpha(0);
+            //btnMinus.setTextColor(Color.RED);
+            //btnMinus.setTextSize(32);
 
             TextView count = new TextView(this);
             count.setText(appetOrderList.get(i).getAmount().toString());
             listAppetAmount.add(count);
             tableRow.addView(count);
-            count.setTextSize(22);
+            count.setTextSize(18);
+            //count.setGravity(Gravity.CENTER);
 
             DecreaseAppetAmount doa = new DecreaseAppetAmount(appetOrderList.get(i), i);
             btnMinus.setOnClickListener(doa);
 
-            Button btnPlus = new Button(this);
-            btnPlus.setText("+");
+            ImageButton btnPlus = new ImageButton(this);
+            btnPlus.setImageResource(R.mipmap.asadd);
             IncreaseAppetAmount ioa = new IncreaseAppetAmount(appetOrderList.get(i),i);
-           btnPlus.setOnClickListener(ioa);
+            btnPlus.setOnClickListener(ioa);
             tableRow.addView(btnPlus);
+            btnPlus.getBackground().setAlpha(0);
+            tableRow.setGravity(Gravity.CENTER);
 
             tableLayout.addView(tableRow);
         }
@@ -137,31 +146,37 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
 
             TextView mainC_Name = new TextView(this);
             mainC_Name.setText(mainCourseList.get(i).getName().toString());
+            mainC_Name.setTextSize(18);
 
             TextView mainC_Price = new TextView(this);
             mainC_Price.setText(mainCourseList.get(i).getPrice().toString() + ":-");
-
+            mainC_Price.setTextSize(18);
 
             tableRow.addView(mainC_Name);
             tableRow.addView(mainC_Price);
 
-            Button btnMinus = new Button(this);
+            ImageButton btnMinus = new ImageButton(this);
+            btnMinus.setImageResource(R.mipmap.asremove);
             DecreaseMainAmount dma = new DecreaseMainAmount(mainC_Orderlist.get(i), i);
-
             btnMinus.setOnClickListener(dma);
-            btnMinus.setText("-");
             tableRow.addView(btnMinus);
+            btnMinus.getBackground().setAlpha(0);
 
             TextView count = new TextView(this);
-            count.setText(appetOrderList.get(i).getAmount().toString());
+            count.setText(mainC_Orderlist.get(i).getAmount().toString());
             listMaincAmount.add(count);
             tableRow.addView(count);
+            count.setTextSize(18);
+            count.setGravity(Gravity.CENTER);
 
-            Button btnPlus = new Button(this);
+            ImageButton btnPlus = new ImageButton(this);
+            btnPlus.setImageResource(R.mipmap.asadd);
             IncreaseMainAmount ima = new IncreaseMainAmount(mainC_Orderlist.get(i), i);
             btnPlus.setOnClickListener(ima);
-            btnPlus.setText("+");
+
             tableRow.addView(btnPlus);
+            btnPlus.getBackground().setAlpha(0);
+            tableRow.setGravity(Gravity.CENTER);
 
             tableLayout_mCourse.addView(tableRow);
         }
@@ -186,7 +201,6 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
             {
                 orderEntity.setAmount(orderEntity.getAmount() - 1);
                 listAppetAmount.get(textViewPosition).setText(orderEntity.getAmount().toString());
-
             }
         }
     }

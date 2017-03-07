@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -8,17 +10,23 @@
     android:id="@+id/showorder">
 
     <Button
-        android:text="Lägg beställning"
+        android:id="@+id/PutOrder"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:id="@+id/PutOrder"
         android:layout_gravity="bottom|center"
-        />
+        android:background="#31b327"
+        android:text="Lägg beställning"
+        android:textColor="#ffffff" />
 
     <TextView
         android:id="@+id/orderTextView"
         android:layout_width="match_parent"
-        android:layout_height="464dp" />
+        android:layout_height="match_parent"
+        android:elevation="1dp"
+        android:lineSpacingExtra="5dp"
+        android:padding="10dp"
+        android:scrollbars="vertical"
+        android:textSize="18dp" />
 
 
 </FrameLayout>

@@ -1,9 +1,11 @@
 package r.orderapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,6 +47,8 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
 
         appetFinalOrder = dbc.getOrderAppetList();
         mainFinalOrder = dbc.getOrderMainList();
+        orderTextView.setMovementMethod(new ScrollingMovementMethod());
+
 
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < appetFinalOrder.size(); i++){
@@ -73,6 +77,7 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
 
         Button btn;
         btn = (Button) findViewById(R.id.PutOrder);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
