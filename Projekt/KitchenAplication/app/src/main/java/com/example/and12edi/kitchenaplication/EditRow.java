@@ -28,6 +28,6 @@ public class EditRow implements View.OnClickListener {
         orderClient.updateOrder(editThis);
         unFinishedTable.removeAllViews();
         finishedTable.removeAllViews();
-        orderClient.fetchOrderList();
+
     }
 }
