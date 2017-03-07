@@ -1,5 +1,6 @@
 package com.example.matti.schemaapplikation;
 
+import android.content.Context;
 import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.matti.schemaapplikation.rest.SchemaEntity;
@@ -18,16 +21,30 @@ import java.util.List;
 
 import static com.example.matti.schemaapplikation.MainActivity.*;
 
-public class AddShiftActivity extends AppCompatActivity{
+public class AddShiftActivity extends AppCompatActivity {
     //SchemaClient schemaClient;
     public EditText namnEditText;
     public static ArrayAdapter adapter;
     public boolean mustStop;
+    public static TableLayout table;
+    private List<TableRow> tables;
+    public static AddShiftActivityContext activityContext;
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        table = (TableLayout) findViewById(R.id.passTable);
+        activityContext = new AddShiftActivityContext(this);
+        addShiftActivityRunning = true;
+        schemaClient.fetchSchemaList();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_shift);
+
+
 
         mustStop=false;
 
@@ -41,33 +58,15 @@ public class AddShiftActivity extends AppCompatActivity{
         dateTextView.setText(sdf.format(cal.getTime()));
         passTextView.setText(pass + "pass");
 
-        /*Bygg en ny lista utifrån datum*/
-        ListView displayDayWorkList = displayDayWorkList = (ListView) findViewById(R.id.workList);
-        List<String> dayWorkList  = schemaList.getListByDay(day, pass, weekNumber, yearNumber);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayWorkList);
-        displayDayWorkList.setAdapter(adapter);
+        /*Skapa tabell med de som jobbar just denna dag*/
 
+        //schemaList.getTables(day, pass, weekNumber, yearNumber, this);
+        /*tables = schemaList.getTables(day, pass, weekNumber, yearNumber, this);
+        for (int i = 0; i < tables.size(); i++) {
+            table.addView(tables.get(i));
+        }*/
 
-        /*List Item click listener*/
-        displayDayWorkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*Ta index från ListView Item. Jämför med index i dayWorkIDList. Ta int från detta
-                index. Denna int representerar databaens index som skall ändras. Ändra detta objekt
-                till false/true på "Booked" */
-
-                /*Bygg en lista med index so m speglar index i ListView*/
-                List<Integer> dayWorkIDList = schemaList.getListByDayID(day, pass, weekNumber, yearNumber);
-
-                Integer changeThisPos = dayWorkIDList.get(position);
-
-                SchemaEntity se = schemaList.getSchemaList().get(changeThisPos);
-                se.setBooked(!se.getBooked());
-
-                schemaClient.updateSchema(se);
-
-            }
-        });
+        //(new Thread(new AddShiftActivity())).start();
 
 
         /*Textfältet där vi hämtar namnet ifrån*/
@@ -115,6 +114,8 @@ public class AddShiftActivity extends AppCompatActivity{
     protected void onStop() {
         super.onStop();
         //Save Values Here
+
+        addShiftActivityRunning = false;
         schemaClient.fetchSchemaList(); //To update when posting
     }
 }

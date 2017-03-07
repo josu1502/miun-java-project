@@ -7,6 +7,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
+import static com.example.matti.schemaapplikation.MainActivity.schemaClient;
+
 /**
  * Created by Joakim on 17-02-27.
  */
@@ -79,13 +81,16 @@ public class SchemaClient {
                 if (resp != 2) {
                     throw new RuntimeException(resp_orig + ": Fel kod. Inte 200.");
                 }
+                schemaClient.fetchSchemaList();
             }
 
             @Override
             public void onFailure(Call<SchemaEntity> call, Throwable t) {
 
             }
+
         });
+
     }
 
     public void deleteSchema(SchemaEntity schemaEntity) {

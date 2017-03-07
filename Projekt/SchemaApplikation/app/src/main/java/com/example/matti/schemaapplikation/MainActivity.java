@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
     public static TextView monDinner, tuesDinner, wedsDinner, thursDinner, friDinner, satDinner, sunDinner; /*Dinner text*/
     public static SchemaList schemaList;
 
+    public static Boolean addShiftActivityRunning = false;
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,9 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
 
         //schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke mobil IP: */
         //schemaClient = new SchemaClient("http://10.250.115.39:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
-        schemaClient = new SchemaClient("http://192.168.0.106:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
+        schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
         schemaClient.setStatusListener(this);
+        schemaClient.fetchSchemaList();
         (new Thread(new MainActivity())).start();
 
         /*Import textview to display current week*/
@@ -127,6 +130,9 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
         System.out.println("Uppkoppling/Updatering till databasen lyckad.");
 
         schemaList = new SchemaList(se.schemaEntity);
+        if (addShiftActivityRunning) {
+            schemaList.getTables(day, pass, weekNumber, yearNumber);
+        }
 
         /*Fyller lista med allt från databasen*/
         monLunch.setText(schemaList.getDay("Måndag", "Lunch", weekNumber, yearNumber));
@@ -158,7 +164,7 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
             schemaClient.fetchSchemaList();
 
             try {
-                Thread.sleep(500);
+                Thread.sleep(30000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

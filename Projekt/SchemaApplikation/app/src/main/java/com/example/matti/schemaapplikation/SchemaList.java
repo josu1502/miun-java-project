@@ -1,16 +1,25 @@
 package com.example.matti.schemaapplikation;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StrikethroughSpan;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import com.example.matti.schemaapplikation.rest.SchemaEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.matti.schemaapplikation.AddShiftActivity.activityContext;
+import static com.example.matti.schemaapplikation.AddShiftActivity.table;
+import static com.example.matti.schemaapplikation.MainActivity.schemaClient;
 
 /**
  * Created by Joakim on 17-03-01.
@@ -18,6 +27,7 @@ import java.util.List;
 
 public class SchemaList {
     private List<SchemaEntity> schemaList;
+    private List<TableRow> tableRowList = new ArrayList<>();
 
     public SchemaList(List<SchemaEntity> schemaList) {
         this.schemaList = schemaList;
@@ -87,5 +97,60 @@ public class SchemaList {
             }
         }
         return entityList;
+    }
+
+    public void getTables(String day, String pass, Integer week, Integer year) {
+        table.removeAllViews();
+        Context context = activityContext.getContext();
+        for (int i = 0; i < schemaList.size(); i++) {
+            if (year.equals(schemaList.get(i).getYearNumber())) {
+                if (week.equals(schemaList.get(i).getWeekNumber())) {
+                    if (pass.equals(schemaList.get(i).getPass())) {
+                        if (day.equals(schemaList.get(i).getWeekDay())) {
+                            TableRow row = new TableRow(context);
+
+                            TextView name = new TextView(context);
+
+
+                            Button checkButton = new Button(context);
+
+                            if (schemaList.get(i).getBooked() == true) {
+                                name.setText(schemaList.get(i).getEmployee());
+                                checkButton.setText("Ta bort");
+                            } else {
+                                name.setText(schemaList.get(i).getEmployee() + " - Borttagen");
+                                checkButton.setText("Lägg till");
+                            }
+
+                            checkButton.setOnClickListener(new buttonAction(schemaList.get(i)));
+
+                            row.addView(name);
+                            row.addView(checkButton);
+
+                            //tableRowList.add(row);
+                            table.addView(row);
+                        }
+                    }
+                }
+            }
+        }
+
+        //return tableRowList;
+    }
+
+    private class buttonAction implements View.OnClickListener {
+        SchemaEntity schemaEntity;
+
+        public buttonAction(SchemaEntity se) {
+            this.schemaEntity = se;
+        }
+
+        @Override
+        public void onClick(View v) {
+            this.schemaEntity.setBooked(!(this.schemaEntity.getBooked()));
+            schemaClient.updateSchema(this.schemaEntity);
+            //schemaClient.fetchSchemaList();
+
+        }
     }
 }

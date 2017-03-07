@@ -20,12 +20,12 @@
         android:layout_alignTop="@+id/postButton" />
 
     <Button
-        android:text="Lägg till"
+        android:id="@+id/postButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/postButton" />
+        android:text="Skapa ny" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,20 +52,35 @@
             android:gravity="center" />
 
         <TextView
-            android:text="Lunchpass"
+            android:id="@+id/passTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/passTextView"
+            android:background="#f44336"
             android:gravity="center"
-            android:background="#b53f45"
+            android:padding="2dp"
+            android:text="Lunchpass"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:padding="2dp" />
+            android:textSize="18sp" />
 
-        <ListView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/workList" />
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TableLayout
+                    android:id="@+id/passTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:stretchColumns="0">
+
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

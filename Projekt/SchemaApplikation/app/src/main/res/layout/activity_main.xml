@@ -25,12 +25,12 @@
                 android:layout_height="64dp">
 
                 <ImageButton
+                    android:id="@+id/weekMinus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:srcCompat="@mipmap/leftarrow"
-                    android:id="@+id/weekMinus"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@mipmap/leftarrowlight" />
 
                 <TextView
                     android:text="Vecka 8 , 2017"
@@ -43,12 +43,12 @@
                     android:layout_width="485dp" />
 
                 <ImageButton
+                    android:id="@+id/weekPlus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:srcCompat="@mipmap/rightarrow"
-                    android:id="@+id/weekPlus"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@mipmap/rightarrowlight" />
 
             </LinearLayout>
 
@@ -112,15 +112,15 @@
             </LinearLayout>
 
             <TextView
-                android:text="Lunchpass"
+                android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView16"
+                android:background="#f44336"
                 android:gravity="center"
-                android:background="#b53f45"
+                android:padding="2dp"
+                android:text="Lunchpass"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:padding="2dp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -242,15 +242,15 @@
             </LinearLayout>
 
             <TextView
-                android:text="Middagspass"
+                android:id="@+id/textView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView17"
+                android:background="#f44336"
                 android:gravity="center"
-                android:background="#b53f45"
+                android:padding="2dp"
+                android:text="Middagspass"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:padding="2dp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:orientation="horizontal"
