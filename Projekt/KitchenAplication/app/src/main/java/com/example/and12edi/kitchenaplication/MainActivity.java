@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -44,7 +45,15 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
-        orderClient = new OrderClient("http://10.250.111.29:8080/AntonsHemsida/webresources/");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolBar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            toolbar.setLogo(R.mipmap.ic_launcher);
+        }
+
+
+        orderClient = new OrderClient("http://192.168.0.106:8080/AntonsHemsida/webresources/");
         orderClient.setStatusListener(this);
         (new Thread(MainActivity.this)).start();
 
@@ -245,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
             orderClient.fetchOrderList();
             
             try {
-                Thread.sleep(500);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
