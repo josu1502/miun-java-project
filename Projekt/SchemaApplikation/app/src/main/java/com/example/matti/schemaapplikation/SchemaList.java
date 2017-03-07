@@ -9,6 +9,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StrikethroughSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -117,9 +118,13 @@ public class SchemaList {
                             if (schemaList.get(i).getBooked() == true) {
                                 name.setText(schemaList.get(i).getEmployee());
                                 checkButton.setText("Ta bort");
+
+                                checkButton.setBackgroundColor(Color.parseColor("#dfdfdf"));
                             } else {
                                 name.setText(schemaList.get(i).getEmployee() + " - Borttagen");
                                 checkButton.setText("Lägg till");
+                                checkButton.setTextColor(Color.parseColor("#ffffff"));
+                                checkButton.setBackgroundColor(Color.parseColor("#31b327"));
                             }
 
                             checkButton.setOnClickListener(new buttonAction(schemaList.get(i)));
@@ -127,6 +132,19 @@ public class SchemaList {
                             row.addView(name);
                             row.addView(checkButton);
 
+
+                            TableLayout.LayoutParams tableRowParams=
+                                    new TableLayout.LayoutParams
+                                            (TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
+
+                            int leftMargin=0;
+                            int topMargin=0;
+                            int rightMargin=0;
+                            int bottomMargin=8;
+
+                            tableRowParams.setMargins(leftMargin, topMargin, rightMargin, bottomMargin);
+
+                            row.setLayoutParams(tableRowParams);
                             //tableRowList.add(row);
                             table.addView(row);
                         }

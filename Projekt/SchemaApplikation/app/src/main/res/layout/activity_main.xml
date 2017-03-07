@@ -33,14 +33,14 @@
                     app:srcCompat="@mipmap/leftarrowlight" />
 
                 <TextView
-                    android:text="Vecka 8 , 2017"
-                    android:layout_height="match_parent"
                     android:id="@+id/weekText"
+                    android:layout_width="485dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
                     android:gravity="center"
-                    android:layout_width="485dp" />
+                    android:text="Vecka 8 , 2017"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
 
                 <ImageButton
                     android:id="@+id/weekPlus"

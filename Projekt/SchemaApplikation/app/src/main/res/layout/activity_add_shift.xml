@@ -8,16 +8,18 @@
     tools:context="com.example.matti.schemaapplikation.AddShiftActivity">
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Namn"
-        android:ems="10"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/editText"
+        android:layout_alignTop="@+id/postButton"
         android:layout_toStartOf="@+id/postButton"
-        android:layout_alignTop="@+id/postButton" />
+        android:background="#dfdfdf"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:text="Namn..." />
 
     <Button
         android:id="@+id/postButton"
@@ -25,7 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:text="Skapa ny" />
+        android:background="#31b327"
+        android:text="Skapa ny"
+        android:textColor="#ffffff" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,18 +68,19 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TableLayout
                     android:id="@+id/passTable"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="10dp"
+                    android:paddingLeft="10dp"
                     android:stretchColumns="0">
 
                 </TableLayout>
