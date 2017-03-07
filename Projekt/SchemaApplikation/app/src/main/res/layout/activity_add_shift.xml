@@ -15,11 +15,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/postButton"
         android:layout_toStartOf="@+id/postButton"
-        android:background="#dfdfdf"
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="Namn..." />
+        android:text="Namn" />
 
     <Button
         android:id="@+id/postButton"
@@ -39,12 +38,13 @@
         android:layout_alignParentTop="true">
 
         <TextView
-            android:text="Vecka 8, 2017"
+            android:id="@+id/weekTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/weekTextView"
+            android:layout_alignParentTop="true"
+            android:paddingTop="5dp"
+            android:text="Vecka 8, 2017"
             android:textAlignment="center"
             android:textSize="24sp" />
 

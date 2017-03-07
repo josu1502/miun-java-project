@@ -2,6 +2,7 @@ package com.example.matti.schemaapplikation;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -122,6 +123,7 @@ public class SchemaList {
                                 checkButton.setBackgroundColor(Color.parseColor("#dfdfdf"));
                             } else {
                                 name.setText(schemaList.get(i).getEmployee() + " - Borttagen");
+                                name.setPaintFlags(name.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                                 checkButton.setText("Lägg till");
                                 checkButton.setTextColor(Color.parseColor("#ffffff"));
                                 checkButton.setBackgroundColor(Color.parseColor("#31b327"));
