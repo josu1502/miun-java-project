@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(tb != null){
             setSupportActionBar(tb);
-            tb.setLogo(R.mipmap.ic_launcher);
+            tb.setLogo(R.mipmap.as_launcher);
         }
 
 

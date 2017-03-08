@@ -3,8 +3,10 @@ package com.example.matti.schemaapplikation;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -37,9 +39,16 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        //ActionBar toolbar = (ActionBar) findViewById(R.id.bar);
+        if (tb != null) {
+            tb.setLogo(R.mipmap.as_launcher);
+        }
+
         //schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke mobil IP: */
         //schemaClient = new SchemaClient("http://10.250.115.39:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
-        schemaClient = new SchemaClient("http://192.168.0.106:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
+        schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
         schemaClient.setStatusListener(this);
         schemaClient.fetchSchemaList();
         (new Thread(new MainActivity())).start();
