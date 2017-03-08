@@ -6,6 +6,7 @@
 package beans.form;
 
 import db.Image;
+import db.MediaEntity;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.inject.Named;
@@ -31,9 +32,12 @@ public class ImageList {
     public ImageList() {
     }
 
-    public List<Image> getImages() {
+    public List<Image> getPosterImages() {
         TypedQuery<Image> selectAllImages = em.createNamedQuery("Image.selectAll", Image.class);
         return selectAllImages.getResultList();
     }
-    
+    public List<MediaEntity> getMediaImages() {
+        TypedQuery<MediaEntity> selectAllMediaImages = em.createNamedQuery("MediaEntity.selectAllMedia", MediaEntity.class);
+        return selectAllMediaImages.getResultList();
+    }
 }

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ import r.orderapplication.orderRest.OrderEntities;
 import r.orderapplication.orderRest.OrderEntity;
 import r.orderapplication.orderRest.OrderStatusListener;
 
+
 import static r.orderapplication.TabActivity.dbc;
 
 
@@ -39,10 +41,20 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
 
     private List<OrderEntity> appetFinalOrder;
     private List<OrderEntity> mainFinalOrder;
+    private Toolbar tb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_order);
+       tb=(Toolbar)findViewById(R.id.toolBar);
+        setSupportActionBar(tb);
+
+        if(tb != null){
+            setSupportActionBar(tb);
+            tb.setLogo(R.mipmap.ic_launcher);
+        }
+
         orderTextView = (TextView)findViewById(R.id.orderTextView);
 
         appetFinalOrder = dbc.getOrderAppetList();
@@ -72,7 +84,11 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
         orderTextView.setText(sb);
 
         //orderClient = new OrderClient("http://10.250.110.144:8080/AntonsHemsida/webresources/"); /* Alex IP: */
+<<<<<<< HEAD
         orderClient = new OrderClient("http://10.250.118.155:8080/AntonsHemsida/webresources/");
+=======
+        orderClient = new OrderClient("http://10.250.121.121:8080/AntonsHemsida/webresources/");
+>>>>>>> e02b988f4ab9ab9e5e072d4fb81c43cb10cf2b88
         orderClient.setStatusListener(this);
         orderClient.fetchOrderList();
 

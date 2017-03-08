@@ -21,6 +21,10 @@
     width: 150px;
 }
 
+#content img {
+    margin: 5px;
+}
+
 .center_content {
     background-color: #FFFFFF;
     padding: 20px 20px 30px 20px;
