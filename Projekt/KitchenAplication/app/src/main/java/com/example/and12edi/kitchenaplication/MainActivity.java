@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
         }
 
 
-        orderClient = new OrderClient("http://10.250.112.24:8080/AntonsHemsida/webresources/");
+        orderClient = new OrderClient("http://10.250.118.155:8080/AntonsHemsida/webresources/");
         orderClient.setStatusListener(this);
         (new Thread(MainActivity.this)).start();
 
@@ -161,6 +161,19 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
             done.setBackgroundColor(Color.parseColor("#31b327"));
             done.setTextColor(Color.WHITE);
             tableRow.addView(done);
+
+            TableLayout.LayoutParams tableRowParams=
+                    new TableLayout.LayoutParams
+                            (TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
+
+            int leftMargin=0;
+            int topMargin=0;
+            int rightMargin=0;
+            int bottomMargin=8;
+
+            tableRowParams.setMargins(leftMargin, topMargin, rightMargin, bottomMargin);
+
+            tableRow.setLayoutParams(tableRowParams);
 
             /*Lägger in en tablerow som sedan stoppas in i tablelayouten*/
             unFinishedTable.addView(tableRow);
