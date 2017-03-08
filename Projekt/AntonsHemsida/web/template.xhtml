@@ -9,6 +9,15 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
+        
+                    <script type="text/javascript">
+                function updateImage(elementId) {
+                    var imageElement = document.getElementById(elementId);
+                    imageElement.src = imageElement.src + '#';
+                    return true;
+                }
+            </script> 
+        
     </h:head>
 
     <h:body>
