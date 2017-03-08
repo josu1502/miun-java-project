@@ -10,8 +10,6 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -39,7 +37,7 @@ public class DisplayMedia implements Serializable {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < resultList.size(); i++) {
             MediaEntity mediaImageAndDescription = resultList.get(i);
-            sb.append("<img width='150px' height='100%' src='/Images/"+mediaImageAndDescription.getUrl()+"'");
+            sb.append("<img title='" + mediaImageAndDescription.getDescription()+"' width='150px' height='100%' src='/Images/"+mediaImageAndDescription.getUrl()+"'");
             sb.append(" alt='poster is missing'></img>");
             
             

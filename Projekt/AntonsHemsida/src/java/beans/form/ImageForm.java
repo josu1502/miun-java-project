@@ -7,7 +7,6 @@ package beans.form;
 
 import db.Image;
 import db.MediaEntity;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -21,7 +20,6 @@ import javax.persistence.PersistenceContext;
 import javax.servlet.http.Part;
 import java.nio.file.Path;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 import javax.persistence.TypedQuery;
 
 /**
@@ -34,7 +32,8 @@ public class ImageForm {
 
     private Part image;
     private String description;
-    private final String localPath = "\\Users\\maski\\OneDrive\\Documents\\";
+    // private final String localPath = "\\Users\\maski\\OneDrive\\Documents\\";  //Thomas lokala sökväg
+    private final String localPath = "D:\\";  //Andreas lokala sökväg
     private final String imagePath = localPath + "GitHub\\miun-java-project\\Projekt\\Images\\web\\";
     @PersistenceContext(unitName = "AntonsHemsidaPU")
     private EntityManager em;
@@ -81,8 +80,8 @@ public class ImageForm {
         }
         return "error.xhtml";
     }
-    
-     public String deleteMediaImage(Long id) {
+
+    public String deleteMediaImage(Long id) {
         try {
             utx.begin();
             TypedQuery<MediaEntity> mediaImageListQuery = em.createNamedQuery("MediaEntity.removeMediaById", MediaEntity.class);
@@ -113,10 +112,10 @@ public class ImageForm {
                 return "error.xthml";
             }
         }
-        
+
         return "imageHandler.xhtml";
     }
-    
+
     public String saveMedia() {
         if (image != null) {
             try (InputStream input = image.getInputStream()) {
@@ -133,7 +132,7 @@ public class ImageForm {
                 return "error.xthml";
             }
         }
-        
+
         return "mediaHandler.xhtml";
     }
 

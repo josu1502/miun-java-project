@@ -42,7 +42,7 @@ public class DisplayEntertainment implements Serializable {
             sb.append(posterAndDescription.getDescription());
             sb.append("</h3>");
             sb.append("<br/>");
-            sb.append("<img width='400px' height='400px' src='/Images/"+posterAndDescription.getUrl()+"'");
+            sb.append("<img width='400px' height='100%' src='/Images/"+posterAndDescription.getUrl()+"'");
             sb.append(" alt='poster is missing'></img>");
             sb.append("<br/>");
             sb.append("<br/>");
