@@ -37,7 +37,7 @@ public class AddShiftActivity extends AppCompatActivity {
     public static AddShiftActivityContext activityContext;
 
     /*Kod för att gå bakåt om man klickar på tillbakaknappen uppe i "Activity bar"*/
-    /*@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -48,7 +48,7 @@ public class AddShiftActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
 
     @Override
     public void onStart(){
@@ -69,6 +69,9 @@ public class AddShiftActivity extends AppCompatActivity {
         //ActionBar toolbar = (ActionBar) findViewById(R.id.bar);
         if (tb != null) {
             tb.setLogo(R.mipmap.as_launcher);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         }
 
         /*Lägger till en tillbakaknapp uppe i "Activity bar"*/
