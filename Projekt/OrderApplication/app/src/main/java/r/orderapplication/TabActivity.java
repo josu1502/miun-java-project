@@ -54,12 +54,9 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
-<<<<<<< HEAD
-        dc = new DinnerClient("http://10.250.118.155:8080/AntonsHemsida/webresources/");
-=======
+
         tb = (Toolbar)findViewById(R.id.toolBar);
         dc = new DinnerClient("http://10.250.121.121:8080/AntonsHemsida/webresources/");
->>>>>>> e02b988f4ab9ab9e5e072d4fb81c43cb10cf2b88
         dc.setStatusListener(this);
         dc.fetchDinnerList();
 
@@ -68,7 +65,7 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
 
         if(tb != null){
             setSupportActionBar(tb);
-            tb.setLogo(R.mipmap.ic_launcher);
+            tb.setLogo(R.mipmap.as_launcher);
         }
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
