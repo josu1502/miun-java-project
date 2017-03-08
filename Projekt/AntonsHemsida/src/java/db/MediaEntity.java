@@ -9,12 +9,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @NamedQueries({
-    @NamedQuery(name = "Image.selectAll", query = "SELECT img FROM Image img"),
-    @NamedQuery(name = "Image.removeById", query = "DELETE FROM Image img WHERE img.id= :IMGID")
+    @NamedQuery(name = "MediaEntity.selectAllMedia", query = "SELECT img FROM MediaEntity img"),
+    @NamedQuery(name = "MediaEntity.removeMediaById", query = "DELETE FROM MediaEntity img WHERE img.id= :MEDIAID")
 })
 @Entity
 
-public class Image implements Serializable {
+public class MediaEntity implements Serializable {
 
     private String description;
     private String url;
@@ -56,11 +56,11 @@ public class Image implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        //TODO: warning-this method wont work in the case the id fields are not set
-        if (!(object instanceof Image)) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof MediaEntity)) {
             return false;
         }
-        Image other = (Image) object;
+        MediaEntity other = (MediaEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -69,7 +69,7 @@ public class Image implements Serializable {
 
     @Override
     public String toString() {
-        return "db.Images[ id=" + id + " ]";
+        return "db.mediaEntity[ id=" + id + " ]";
     }
 
 }
