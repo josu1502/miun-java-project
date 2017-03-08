@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
 
     tools:context="com.example.matti.schemaapplikation.AddShiftActivity">
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/appBarLayout"
+        >
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/toolbar" />
+    </android.support.design.widget.AppBarLayout>
 
     <EditText
         android:id="@+id/editText"
@@ -35,9 +45,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_above="@+id/postButton"
-        android:layout_alignParentTop="true">
+        android:layout_below="@+id/appBarLayout">
 
         <TextView
+
             android:id="@+id/weekTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
