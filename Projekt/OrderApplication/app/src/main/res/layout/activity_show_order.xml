@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="r.orderapplication.ShowOrderActivity"
     android:id="@+id/showorder">
+
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/aBarLayout"
+
+        >
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/toolbar_layout"
+            />
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/orderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="498dp"
+        android:elevation="1dp"
+        android:lineSpacingExtra="5dp"
+        android:scrollbars="vertical"
+        android:textSize="18dp"
+        android:layout_below="@+id/aBarLayout"
+        android:layout_above="@+id/PutOrder" />
+
 
     <Button
         android:id="@+id/PutOrder"
@@ -16,17 +43,9 @@
         android:layout_gravity="bottom|center"
         android:background="#31b327"
         android:text="Lägg beställning"
-        android:textColor="#ffffff" />
-
-    <TextView
-        android:id="@+id/orderTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="1dp"
-        android:lineSpacingExtra="5dp"
-        android:padding="10dp"
-        android:scrollbars="vertical"
-        android:textSize="18dp" />
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
 
-</FrameLayout>
+</RelativeLayout>

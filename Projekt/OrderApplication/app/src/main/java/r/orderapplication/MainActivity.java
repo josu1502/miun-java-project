@@ -24,36 +24,47 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static String tableNr;
-   public static Integer tableNumber;
+    public static Integer tableNumber = 0;
     public static TextView bigNumber;
-
-    /*@Override
-    public void onStop(){
-        super.onStop();
-        Intent i = getBaseContext().getPackageManager()
-                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
-        System.exit(0);
-    }*/
+    private Toolbar tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bigNumber = (TextView)findViewById(R.id.bigNumber);
+
+        tb = (Toolbar) findViewById(R.id.toolBar);
+        setSupportActionBar(tb);
+
+        if(tb != null){
+            setSupportActionBar(tb);
+            tb.setLogo(R.mipmap.ic_launcher);
+        }
+
+
+        bigNumber = (TextView) findViewById(R.id.bigNumber);
 
         final EditText table;
-        table = (EditText)findViewById(R.id.table);
+        table = (EditText) findViewById(R.id.table);
         Button button;
-        button = (Button)findViewById(R.id.btn5);
+        button = (Button) findViewById(R.id.btn5);
+
         table.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                bigNumber.setText(table.getText());
 
-                if(i == KeyEvent.KEYCODE_ENTER){
-                    startActivity(new Intent(MainActivity.this, TabActivity.class));
+                if (!(table.getText().toString().equals(""))) {
+                    bigNumber.setText(table.getText());
+                }
+                if (i == KeyEvent.KEYCODE_ENTER) {
+                    if (!(table.getText().toString().equals(""))) {
+                        tableNr = table.getText().toString();
+                        tableNumber = Integer.parseInt(tableNr);
+                    }
+                    if (tableNumber > 0) {
+
+                        startActivity(new Intent(MainActivity.this, TabActivity.class));
+                    }
                     return true;
                 }
                 return false;
@@ -61,19 +72,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-      button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-           public void onClick(View view) {
+            public void onClick(View view) {
 
-                tableNr = table.getText().toString();
-                tableNumber=Integer.parseInt(tableNr);
-                if (!tableNr.equals("0") && !tableNr.equals("")) {
+                if (!(table.getText().toString().equals(""))) {
+                    tableNr = table.getText().toString();
+                    tableNumber = Integer.parseInt(tableNr);
+                }
+                if (tableNumber > 0) {
+
                     startActivity(new Intent(MainActivity.this, TabActivity.class));
                 }
 
-                }
-       });
-    }
+            }
+        });
 
+
+    }
 }
