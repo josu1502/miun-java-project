@@ -4,6 +4,7 @@ package layout.done;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class DeliveredMeals extends Fragment {
                              Bundle savedInstanceState) {
         LayoutInflater lf = getActivity().getLayoutInflater();
         deliveredView = lf.inflate(R.layout.fragment_delivered__meals, container, false);
+
 
         Button clearButton = (Button) deliveredView.findViewById(R.id.clearButton);
         clearButton.setOnClickListener(new View.OnClickListener() {

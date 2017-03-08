@@ -49,11 +49,11 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolBar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            toolbar.setLogo(R.mipmap.ic_launcher);
+            toolbar.setLogo(R.mipmap.as_launcher);
         }
 
 
-        orderClient = new OrderClient("http://192.168.0.106:8080/AntonsHemsida/webresources/");
+        orderClient = new OrderClient("http://10.250.112.24:8080/AntonsHemsida/webresources/");
         orderClient.setStatusListener(this);
         (new Thread(MainActivity.this)).start();
 
