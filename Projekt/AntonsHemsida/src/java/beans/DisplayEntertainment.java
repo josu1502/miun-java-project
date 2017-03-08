@@ -37,12 +37,18 @@ public class DisplayEntertainment implements Serializable {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < resultList.size(); i++) {
             Image posterAndDescription = resultList.get(i);
-            sb.append("<h1>Kommande spelningar på Antons</h1>");
             sb.append("<br/>");
-            sb.append("<img width='400px' height='600px' src='/Images/'");
-            sb.append(posterAndDescription.getUrl());
-            sb.append("alt='poster is missing'></img>");
+            sb.append("<h3>");
+            sb.append(posterAndDescription.getDescription());
+            sb.append("</h3>");
             sb.append("<br/>");
+            sb.append("<img width='400px' height='400px' src='/Images/"+posterAndDescription.getUrl()+"'");
+            sb.append(" alt='poster is missing'></img>");
+            sb.append("<br/>");
+            sb.append("<br/>");
+            sb.append("<br/>");
+            sb.append("<h1></h1>");
+            
         }
         return sb.toString();
     }
