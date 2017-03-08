@@ -113,6 +113,26 @@ public class OrderClient {
                 if (resp != 2) {
                     throw new RuntimeException(resp_orig + ": Fel kod. Inte 200.");
                 }
+            }
+
+            @Override
+            public void onFailure(Call<OrderEntity> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void deleteOrderAndUpdate(OrderEntity orderEntity) {
+        Call<OrderEntity> call = client.deleteOrder(orderEntity.getId());
+        call.enqueue(new Callback<OrderEntity>() {
+            @Override
+            public void onResponse(Call<OrderEntity> call, Response<OrderEntity> response) {
+                int resp_orig = response.code();
+                int resp = resp_orig / 100;
+
+                if (resp != 2) {
+                    throw new RuntimeException(resp_orig + ": Fel kod. Inte 200.");
+                }
 
                 orderClient.fetchOrderList();
             }

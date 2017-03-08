@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
         }
 
 
-        orderClient = new OrderClient("http://10.250.118.155:8080/AntonsHemsida/webresources/");
+        orderClient = new OrderClient("http://10.250.121.121:8080/AntonsHemsida/webresources/");
         orderClient.setStatusListener(this);
         (new Thread(MainActivity.this)).start();
 

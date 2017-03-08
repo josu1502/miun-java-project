@@ -6,6 +6,7 @@
 package beans.form;
 
 import db.Image;
+import db.MediaEntity;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.FileSystems;
@@ -66,13 +67,12 @@ public class ImageForm {
         return fileName;
     }
 
-    public String delete(Long id) {
+    public String deletePoster(Long id) {
         try {
             utx.begin();
             TypedQuery<Image> imageListQuery = em.createNamedQuery("Image.removeById", Image.class);
             imageListQuery.setParameter("IMGID", id);
             imageListQuery.executeUpdate();
-            System.out.println(imageListQuery.toString());
             utx.commit();
             return "imageHandler.xhtml";
 
@@ -81,8 +81,23 @@ public class ImageForm {
         }
         return "error.xhtml";
     }
+    
+     public String deleteMediaImage(Long id) {
+        try {
+            utx.begin();
+            TypedQuery<MediaEntity> mediaImageListQuery = em.createNamedQuery("MediaEntity.removeMediaById", MediaEntity.class);
+            mediaImageListQuery.setParameter("MEDIAID", id);
+            mediaImageListQuery.executeUpdate();
+            utx.commit();
+            return "mediaHandler.xhtml";
 
-    public String save() {
+        } catch (Exception ex) {
+            Logger.getLogger(ImageForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "error.xhtml";
+    }
+
+    public String savePoster() {
         if (image != null) {
             try (InputStream input = image.getInputStream()) {
                 Path outPath = FileSystems.getDefault().getPath(imagePath, getImagesFileName());
@@ -100,6 +115,26 @@ public class ImageForm {
         }
         
         return "imageHandler.xhtml";
+    }
+    
+    public String saveMedia() {
+        if (image != null) {
+            try (InputStream input = image.getInputStream()) {
+                Path outPath = FileSystems.getDefault().getPath(imagePath, getImagesFileName());
+                while (Files.exists(outPath)) {
+                    outPath = FileSystems.getDefault().getPath(imagePath, getImagesFileName());
+                }
+                Files.copy(input, outPath);
+                MediaEntity mediaImg = new MediaEntity();
+                mediaImg.setDescription(description);
+                mediaImg.setUrl(outPath.getFileName().toString());
+                persist(mediaImg);
+            } catch (Exception ex) {
+                return "error.xthml";
+            }
+        }
+        
+        return "mediaHandler.xhtml";
     }
 
     public void persist(Object object) {

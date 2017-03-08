@@ -55,14 +55,17 @@ public class DeliveredMeals extends Fragment {
 
                     for (int i = 0; i < finishedOrders.size(); i++) {
                         orderClient.deleteOrder(finishedOrders.get(i));
-
                     }
 
-                    if(finishedOrders.size() >= 1 && unFinishedOrders.size() == 0){
-                        finishedTable.removeAllViews();
+
+                    finishedTable.removeAllViews();
+                    if (unFinishedOrders.size() == 0) {
                         unFinishedTable.removeAllViews();
-                        orderList.clear();
                     }
+
+                    orderList.clear();
+
+
                 }
             }
         });
