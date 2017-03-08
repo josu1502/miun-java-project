@@ -15,3 +15,50 @@
 .ui-button {
     margin-top: 10px !important;
 }
+
+#pulldown {
+    margin: 50px;
+}
+
+#top ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F44336;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
+}
+
+#top li{
+    float: left;
+}
+
+#top li img{
+    float: left;
+}
+
+#top a{
+    display: block;
+    padding: 16px 20px;
+    color: #FFFFFF;
+    font-family: "Fjalla One" ,sans-serif;
+    font-size: 24px;
+    text-align: center;
+}
+
+#top li a:hover:not(.active){
+    background-color: #B32727;
+    text-decoration: none;
+}
+
+#top .active{
+    background-color: #B32727;
+}
+
+#top a:link, #top a:visited {
+  text-decoration: none;
+}

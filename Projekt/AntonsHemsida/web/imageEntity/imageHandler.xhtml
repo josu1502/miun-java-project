@@ -6,43 +6,45 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-        <h:body>
+    <h:body>
 
-            <ui:composition template="/template.xhtml">
-                <ui:define name="body">
-                   
-                                <h:form acceptcharset="UTF-8" enctype="multipart/form-data">
-                                    Bildtext:<br/>
-                                    <h:inputTextarea  value="#{imageForm.description}"/><br/>
-                                    Välj bild:<br/>
-                                    <h:inputFile value="#{imageForm.image}"/><br/><br/>
-                                    <h:commandButton value="Ladda upp" action="#{imageForm.savePoster()}"/><br/><br/> 
-                                    <p:carousel circular="true" autoPlayInterval="1000000" value="#{imageList.posterImages}" headerText="Uppladade bilder" var="image" itemStyle="text-align:center">
-                                        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" styleClass="ui-panelgrid-blank">
-                                            <f:facet name="header">
-                                                <h:commandLink value="" action="#{imageForm.deletePoster(image.id)}">
-                                                    <img id="img#{image.id}" width="200px" height="200px" src="/Images/#{image.url}" 
-                                                         onerror="setTimeout(updateImage, 500, 'img#{image.id}'); return true;"/> 
-                                                </h:commandLink>
-                                            </f:facet>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="body">
+                <div id="pulldown">
 
-                                            <h:outputText value="Description:" />
-                                            <h:outputText value="#{image.description}" />
+                    <h:form acceptcharset="UTF-8" enctype="multipart/form-data">
+                        Bildtext:<br/>
+                        <h:inputTextarea  value="#{imageForm.description}"/><br/>
+                        Välj bild:<br/>
+                        <h:inputFile value="#{imageForm.image}"/><br/><br/>
+                        <h:commandButton value="Ladda upp" action="#{imageForm.savePoster()}"/><br/><br/> 
+                        <p:carousel circular="true" autoPlayInterval="1000000" value="#{imageList.posterImages}" headerText="Uppladade bilder" var="image" itemStyle="text-align:center">
+                            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" styleClass="ui-panelgrid-blank">
+                                <f:facet name="header">
+                                    <h:commandLink value="" action="#{imageForm.deletePoster(image.id)}">
+                                        <img id="img#{image.id}" width="200px" height="200px" src="/Images/#{image.url}" 
+                                             onerror="setTimeout(updateImage, 500, 'img#{image.id}'); return true;"/> 
+                                    </h:commandLink>
+                                </f:facet>
 
-                                        </p:panelGrid>
+                                <h:outputText value="Description:" />
+                                <h:outputText value="#{image.description}" />
 
-                                        <f:facet name="footer">
-                                            Totalt uppladdade bilder: #{imageList.posterImages.size()} .
-                                        </f:facet>                        
-                                    </p:carousel>
-                                </h:form>
-                       
-                    
+                            </p:panelGrid>
 
-      
-                </ui:define>
-            </ui:composition>
-        </h:body>
+                            <f:facet name="footer">
+                                Totalt uppladdade bilder: #{imageList.posterImages.size()} .
+                            </f:facet>                        
+                        </p:carousel>
+                    </h:form>
+                </div>
+
+
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
 
 </html>
 
