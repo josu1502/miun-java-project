@@ -72,7 +72,7 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
         orderTextView.setText(sb);
 
         //orderClient = new OrderClient("http://10.250.110.144:8080/AntonsHemsida/webresources/"); /* Alex IP: */
-        orderClient = new OrderClient("http://10.250.111.29:8080/AntonsHemsida/webresources/");
+        orderClient = new OrderClient("http://10.250.118.155:8080/AntonsHemsida/webresources/");
         orderClient.setStatusListener(this);
         orderClient.fetchOrderList();
 
