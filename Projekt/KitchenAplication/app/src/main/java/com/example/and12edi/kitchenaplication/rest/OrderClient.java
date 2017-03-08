@@ -14,6 +14,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
+import static com.example.and12edi.kitchenaplication.MainActivity.orderClient;
 
 
 /**
@@ -90,6 +91,8 @@ public class OrderClient {
                 if (resp != 2) {
                     throw new RuntimeException(resp_orig + ": Fel kod. Inte 200.");
                 }
+
+                orderClient.fetchOrderList();
             }
 
             @Override
@@ -110,6 +113,8 @@ public class OrderClient {
                 if (resp != 2) {
                     throw new RuntimeException(resp_orig + ": Fel kod. Inte 200.");
                 }
+
+                orderClient.fetchOrderList();
             }
 
             @Override

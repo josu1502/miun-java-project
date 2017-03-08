@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -44,7 +45,15 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
-        orderClient = new OrderClient("http://10.250.111.29:8080/AntonsHemsida/webresources/");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolBar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            toolbar.setLogo(R.mipmap.as_launcher);
+        }
+
+
+        orderClient = new OrderClient("http://10.250.118.155:8080/AntonsHemsida/webresources/");
         orderClient.setStatusListener(this);
         (new Thread(MainActivity.this)).start();
 
@@ -153,6 +162,19 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
             done.setTextColor(Color.WHITE);
             tableRow.addView(done);
 
+            TableLayout.LayoutParams tableRowParams=
+                    new TableLayout.LayoutParams
+                            (TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
+
+            int leftMargin=0;
+            int topMargin=0;
+            int rightMargin=0;
+            int bottomMargin=8;
+
+            tableRowParams.setMargins(leftMargin, topMargin, rightMargin, bottomMargin);
+
+            tableRow.setLayoutParams(tableRowParams);
+
             /*Lägger in en tablerow som sedan stoppas in i tablelayouten*/
             unFinishedTable.addView(tableRow);
         }
@@ -245,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements OrderStatusListen
             orderClient.fetchOrderList();
             
             try {
-                Thread.sleep(500);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

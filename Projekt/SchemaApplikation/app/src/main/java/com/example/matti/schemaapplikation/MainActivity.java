@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity  implements SchemaStatusList
 
         //schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke mobil IP: */
         //schemaClient = new SchemaClient("http://10.250.115.39:8080/AntonsHemsida/webresources/"); /* Jocke skola IP: */
-        schemaClient = new SchemaClient("http://192.168.43.80:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
+        schemaClient = new SchemaClient("http://192.168.0.106:8080/AntonsHemsida/webresources/"); /* Jocke hemma IP: */
         schemaClient.setStatusListener(this);
         schemaClient.fetchSchemaList();
         (new Thread(new MainActivity())).start();
