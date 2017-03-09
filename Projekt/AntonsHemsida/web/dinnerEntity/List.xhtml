@@ -8,14 +8,10 @@
 
     <ui:composition template="/template.xhtml">
 
-
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListDinnerEntityTitle}"></h:outputText>
-        </ui:define>
-
         <ui:define name="body">
-            <h:form id="DinnerEntityListForm">
-                <p:panel header="#{bundle.ListDinnerEntityTitle}">
+            <div id="pulldown">
+                <h:form id="DinnerEntityListForm">
+
                     <p:dataTable id="datalist" value="#{dinnerEntityController.items}" var="item"
                                  selectionMode="single" selection="#{dinnerEntityController.selected}"
                                  paginator="true"
@@ -58,8 +54,8 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{dinnerEntityController.destroy}" update=":growl,datalist" disabled="#{empty dinnerEntityController.selected}"/>
                         </f:facet>
                     </p:dataTable>
-                </p:panel>
-            </h:form>
+                </h:form>
+            </div>
 
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>

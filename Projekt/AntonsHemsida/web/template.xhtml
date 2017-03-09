@@ -9,15 +9,15 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
-        
-                    <script type="text/javascript">
-                function updateImage(elementId) {
-                    var imageElement = document.getElementById(elementId);
-                    imageElement.src = imageElement.src + '#';
-                    return true;
-                }
-            </script> 
-        
+
+        <script type="text/javascript">
+            function updateImage(elementId) {
+                var imageElement = document.getElementById(elementId);
+                imageElement.src = imageElement.src + '#';
+                return true;
+            }
+        </script> 
+
     </h:head>
 
     <h:body>
@@ -25,17 +25,18 @@
         <p:growl id="growl" life="3000" />
 
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+            <p:layoutUnit position="north">
                 <h:form id="menuForm">
-                    <p:menubar>
-                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                        <p:submenu label="#{bundle.Maintenance}">
-                            <p:menuitem value="DinnerEntity" outcome="/dinnerEntity/List.xhtml" />
-                            <p:menuitem value="LunchEntity" outcome="/lunchEntity/List.xhtml" />
-                            <p:menuitem value="PosterEntity" outcome="/imageEntity/imageHandler.xhtml" />
-                            <p:menuitem value="MediaEntity" outcome="/mediaEntity/mediaHandler.xhtml" />
-                        </p:submenu>
-                    </p:menubar>
+                    <div id="top" class="top">
+                        <ul>
+                            <li><img id="logo" src="../resources/images/af_page_logo.png" alt="logo is missing" /></li>
+                            <li><a href="../lunchEntity/admin.xhtml">Lunch</a> </li>
+                            <li><a href="../dinnerEntity/List.xhtml">A La Carte</a> </li>
+                            <li><a href="../imageEntity/imageHandler.xhtml">Underhållning</a> </li>
+                            <li><a href="../mediaEntity/mediaHandler.xhtml">Media</a> </li>
+                        </ul>
+                    </div>
+       
                 </h:form>
             </p:layoutUnit>
 

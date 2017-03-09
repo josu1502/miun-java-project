@@ -33,7 +33,8 @@ public class ImageForm {
     private Part image;
     private String description;
     // private final String localPath = "\\Users\\maski\\OneDrive\\Documents\\";  //Thomas lokala sökväg
-    private final String localPath = "D:\\";  //Andreas lokala sökväg
+    //private final String localPath = "D:\\";  //Andreas lokala sökväg
+    private final String localPath = "C:\\Users\\Joakim\\Documents\\";  //Jockes lokala sökväg
     private final String imagePath = localPath + "GitHub\\miun-java-project\\Projekt\\Images\\web\\";
     @PersistenceContext(unitName = "AntonsHemsidaPU")
     private EntityManager em;
