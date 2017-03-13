@@ -56,7 +56,7 @@ public class TabActivity extends AppCompatActivity implements DinnerStatusListen
         setContentView(R.layout.activity_tab);
 
         tb = (Toolbar)findViewById(R.id.toolBar);
-        dc = new DinnerClient("http://10.250.121.121:8080/AntonsHemsida/webresources/");
+        dc = new DinnerClient("http://192.168.43.80:8080/AntonsHemsida/webresources/");
         dc.setStatusListener(this);
         dc.fetchDinnerList();
 

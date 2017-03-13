@@ -20,8 +20,6 @@
                         <p:inputText id="description" value="#{lunchEntityController.selected.description}" title="#{bundle.CreateLunchEntityTitle_description}" />
                         <p:outputLabel value="#{bundle.CreateLunchEntityLabel_price}" for="price" />
                         <p:inputText id="price" value="#{lunchEntityController.selected.price}" title="#{bundle.CreateLunchEntityTitle_price}" />
-                        <p:outputLabel value="#{bundle.CreateLunchEntityLabel_dayNo}" for="dayNo" />
-                        <p:inputText id="dayNo" value="#{lunchEntityController.selected.dayNo}" title="#{bundle.CreateLunchEntityTitle_dayNo}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{lunchEntityController.create}" value="#{bundle.Save}" update="display,:LunchEntityListForm:datalist,:growl" oncomplete="handleSubmit(args,'LunchEntityCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="LunchEntityCreateDialog.hide()"/>

@@ -48,12 +48,6 @@
                             </f:facet>
                             <h:outputText value="#{item.price}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListLunchEntityTitle_dayNo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.dayNo}"/>
-                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{lunchEntityController.prepareCreate}" update=":LunchEntityCreateForm" oncomplete="PF('LunchEntityCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":LunchEntityViewForm" oncomplete="PF('LunchEntityViewDialog').show()" disabled="#{empty lunchEntityController.selected}"/>

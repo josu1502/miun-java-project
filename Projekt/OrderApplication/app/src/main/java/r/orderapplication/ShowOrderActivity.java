@@ -84,7 +84,7 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
         orderTextView.setText(sb);
 
         //orderClient = new OrderClient("http://10.250.110.144:8080/AntonsHemsida/webresources/"); /* Alex IP: */
-        orderClient = new OrderClient("http://10.250.121.121:8080/AntonsHemsida/webresources/");
+        orderClient = new OrderClient("http://192.168.43.80:8080/AntonsHemsida/webresources/");
         orderClient.setStatusListener(this);
         orderClient.fetchOrderList();
 
@@ -112,6 +112,13 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
                        containAppet = true;
                         appetFinalOrder.get(i).setOrderTime(clockAppetTime);
                         orderClient.postOrder(appetFinalOrder.get(i));
+
+                       /*Tillfällig kod som löser köproblemet med asynkrona anrop*/
+                       try {
+                           Thread.sleep(100);
+                       } catch (InterruptedException e) {
+                           e.printStackTrace();
+                       }
                    }
 
                }
@@ -126,6 +133,13 @@ public class ShowOrderActivity extends AppCompatActivity implements OrderStatusL
                         }
 
                         orderClient.postOrder(mainFinalOrder.get(i));
+
+                        /*Tillfällig kod som löser köproblemet med asynkrona anrop*/
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                 }
