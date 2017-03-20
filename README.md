@@ -1,58 +1,52 @@
-﻿# miun-java-project
-A system for a fictional restaurant that uses phones to take orders and display them at a screen for the chef. It also includes a simple work scheduling app and a webpage.
+# Miun java application project
+## About
+A system for a fictional restaurant, called Skafferiet. The system uses Android smartphones to take orders and display them at a tablet screen in the kitchen, for the chef. This is a school project for Mid University in Sundsvall, Sweden. Main language used in this project is Swedish. Feel free to use the source code as you please.
+## Includes
+Project files are found under the folder "Projekt".
+* 3 x Android Studio projects for applications.
+* 2 x Netbeans Java EE project for webpages.
+## Setup instructions
+The following things need to be done to get the project to work on your local computer.
+### 1. Glassfish
+Install Glassfish Server 4.0 in Netbeans.
+### 2. Database
+Set up a database in Netbans.
+* Database name: AntonsSkafferiDB
+* Username: anton
+* Password: anton
+Finnish with a clean build and check for possible errors.
+### 3. Change file path in AntonsHemsida (Netbeans project)
+Change path to images project file destination.
+* Open project
+* Open ImageForm.java (Source Packages/beans.form/ImageForm.java)
+* Update line 37 and 38 with your local path to the images-project.
+### 4. Compile images project (Netbeans project)
+Compile this project once. This project will contain all images uploaded from the admin webpage.
+### 5. Compile AntonsHemsida (Netbenas project)
+Compile this project to run the webpage. After this both the webpage adn adminpage is ready to be used.
+### 6. Change local IP in SchemaApplikation (Android Studio project)
+Change to your local ip-adress in the files needed.
+* Open project
+* Open MainActivity.java
+* Update line 49 with your local ip-adress.
+### 7. Change local IP in OrderApplication (Android Studio project)
+Change to your local ip-adress in the files needed.
+* Open project
+* Open MainActivity.java
+* Update line 56 with your local ip-adress.
+### 8. Change local IP in KitchenApplication (Android Studio project)
+Change to your local ip-adress in the files needed.
+* Open project
+* Open ShowOrderActity.java
+* Update line 86 with your local ip-adress.
+* Open Main_course.java
+* Update line 49 with your local ip-adress.
+* Open TabActivity.java
+* Update line 59 with your local ip-adress.
 
-This is a school project for Mid University in Sundsvall, Sweden. Main language used in this project is Swedish.
+### Now all project should be up and runnign if they all are connected to the same network
 
-All text below is used for testing the git system and has nothing to do with the actual project:
+## Special thanks
+A special thenks to out teacher Martin Kjellqvist for helping us when we where stuck.
 
---------------------------------------------------------------------------------
-# Hur man använder git
-Första gången:
 
-1. Ladda hem "Git bash".
-
-2. Öppna Git bash.
-
-3. Skriv in komandot "git config --global user.name "ditt github användarnamn" och tryck enter.
-
-4. Skriv in komandot "git config --global user.email din@email.adress och tryck enter.
-
-5. Använd kommandot "cd" för att lokalisera till den mappen du vill att projektet skall finnas. T.ex. "cd Dokument/GitHub".
-
-6. Använd git-komandot "git clone https://github.com/josu1502/miun-java-project.git" för att hämta hem projektet.
-
-Framtida användande:
-
-1. Använd kommandot "cd" för att lokalisera till den mappen som projektet ligger i. T.ex. "cd Dokument/GitHub/miun-java-project".
-
-2. Använd git-kommandot "git pull" för att hämta hem alla senaste uppdateringar som kan vara gjord av en annan användare. Detta kan användas när som helst under arbetets gång.
-
-3. Börja arbeta på dom filer som du ska arbeta med. VIKTIGT! Arbeta endast med filerna i den mapp dom ligger i från början. Ta ej bort filer som ej skall tas bort.
-
-4. Använd git-kommandot "git status" för att se att dina ändringar blivit registrerade. Dvs om filer lagts till, tagits bort eller ändrats.
-
-5. Använd git-kommandot "git add "filnamn"" för att lägga till en fil som är redo för en commit. Eller "git add -A" för att göra ALLA filer som är redo för en commit.
-
-6. Använd git-kommandot "git commit -m "Ett meddelande om uppdateringen"" för att gör iordning ändringarna för den slutgiltiga pushen.
-
-7. Slutligen, använd git-kommandot "git push" för att lägga ut dom uppdaterade filerna på github.com. VIKTIGT! Kontrollera att ingen kollision har inträffat. Då kommer kommandot ej utföras och den förväntar sig att du fixar kollisionen.
-
-8. Om en kollision inträffar. Leta upp kollisionen. Fixa till den och repetera från steg 4. Det är ett krav att man fixar till en kollision direkt och inte skjuter upp det till en annan dag!
-
-Se detta youtubeklipp för mer info: https://www.youtube.com/watch?v=0fKg7e37bQE
-
---------------------------------------------------------------------------------
-# Checklista
-Gör en underskrift nedan för att bocka av att du kan hantera git:
-
-Test av josu1502
-
-Test av aned1602
-
-Test av mavn1500
-
-Test av thas1500
-
-Test av alda1992
-
-Test av adhj1400
