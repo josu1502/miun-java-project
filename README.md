@@ -44,7 +44,7 @@ Change to your local ip-adress in the files needed.
 * Open TabActivity.java
 * Update line 59 with your local ip-adress.
 
-### Now all project should be up and runnign if they all are connected to the same network
+### Now all project should be up and running if they all are connected to the same network
 
 ## Special thanks
 A special thenks to out teacher Martin Kjellqvist for helping us when we where stuck.
