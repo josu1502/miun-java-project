@@ -1,6 +1,6 @@
 # Miun java application project
 ## About
-A system for a fictional restaurant, called Skafferiet. The system uses Android smartphones to take orders and display them at a tablet screen in the kitchen, for the chef. This is a school project for Mid University in Sundsvall, Sweden. Main language used in this project is Swedish. Feel free to use the source code as you please.
+A system for a fictional restaurant, called Skafferiet. The system uses Android smartphones to take orders and display them at a tablet screen in the kitchen, for the chef. This is a school project for the Mid Sweden University in Sundsvall. Main language used in this project is Swedish. Feel free to use the source code as you please.
 ## Includes
 Project files are found under the folder "Projekt".
 * 3 x Android Studio projects for applications.
@@ -15,7 +15,7 @@ Set up a database in Netbans.
 * Username: anton
 * Password: anton
 
-Finnish with a clean build and check for possible errors.
+Finish with a clean build and check for possible errors.
 ### 3. Change file path in AntonsHemsida (Netbeans project)
 Change path to images project file destination.
 * Open project
@@ -24,7 +24,7 @@ Change path to images project file destination.
 ### 4. Compile images project (Netbeans project)
 Compile this project once. This project will contain all images uploaded from the admin webpage.
 ### 5. Compile AntonsHemsida (Netbenas project)
-Compile this project to run the webpage. After this both the webpage adn adminpage is ready to be used.
+Compile this project to run the webpage. After this both the webpage and admin-page is ready to be used.
 ### 6. Change local IP in SchemaApplikation (Android Studio project)
 Change to your local ip-adress in the files needed.
 * Open project
@@ -48,6 +48,6 @@ Change to your local ip-adress in the files needed.
 ### Now all projects should be up and running, if they all are connected to the same network
 
 ## Special thanks
-A special thenks to out teacher Martin Kjellqvist for helping us when we where stuck.
+A special thanks to our teacher Martin Kjellqvist for helping us when we got stuck.
 
 
