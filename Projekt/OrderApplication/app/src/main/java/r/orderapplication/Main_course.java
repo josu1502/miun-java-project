@@ -46,7 +46,7 @@ public class Main_course extends Fragment implements DinnerStatusListener  {
         }
         Log.d(this.getClass().toString(), "Fragment is created. Lets change the text!");
         
-        DinnerClient dc = new DinnerClient("http://192.168.43.80:8080/AntonsHemsida/webresources/");
+        DinnerClient dc = new DinnerClient("http://192.168.0.103:8080/AntonsHemsida/webresources/");
         dc.setStatusListener(this);
         dc.fetchDinnerList();
     }
