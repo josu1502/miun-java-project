@@ -46,6 +46,7 @@ Change to your local ip-adress in the files needed.
 * Update line 59 with your local ip-adress
 
 ### Now all projects should be up and running, if they all are connected to the same network
+The admin page is in the project AntonsHemsida (Netbeans project), in the folder lunchEntity.
 
 ## Special thanks
 A special thanks to our teacher Martin Kjellqvist for helping us when we got stuck.
