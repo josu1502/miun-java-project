@@ -30,12 +30,12 @@ Change to your local ip-adress in the files needed.
 * Open project
 * Open MainActivity.java
 * Update line 49 with your local ip-adress
-### 7. Change local IP in OrderApplication (Android Studio project)
+### 7. Change local IP in KitchenApplication (Android Studio project)
 Change to your local ip-adress in the files needed.
 * Open project
 * Open MainActivity.java
 * Update line 56 with your local ip-adress
-### 8. Change local IP in KitchenApplication (Android Studio project)
+### 8. Change local IP in OrderApplication (Android Studio project)
 Change to your local ip-adress in the files needed.
 * Open project
 * Open ShowOrderActity.java
